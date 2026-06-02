@@ -1,0 +1,20 @@
+{
+  "overview": "A professional multi-page website for a private equity firm, featuring a brand portfolio showcase, board of directors, about us, contact form, and jobs listing. Designed to present 10 portfolio companies with logos and descriptions in a clean, corporate aesthetic.",
+  "features": [
+    "Multi-page navigation with Home, Portfolio, Board, About, Contact, and Jobs",
+    "Brand portfolio grid showcasing 10 companies with logo and description upload",
+    "Individual brand detail pages",
+    "Board of Directors directory with headshots and bios",
+    "Contact form with submission feedback",
+    "Job listings page with positions and application form"
+  ],
+  "category": "business",
+  "tags": [
+    "private-equity",
+    "portfolio",
+    "corporate",
+    "business",
+    "finance"
+  ],
+  "last_updated": "2026-04-12T12:48:07.995Z"
+}

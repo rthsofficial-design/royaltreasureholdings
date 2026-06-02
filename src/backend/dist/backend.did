@@ -1,0 +1,172 @@
+type UpdateJobArgs = 
+ record {
+   department: text;
+   description: text;
+   id: JobId;
+   isActive: bool;
+   jobType: JobType;
+   location: text;
+   title: text;
+ };
+type UpdateFirmInfoArgs = 
+ record {
+   heroCopy: text;
+   heroHeadline: text;
+   investmentStrategy: text;
+   missionStatement: text;
+   statsJson: text;
+ };
+type UpdateBrandArgs = 
+ record {
+   description: text;
+   id: BrandId;
+   logoUrl: text;
+   name: text;
+   order: nat;
+   sector: text;
+   website: text;
+ };
+type UpdateBoardMemberArgs = 
+ record {
+   bio: text;
+   id: BoardMemberId;
+   linkedIn: text;
+   name: text;
+   order: nat;
+   photoUrl: text;
+   title: text;
+ };
+type Timestamp = int;
+type SubmitContactArgs = 
+ record {
+   email: text;
+   message: text;
+   name: text;
+   subject: text;
+ };
+type SubmitApplicationArgs = 
+ record {
+   applicantName: text;
+   email: text;
+   jobId: JobId;
+   message: text;
+ };
+type JobType = 
+ variant {
+   contract;
+   fullTime;
+   partTime;
+ };
+type JobId = nat;
+type JobApplication = 
+ record {
+   applicantName: text;
+   email: text;
+   id: ApplicationId;
+   jobId: JobId;
+   message: text;
+   submittedAt: Timestamp;
+ };
+type Job = 
+ record {
+   department: text;
+   description: text;
+   id: JobId;
+   isActive: bool;
+   jobType: JobType;
+   location: text;
+   title: text;
+ };
+type FirmInfo = 
+ record {
+   heroCopy: text;
+   heroHeadline: text;
+   investmentStrategy: text;
+   missionStatement: text;
+   statsJson: text;
+ };
+type CreateJobArgs = 
+ record {
+   department: text;
+   description: text;
+   isActive: bool;
+   jobType: JobType;
+   location: text;
+   title: text;
+ };
+type CreateBrandArgs = 
+ record {
+   description: text;
+   logoUrl: text;
+   name: text;
+   order: nat;
+   sector: text;
+   website: text;
+ };
+type CreateBoardMemberArgs = 
+ record {
+   bio: text;
+   linkedIn: text;
+   name: text;
+   order: nat;
+   photoUrl: text;
+   title: text;
+ };
+type ContactSubmissionId = nat;
+type ContactSubmission = 
+ record {
+   email: text;
+   id: ContactSubmissionId;
+   message: text;
+   name: text;
+   subject: text;
+   submittedAt: Timestamp;
+ };
+type BrandId = nat;
+type Brand = 
+ record {
+   description: text;
+   id: BrandId;
+   logoUrl: text;
+   name: text;
+   order: nat;
+   sector: text;
+   website: text;
+ };
+type BoardMemberId = nat;
+type BoardMember = 
+ record {
+   bio: text;
+   id: BoardMemberId;
+   linkedIn: text;
+   name: text;
+   order: nat;
+   photoUrl: text;
+   title: text;
+ };
+type ApplicationId = nat;
+service : {
+  createBoardMember: (args: CreateBoardMemberArgs) -> (BoardMember);
+  createBrand: (args: CreateBrandArgs) -> (Brand);
+  createJob: (args: CreateJobArgs) -> (Job);
+  deleteBoardMember: (id: BoardMemberId) -> (bool);
+  deleteBrand: (id: BrandId) -> (bool);
+  deleteJob: (id: JobId) -> (bool);
+  getBoardMember: (id: BoardMemberId) -> (opt BoardMember) query;
+  getBrand: (id: BrandId) -> (opt Brand) query;
+  getFirmInfo: () -> (FirmInfo) query;
+  getJob: (id: JobId) -> (opt Job) query;
+  listActiveJobs: () -> (vec Job) query;
+  listApplications: () -> (vec JobApplication) query;
+  listApplicationsForJob: (jobId: JobId) -> (vec JobApplication) query;
+  listBoardMembers: () -> (vec BoardMember) query;
+  listBrands: () -> (vec Brand) query;
+  listContactSubmissions: () -> (vec ContactSubmission) query;
+  listJobs: () -> (vec Job) query;
+  submitApplication: (args: SubmitApplicationArgs) -> (JobApplication);
+  submitContact: (args: SubmitContactArgs) -> (ContactSubmission);
+  updateBoardMember: (args: UpdateBoardMemberArgs) -> (opt BoardMember);
+  updateBrand: (args: UpdateBrandArgs) -> (opt Brand);
+  updateFirmInfo: (args: UpdateFirmInfoArgs) -> (FirmInfo);
+  updateJob: (args: UpdateJobArgs) -> (opt Job);
+}

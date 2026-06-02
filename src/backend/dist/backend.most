@@ -1,0 +1,104 @@
+// Version: 1.0.0
+type ApplicationId__970511113 = Id__389469852;
+type BoardMemberId__699385795 = Id__389469852;
+type BoardMember__109690899 =
+  {
+    bio : Text;
+    id : BoardMemberId__699385795;
+    linkedIn : Text;
+    name : Text;
+    order : Nat;
+    photoUrl : Text;
+    title : Text
+  };
+type BrandId__840355439 = Id__389469852;
+type Brand__159034844 =
+  {
+    description : Text;
+    id : BrandId__840355439;
+    logoUrl : Text;
+    name : Text;
+    order : Nat;
+    sector : Text;
+    website : Text
+  };
+type ContactSubmissionId__179327337 = Id__389469852;
+type ContactSubmission__93684224 =
+  {
+    email : Text;
+    id : ContactSubmissionId__179327337;
+    message : Text;
+    name : Text;
+    subject : Text;
+    submittedAt : Timestamp__301639476
+  };
+type Id__389469852 = Nat;
+type JobApplication__941079936 =
+  {
+    applicantName : Text;
+    email : Text;
+    id : ApplicationId__970511113;
+    jobId : JobId__567733654;
+    message : Text;
+    submittedAt : Timestamp__301639476
+  };
+type JobId__567733654 = Id__389469852;
+type JobType__229172236 = {#contract; #fullTime; #partTime};
+type Job__848768964 =
+  {
+    department : Text;
+    description : Text;
+    id : JobId__567733654;
+    isActive : Bool;
+    jobType : JobType__229172236;
+    location : Text;
+    title : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Timestamp__301639476 = Int;
+actor {
+  stable applications :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?JobApplication__941079936]];
+      var elementIndex : Nat__490723111
+    };
+  stable boardMembers :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?BoardMember__109690899]];
+      var elementIndex : Nat__490723111
+    };
+  stable brands :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Brand__159034844]];
+      var elementIndex : Nat__490723111
+    };
+  stable contactSubmissions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ContactSubmission__93684224]];
+      var elementIndex : Nat__490723111
+    };
+  stable var firmInfo :
+    {
+      heroCopy : Text;
+      heroHeadline : Text;
+      investmentStrategy : Text;
+      missionStatement : Text;
+      statsJson : Text
+    };
+  stable jobs :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Job__848768964]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextApplicationId : Nat;
+  stable var nextBoardMemberId : Nat;
+  stable var nextBrandId : Nat;
+  stable var nextContactId : Nat;
+  stable var nextJobId : Nat
+};
