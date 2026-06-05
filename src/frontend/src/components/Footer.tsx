@@ -61,10 +61,10 @@ export function Footer() {
               <p>Mumbai, Maharashtra, India</p>
               <p className="pt-2">
                 <a
-                  href="mailto:info@royaltreasureholdigs.com"
+                  href="mailto:info@royaltreasureholdings.com"
                   className="hover:text-primary-foreground transition-colors duration-200"
                 >
-                  info@royaltreasureholdigs.com
+                  info@royaltreasureholdings.com
                 </a>
               </p>
             </div>

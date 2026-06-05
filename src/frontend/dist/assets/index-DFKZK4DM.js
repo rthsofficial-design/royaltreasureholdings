@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Home-Ci62idua.js","assets/badge-Cg8RuVC-.js","assets/index-b17ECunc.js","assets/useBackend-zQm2JAoL.js","assets/skeleton-CcRszLGA.js","assets/arrow-right-1TJ4-PHa.js","assets/trending-up-DNbmxO9i.js","assets/target-C448E_I3.js","assets/chevron-right-B1i5ymJ1.js","assets/Portfolio-CqWbGug6.js","assets/input-BOPU4hyV.js","assets/building-2--1sp461G.js","assets/BrandDetail-Dr3n7-sX.js","assets/index-DIYy5Ecr.js","assets/Board-BuX8UEyW.js","assets/About-DmuUYutf.js","assets/Contact-AhOsWtzw.js","assets/index.esm-DaNlBY6X.js","assets/Jobs-Citta0ov.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Home-B90F-4er.js","assets/badge-2xLy4ToM.js","assets/index-43jMSmQZ.js","assets/useBackend-Bav98165.js","assets/skeleton-DBCj5J6f.js","assets/arrow-right-CnzcdSOD.js","assets/trending-up-DU4f2BVV.js","assets/target-Cypa044L.js","assets/chevron-right-C6DcVL7k.js","assets/Portfolio-C2Wm3R3J.js","assets/input-CgEtxYTz.js","assets/building-2-CLGs_GjC.js","assets/BrandDetail-BxvuX6t5.js","assets/index-CH509zmm.js","assets/Board-D85MKz-D.js","assets/About-Di1vCa7m.js","assets/Contact-CbRlzl5q.js","assets/index.esm-CRzw20HT.js","assets/Jobs-DGIF0t2Z.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -14574,7 +14574,7 @@ function mergeLoginOptions(loginOptions, otherLoginOptions) {
   };
 }
 const ONE_HOUR_IN_NANOSECONDS = BigInt(36e11);
-const DEFAULT_IDENTITY_PROVIDER = "https://id.ai";
+const DEFAULT_IDENTITY_PROVIDER = "https://id.ai/authorize";
 const InternetIdentityReactContext = reactExports.createContext(void 0);
 async function createAuthClient(createOptions) {
   const config = await loadConfig();
@@ -31535,9 +31535,9 @@ function Footer() {
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "pt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
             "a",
             {
-              href: "mailto:info@royaltreasureholdigs.com",
+              href: "mailto:info@royaltreasureholdings.com",
               className: "hover:text-primary-foreground transition-colors duration-200",
-              children: "info@royaltreasureholdigs.com"
+              children: "info@royaltreasureholdings.com"
             }
           ) })
         ] })
@@ -31814,25 +31814,25 @@ function NotFound() {
   ) });
 }
 const Home = reactExports.lazy(
-  () => __vitePreload(() => import("./Home-Ci62idua.js"), true ? __vite__mapDeps([0,1,2,3,4,5,6,7,8]) : void 0).then((m2) => ({ default: m2.Home }))
+  () => __vitePreload(() => import("./Home-B90F-4er.js"), true ? __vite__mapDeps([0,1,2,3,4,5,6,7,8]) : void 0).then((m2) => ({ default: m2.Home }))
 );
 const Portfolio = reactExports.lazy(
-  () => __vitePreload(() => import("./Portfolio-CqWbGug6.js"), true ? __vite__mapDeps([9,1,2,3,10,4,6,11,5]) : void 0).then((m2) => ({ default: m2.Portfolio }))
+  () => __vitePreload(() => import("./Portfolio-C2Wm3R3J.js"), true ? __vite__mapDeps([9,1,2,3,10,4,6,11,5]) : void 0).then((m2) => ({ default: m2.Portfolio }))
 );
 const BrandDetail = reactExports.lazy(
-  () => __vitePreload(() => import("./BrandDetail-Dr3n7-sX.js"), true ? __vite__mapDeps([12,1,2,3,13,4,8,11]) : void 0).then((m2) => ({ default: m2.BrandDetail }))
+  () => __vitePreload(() => import("./BrandDetail-BxvuX6t5.js"), true ? __vite__mapDeps([12,1,2,3,13,4,8,11]) : void 0).then((m2) => ({ default: m2.BrandDetail }))
 );
 const Board = reactExports.lazy(
-  () => __vitePreload(() => import("./Board-BuX8UEyW.js"), true ? __vite__mapDeps([14,1,2,3,4]) : void 0).then((m2) => ({ default: m2.Board }))
+  () => __vitePreload(() => import("./Board-D85MKz-D.js"), true ? __vite__mapDeps([14,1,2,3,4]) : void 0).then((m2) => ({ default: m2.Board }))
 );
 const About = reactExports.lazy(
-  () => __vitePreload(() => import("./About-DmuUYutf.js"), true ? __vite__mapDeps([15,4,3,7,6]) : void 0).then((m2) => ({ default: m2.About }))
+  () => __vitePreload(() => import("./About-Di1vCa7m.js"), true ? __vite__mapDeps([15,4,3,7,6]) : void 0).then((m2) => ({ default: m2.About }))
 );
 const Contact = reactExports.lazy(
-  () => __vitePreload(() => import("./Contact-AhOsWtzw.js"), true ? __vite__mapDeps([16,13,2,3,10,17]) : void 0).then((m2) => ({ default: m2.Contact }))
+  () => __vitePreload(() => import("./Contact-CbRlzl5q.js"), true ? __vite__mapDeps([16,13,2,3,10,17]) : void 0).then((m2) => ({ default: m2.Contact }))
 );
 const Jobs = reactExports.lazy(
-  () => __vitePreload(() => import("./Jobs-Citta0ov.js"), true ? __vite__mapDeps([18,1,2,3,13,10,17,4,11]) : void 0).then((m2) => ({ default: m2.Jobs }))
+  () => __vitePreload(() => import("./Jobs-DGIF0t2Z.js"), true ? __vite__mapDeps([18,1,2,3,13,10,17,4,11]) : void 0).then((m2) => ({ default: m2.Jobs }))
 );
 function PageLoader() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Layout, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center min-h-[60vh]", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" }) }) });
