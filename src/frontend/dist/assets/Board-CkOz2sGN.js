@@ -1,26 +1,8 @@
-import { c as createLucideIcon, j as jsxRuntimeExports, L as Layout } from "./index-DFKZK4DM.js";
-import { B as Badge } from "./badge-2xLy4ToM.js";
-import { S as Skeleton } from "./skeleton-DBCj5J6f.js";
-import { d as useBoardMembers, m as motion } from "./useBackend-Bav98165.js";
-import "./index-43jMSmQZ.js";
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$1 = [
-  [
-    "path",
-    {
-      d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z",
-      key: "c2jq9f"
-    }
-  ],
-  ["rect", { width: "4", height: "12", x: "2", y: "9", key: "mk3on5" }],
-  ["circle", { cx: "4", cy: "4", r: "2", key: "bt5ra8" }]
-];
-const Linkedin = createLucideIcon("linkedin", __iconNode$1);
+import { c as createLucideIcon, j as jsxRuntimeExports, L as Layout, b as Linkedin } from "./index-DRDYWm4B.js";
+import { B as Badge } from "./badge-BJELzILJ.js";
+import { S as Skeleton } from "./skeleton-BfAubNeL.js";
+import { d as useBoardMembers, m as motion } from "./useBackend-BYFZNTKf.js";
+import "./index-BACm2QCa.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *

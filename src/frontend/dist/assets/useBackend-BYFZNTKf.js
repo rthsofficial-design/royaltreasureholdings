@@ -7,7 +7,7 @@ var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot
 var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), setter ? setter.call(obj, value) : member.set(obj, value), value);
 var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), method);
 var _client, _currentQuery, _currentQueryInitialState, _currentResult, _currentResultState, _currentResultOptions, _currentThenable, _selectError, _selectFn, _selectResult, _lastQueryWithDefinedData, _staleTimeoutId, _refetchIntervalId, _currentRefetchInterval, _trackedProps, _QueryObserver_instances, executeFetch_fn, updateStaleTimeout_fn, computeRefetchInterval_fn, updateRefetchInterval_fn, updateTimers_fn, clearStaleTimeout_fn, clearRefetchInterval_fn, updateQuery_fn, notify_fn, _a, _client2, _currentResult2, _currentMutation, _mutateOptions, _MutationObserver_instances, updateResult_fn, notify_fn2, _b;
-import { P as ProtocolError, T as TimeoutWaitingForResponseErrorCode, f as utf8ToBytes, E as ExternalError, M as MissingRootKeyErrorCode, C as Certificate, l as lookupResultToBuffer, g as RequestStatusResponseStatus, U as UnknownError, h as RequestStatusDoneNoReplyErrorCode, i as RejectError, k as CertifiedRejectErrorCode, m as UNREACHABLE_ERROR, I as InputError, n as InvalidReadStateRequestErrorCode, o as ReadRequestType, p as Principal, q as IDL, s as MissingCanisterIdErrorCode, H as HttpAgent, t as encode, Q as QueryResponseStatus, v as UncertifiedRejectErrorCode, w as isV3ResponseBody, x as isV2ResponseBody, y as UncertifiedRejectUpdateErrorCode, z as UnexpectedErrorCode, A as decode, S as Subscribable, B as pendingThenable, D as resolveEnabled, F as shallowEqualObjects, G as resolveStaleTime, J as noop$1, K as environmentManager, N as isValidTimeout, O as timeUntilStale, V as timeoutManager, W as focusManager, Y as fetchState, Z as replaceData, _ as notifyManager, $ as hashKey, a0 as getDefaultState, r as reactExports, a1 as shouldThrowError, a2 as useQueryClient, a3 as useInternetIdentity, a4 as createActorWithConfig, j as jsxRuntimeExports, a5 as Record, a6 as Variant, a7 as Service, a8 as Func, a9 as Opt, aa as Vec, ab as Nat, ac as Text, ad as Bool, ae as Null, af as Int } from "./index-DFKZK4DM.js";
+import { P as ProtocolError, T as TimeoutWaitingForResponseErrorCode, f as utf8ToBytes, E as ExternalError, M as MissingRootKeyErrorCode, C as Certificate, l as lookupResultToBuffer, g as RequestStatusResponseStatus, U as UnknownError, h as RequestStatusDoneNoReplyErrorCode, i as RejectError, k as CertifiedRejectErrorCode, m as UNREACHABLE_ERROR, I as InputError, n as InvalidReadStateRequestErrorCode, o as ReadRequestType, p as Principal, q as IDL, s as MissingCanisterIdErrorCode, H as HttpAgent, t as encode, Q as QueryResponseStatus, v as UncertifiedRejectErrorCode, w as isV3ResponseBody, x as isV2ResponseBody, y as UncertifiedRejectUpdateErrorCode, z as UnexpectedErrorCode, A as decode, S as Subscribable, B as pendingThenable, D as resolveQueryBoolean, F as shallowEqualObjects, G as resolveStaleTime, J as noop$1, K as environmentManager, N as isValidTimeout, O as timeUntilStale, V as timeoutManager, W as focusManager, Y as fetchState, Z as replaceData, _ as notifyManager, $ as hashKey, a0 as getDefaultState, r as reactExports, a1 as shouldThrowError, a2 as useQueryClient, a3 as useInternetIdentity, a4 as createActorWithConfig, j as jsxRuntimeExports, a5 as Record, a6 as Variant, a7 as Vec, a8 as Service, a9 as Func, aa as Opt, ab as Nat, ac as Text, ad as Bool, ae as Null, af as Float64, ag as Int } from "./index-DRDYWm4B.js";
 const FIVE_MINUTES_IN_MSEC = 5 * 60 * 1e3;
 function defaultStrategy() {
   return chain(conditionalDelay(once(), 1e3), backoff(1e3, 1.2), timeout(FIVE_MINUTES_IN_MSEC));
@@ -515,7 +515,7 @@ var QueryObserver = (_a = class extends Subscribable {
     const prevOptions = this.options;
     const prevQuery = __privateGet(this, _currentQuery);
     this.options = __privateGet(this, _client).defaultQueryOptions(options);
-    if (this.options.enabled !== void 0 && typeof this.options.enabled !== "boolean" && typeof this.options.enabled !== "function" && typeof resolveEnabled(this.options.enabled, __privateGet(this, _currentQuery)) !== "boolean") {
+    if (this.options.enabled !== void 0 && typeof this.options.enabled !== "boolean" && typeof this.options.enabled !== "function" && typeof resolveQueryBoolean(this.options.enabled, __privateGet(this, _currentQuery)) !== "boolean") {
       throw new Error(
         "Expected enabled to be a boolean or a callback that returns a boolean"
       );
@@ -539,11 +539,11 @@ var QueryObserver = (_a = class extends Subscribable {
       __privateMethod(this, _QueryObserver_instances, executeFetch_fn).call(this);
     }
     this.updateResult();
-    if (mounted && (__privateGet(this, _currentQuery) !== prevQuery || resolveEnabled(this.options.enabled, __privateGet(this, _currentQuery)) !== resolveEnabled(prevOptions.enabled, __privateGet(this, _currentQuery)) || resolveStaleTime(this.options.staleTime, __privateGet(this, _currentQuery)) !== resolveStaleTime(prevOptions.staleTime, __privateGet(this, _currentQuery)))) {
+    if (mounted && (__privateGet(this, _currentQuery) !== prevQuery || resolveQueryBoolean(this.options.enabled, __privateGet(this, _currentQuery)) !== resolveQueryBoolean(prevOptions.enabled, __privateGet(this, _currentQuery)) || resolveStaleTime(this.options.staleTime, __privateGet(this, _currentQuery)) !== resolveStaleTime(prevOptions.staleTime, __privateGet(this, _currentQuery)))) {
       __privateMethod(this, _QueryObserver_instances, updateStaleTimeout_fn).call(this);
     }
     const nextRefetchInterval = __privateMethod(this, _QueryObserver_instances, computeRefetchInterval_fn).call(this);
-    if (mounted && (__privateGet(this, _currentQuery) !== prevQuery || resolveEnabled(this.options.enabled, __privateGet(this, _currentQuery)) !== resolveEnabled(prevOptions.enabled, __privateGet(this, _currentQuery)) || nextRefetchInterval !== __privateGet(this, _currentRefetchInterval))) {
+    if (mounted && (__privateGet(this, _currentQuery) !== prevQuery || resolveQueryBoolean(this.options.enabled, __privateGet(this, _currentQuery)) !== resolveQueryBoolean(prevOptions.enabled, __privateGet(this, _currentQuery)) || nextRefetchInterval !== __privateGet(this, _currentRefetchInterval))) {
       __privateMethod(this, _QueryObserver_instances, updateRefetchInterval_fn).call(this, nextRefetchInterval);
     }
   }
@@ -707,7 +707,7 @@ var QueryObserver = (_a = class extends Subscribable {
       isStale: isStale(query, options),
       refetch: this.refetch,
       promise: __privateGet(this, _currentThenable),
-      isEnabled: resolveEnabled(options.enabled, query) !== false
+      isEnabled: resolveQueryBoolean(options.enabled, query) !== false
     };
     const nextResult = result;
     if (this.options.experimental_prefetchInRender) {
@@ -817,7 +817,7 @@ var QueryObserver = (_a = class extends Subscribable {
 }, updateRefetchInterval_fn = function(nextInterval) {
   __privateMethod(this, _QueryObserver_instances, clearRefetchInterval_fn).call(this);
   __privateSet(this, _currentRefetchInterval, nextInterval);
-  if (environmentManager.isServer() || resolveEnabled(this.options.enabled, __privateGet(this, _currentQuery)) === false || !isValidTimeout(__privateGet(this, _currentRefetchInterval)) || __privateGet(this, _currentRefetchInterval) === 0) {
+  if (environmentManager.isServer() || resolveQueryBoolean(this.options.enabled, __privateGet(this, _currentQuery)) === false || !isValidTimeout(__privateGet(this, _currentRefetchInterval)) || __privateGet(this, _currentRefetchInterval) === 0) {
     return;
   }
   __privateSet(this, _refetchIntervalId, timeoutManager.setInterval(() => {
@@ -829,12 +829,12 @@ var QueryObserver = (_a = class extends Subscribable {
   __privateMethod(this, _QueryObserver_instances, updateStaleTimeout_fn).call(this);
   __privateMethod(this, _QueryObserver_instances, updateRefetchInterval_fn).call(this, __privateMethod(this, _QueryObserver_instances, computeRefetchInterval_fn).call(this));
 }, clearStaleTimeout_fn = function() {
-  if (__privateGet(this, _staleTimeoutId)) {
+  if (__privateGet(this, _staleTimeoutId) !== void 0) {
     timeoutManager.clearTimeout(__privateGet(this, _staleTimeoutId));
     __privateSet(this, _staleTimeoutId, void 0);
   }
 }, clearRefetchInterval_fn = function() {
-  if (__privateGet(this, _refetchIntervalId)) {
+  if (__privateGet(this, _refetchIntervalId) !== void 0) {
     timeoutManager.clearInterval(__privateGet(this, _refetchIntervalId));
     __privateSet(this, _refetchIntervalId, void 0);
   }
@@ -864,23 +864,23 @@ var QueryObserver = (_a = class extends Subscribable {
   });
 }, _a);
 function shouldLoadOnMount(query, options) {
-  return resolveEnabled(options.enabled, query) !== false && query.state.data === void 0 && !(query.state.status === "error" && options.retryOnMount === false);
+  return resolveQueryBoolean(options.enabled, query) !== false && query.state.data === void 0 && !(query.state.status === "error" && resolveQueryBoolean(options.retryOnMount, query) === false);
 }
 function shouldFetchOnMount(query, options) {
   return shouldLoadOnMount(query, options) || query.state.data !== void 0 && shouldFetchOn(query, options, options.refetchOnMount);
 }
 function shouldFetchOn(query, options, field) {
-  if (resolveEnabled(options.enabled, query) !== false && resolveStaleTime(options.staleTime, query) !== "static") {
+  if (resolveQueryBoolean(options.enabled, query) !== false && resolveStaleTime(options.staleTime, query) !== "static") {
     const value = typeof field === "function" ? field(query) : field;
     return value === "always" || value !== false && isStale(query, options);
   }
   return false;
 }
 function shouldFetchOptionally(query, prevQuery, options, prevOptions) {
-  return (query !== prevQuery || resolveEnabled(prevOptions.enabled, query) === false) && (!options.suspense || query.state.status !== "error") && isStale(query, options);
+  return (query !== prevQuery || resolveQueryBoolean(prevOptions.enabled, query) === false) && (!options.suspense || query.state.status !== "error") && isStale(query, options);
 }
 function isStale(query, options) {
-  return resolveEnabled(options.enabled, query) !== false && query.isStaleByTime(resolveStaleTime(options.staleTime, query));
+  return resolveQueryBoolean(options.enabled, query) !== false && query.isStaleByTime(resolveStaleTime(options.staleTime, query));
 }
 function shouldAssignObserverCurrentProperties(observer2, optimisticResult) {
   if (!shallowEqualObjects(observer2.getCurrentResult(), optimisticResult)) {
@@ -1099,7 +1099,8 @@ function useBaseQuery(options, Observer, queryClient) {
     defaultedOptions
   );
   const query = client.getQueryCache().get(defaultedOptions.queryHash);
-  defaultedOptions._optimisticResults = isRestoring ? "isRestoring" : "optimistic";
+  const subscribed = options.subscribed !== false;
+  defaultedOptions._optimisticResults = isRestoring ? "isRestoring" : subscribed ? "optimistic" : void 0;
   ensureSuspenseTimers(defaultedOptions);
   ensurePreventErrorBoundaryRetry(defaultedOptions, errorResetBoundary, query);
   useClearResetErrorBoundary(errorResetBoundary);
@@ -1111,7 +1112,7 @@ function useBaseQuery(options, Observer, queryClient) {
     )
   );
   const result = observer2.getOptimisticResult(defaultedOptions);
-  const shouldSubscribe = !isRestoring && options.subscribed !== false;
+  const shouldSubscribe = !isRestoring && subscribed;
   reactExports.useSyncExternalStore(
     reactExports.useCallback(
       (onStoreChange) => {
@@ -3746,9 +3747,7 @@ let invariant = () => {
 };
 const MotionGlobalConfig = {};
 const isNumericalString = (v) => /^-?(?:\d+(?:\.\d+)?|\.\d+)$/u.test(v);
-function isObject(value) {
-  return typeof value === "object" && value !== null;
-}
+const isObject = (value) => typeof value === "object" && value !== null;
 const isZeroValueString = (v) => /^0[^.\s]+$/u.test(v);
 // @__NO_SIDE_EFFECTS__
 function memo(callback) {
@@ -3760,11 +3759,10 @@ function memo(callback) {
   };
 }
 const noop = /* @__NO_SIDE_EFFECTS__ */ (any) => any;
-const combineFunctions = (a, b) => (v) => b(a(v));
-const pipe = (...transformers) => transformers.reduce(combineFunctions);
+const pipe = (...transformers) => transformers.reduce((a, b) => (v) => b(a(v)));
 const progress = /* @__NO_SIDE_EFFECTS__ */ (from, to, value) => {
-  const toFromDifference = to - from;
-  return toFromDifference === 0 ? 1 : (value - from) / toFromDifference;
+  const range = to - from;
+  return range ? (value - from) / range : 1;
 };
 class SubscriptionManager {
   constructor() {
@@ -3796,9 +3794,7 @@ class SubscriptionManager {
 }
 const secondsToMilliseconds = /* @__NO_SIDE_EFFECTS__ */ (seconds) => seconds * 1e3;
 const millisecondsToSeconds = /* @__NO_SIDE_EFFECTS__ */ (milliseconds) => milliseconds / 1e3;
-function velocityPerSecond(velocity, frameDuration) {
-  return frameDuration ? velocity * (1e3 / frameDuration) : 0;
-}
+const velocityPerSecond = /* @__NO_SIDE_EFFECTS__ */ (velocity, frameDuration) => frameDuration ? velocity * (1e3 / frameDuration) : 0;
 const calcBezier = (t, a1, a2) => (((1 - 3 * a2 + 3 * a1) * t + (3 * a2 - 6 * a1)) * t + 3 * a1) * t;
 const subdivisionPrecision = 1e-7;
 const subdivisionMaxIterations = 12;
@@ -3817,28 +3813,29 @@ function binarySubdivide(x, lowerBound, upperBound, mX1, mX2) {
   } while (Math.abs(currentX) > subdivisionPrecision && ++i < subdivisionMaxIterations);
   return currentT;
 }
+// @__NO_SIDE_EFFECTS__
 function cubicBezier(mX1, mY1, mX2, mY2) {
   if (mX1 === mY1 && mX2 === mY2)
     return noop;
   const getTForX = (aX) => binarySubdivide(aX, 0, 1, mX1, mX2);
   return (t) => t === 0 || t === 1 ? t : calcBezier(getTForX(t), mY1, mY2);
 }
-const mirrorEasing = (easing) => (p) => p <= 0.5 ? easing(2 * p) / 2 : (2 - easing(2 * (1 - p))) / 2;
-const reverseEasing = (easing) => (p) => 1 - easing(1 - p);
+const mirrorEasing = /* @__NO_SIDE_EFFECTS__ */ (easing) => (p) => p <= 0.5 ? easing(2 * p) / 2 : (2 - easing(2 * (1 - p))) / 2;
+const reverseEasing = /* @__NO_SIDE_EFFECTS__ */ (easing) => (p) => 1 - easing(1 - p);
 const backOut = /* @__PURE__ */ cubicBezier(0.33, 1.53, 0.69, 0.99);
 const backIn = /* @__PURE__ */ reverseEasing(backOut);
 const backInOut = /* @__PURE__ */ mirrorEasing(backIn);
 const anticipate = (p) => p >= 1 ? 1 : (p *= 2) < 1 ? 0.5 * backIn(p) : 0.5 * (2 - Math.pow(2, -10 * (p - 1)));
 const circIn = (p) => 1 - Math.sin(Math.acos(p));
-const circOut = reverseEasing(circIn);
-const circInOut = mirrorEasing(circIn);
+const circOut = /* @__PURE__ */ reverseEasing(circIn);
+const circInOut = /* @__PURE__ */ mirrorEasing(circIn);
 const easeIn = /* @__PURE__ */ cubicBezier(0.42, 0, 1, 1);
 const easeOut = /* @__PURE__ */ cubicBezier(0, 0, 0.58, 1);
 const easeInOut = /* @__PURE__ */ cubicBezier(0.42, 0, 0.58, 1);
-const isEasingArray = (ease2) => {
+const isEasingArray = /* @__NO_SIDE_EFFECTS__ */ (ease2) => {
   return Array.isArray(ease2) && typeof ease2[0] !== "number";
 };
-const isBezierDefinition = (easing) => Array.isArray(easing) && typeof easing[0] === "number";
+const isBezierDefinition = /* @__NO_SIDE_EFFECTS__ */ (easing) => Array.isArray(easing) && typeof easing[0] === "number";
 const easingLookup = {
   linear: noop,
   easeIn,
@@ -3856,10 +3853,10 @@ const isValidEasing = (easing) => {
   return typeof easing === "string";
 };
 const easingDefinitionToFunction = (definition) => {
-  if (isBezierDefinition(definition)) {
+  if (/* @__PURE__ */ isBezierDefinition(definition)) {
     invariant(definition.length === 4);
     const [x1, y1, x2, y2] = definition;
-    return cubicBezier(x1, y1, x2, y2);
+    return /* @__PURE__ */ cubicBezier(x1, y1, x2, y2);
   } else if (isValidEasing(definition)) {
     return easingLookup[definition];
   }
@@ -3883,7 +3880,7 @@ const stepsOrder = [
   "postRender"
   // Compute
 ];
-function createRenderStep(runNextFrame, stepName) {
+function createRenderStep(runNextFrame) {
   let thisFrame = /* @__PURE__ */ new Set();
   let nextFrame = /* @__PURE__ */ new Set();
   let isProcessing = false;
@@ -4676,7 +4673,7 @@ spring.applyToOptions = (options) => {
 const velocitySampleDuration = 5;
 function getGeneratorVelocity(resolveValue, t, current) {
   const prevT = Math.max(t - velocitySampleDuration, 0);
-  return velocityPerSecond(current - resolveValue(prevT), t - prevT);
+  return /* @__PURE__ */ velocityPerSecond(current - resolveValue(prevT), t - prevT);
 }
 function inertia({ keyframes: keyframes2, velocity = 0, power = 0.8, timeConstant = 325, bounceDamping = 10, bounceStiffness = 500, modifyTarget, min, max, restDelta = 0.5, restSpeed }) {
   const origin = keyframes2[0];
@@ -4802,7 +4799,7 @@ function defaultEasing(values, easing) {
   return values.map(() => easing || easeInOut).splice(0, values.length - 1);
 }
 function keyframes({ duration = 300, keyframes: keyframeValues, times, ease: ease2 = "easeInOut" }) {
-  const easingFunctions = isEasingArray(ease2) ? ease2.map(easingDefinitionToFunction) : easingDefinitionToFunction(ease2);
+  const easingFunctions = /* @__PURE__ */ isEasingArray(ease2) ? ease2.map(easingDefinitionToFunction) : easingDefinitionToFunction(ease2);
   const state = {
     done: false,
     value: keyframeValues[0]
@@ -5249,7 +5246,7 @@ const transformPropOrder = [
   "skewX",
   "skewY"
 ];
-const transformProps = /* @__PURE__ */ (() => new Set(transformPropOrder))();
+const transformProps = /* @__PURE__ */ (() => /* @__PURE__ */ new Set([...transformPropOrder, "pathRotation"]))();
 const isNumOrPxType = (v) => v === number || v === px;
 const transformKeys = /* @__PURE__ */ new Set(["x", "y", "z"]);
 const nonTranslationalTransformKeys = transformPropOrder.filter((key) => !transformKeys.has(key));
@@ -5444,7 +5441,7 @@ function mapEasingToNativeEasing(easing, duration) {
     return void 0;
   } else if (typeof easing === "function") {
     return supportsLinearEasing() ? generateLinearEasing(easing, duration) : "ease-out";
-  } else if (isBezierDefinition(easing)) {
+  } else if (/* @__PURE__ */ isBezierDefinition(easing)) {
     return cubicBezierAsString(easing);
   } else if (Array.isArray(easing)) {
     return easing.map((segmentEasing) => mapEasingToNativeEasing(segmentEasing, duration) || supportedWaapiEasing.easeOut);
@@ -5471,8 +5468,7 @@ function startWaapiAnimation(element, valueName, keyframes2, { delay: delay2 = 0
   };
   if (pseudoElement)
     options.pseudoElement = pseudoElement;
-  const animation = element.animate(keyframeOptions, options);
-  return animation;
+  return element.animate(keyframeOptions, options);
 }
 function isGenerator(type) {
   return typeof type === "function" && "applyToOptions" in type;
@@ -5932,181 +5928,6 @@ function calcChildStagger(children, child, delayChildren, staggerChildren = 0, s
   const delayIsFunction = typeof delayChildren === "function";
   return delayIsFunction ? delayChildren(index, numChildren) : staggerDirection === 1 ? index * staggerChildren : maxStaggerDuration - index * staggerChildren;
 }
-const splitCSSVariableRegex = (
-  // eslint-disable-next-line redos-detector/no-unsafe-regex -- false positive, as it can match a lot of words
-  /^var\(--(?:([\w-]+)|([\w-]+), ?([a-zA-Z\d ()%#.,-]+))\)/u
-);
-function parseCSSVariable(current) {
-  const match = splitCSSVariableRegex.exec(current);
-  if (!match)
-    return [,];
-  const [, token1, token2, fallback] = match;
-  return [`--${token1 ?? token2}`, fallback];
-}
-function getVariableValue(current, element, depth = 1) {
-  const [token, fallback] = parseCSSVariable(current);
-  if (!token)
-    return;
-  const resolved = window.getComputedStyle(element).getPropertyValue(token);
-  if (resolved) {
-    const trimmed = resolved.trim();
-    return isNumericalString(trimmed) ? parseFloat(trimmed) : trimmed;
-  }
-  return isCSSVariableToken(fallback) ? getVariableValue(fallback, element, depth + 1) : fallback;
-}
-const underDampedSpring = {
-  type: "spring",
-  stiffness: 500,
-  damping: 25,
-  restSpeed: 10
-};
-const criticallyDampedSpring = (target) => ({
-  type: "spring",
-  stiffness: 550,
-  damping: target === 0 ? 2 * Math.sqrt(550) : 30,
-  restSpeed: 10
-});
-const keyframesTransition = {
-  type: "keyframes",
-  duration: 0.8
-};
-const ease = {
-  type: "keyframes",
-  ease: [0.25, 0.1, 0.35, 1],
-  duration: 0.3
-};
-const getDefaultTransition = (valueKey, { keyframes: keyframes2 }) => {
-  if (keyframes2.length > 2) {
-    return keyframesTransition;
-  } else if (transformProps.has(valueKey)) {
-    return valueKey.startsWith("scale") ? criticallyDampedSpring(keyframes2[1]) : underDampedSpring;
-  }
-  return ease;
-};
-function resolveTransition(transition, parentTransition) {
-  if ((transition == null ? void 0 : transition.inherit) && parentTransition) {
-    const { inherit: _, ...rest } = transition;
-    return { ...parentTransition, ...rest };
-  }
-  return transition;
-}
-function getValueTransition(transition, key) {
-  const valueTransition = (transition == null ? void 0 : transition[key]) ?? (transition == null ? void 0 : transition["default"]) ?? transition;
-  if (valueTransition !== transition) {
-    return resolveTransition(valueTransition, transition);
-  }
-  return valueTransition;
-}
-const orchestrationKeys = /* @__PURE__ */ new Set([
-  "when",
-  "delay",
-  "delayChildren",
-  "staggerChildren",
-  "staggerDirection",
-  "repeat",
-  "repeatType",
-  "repeatDelay",
-  "from",
-  "elapsed"
-]);
-function isTransitionDefined(transition) {
-  for (const key in transition) {
-    if (!orchestrationKeys.has(key))
-      return true;
-  }
-  return false;
-}
-const animateMotionValue = (name, value, target, transition = {}, element, isHandoff) => (onComplete) => {
-  const valueTransition = getValueTransition(transition, name) || {};
-  const delay2 = valueTransition.delay || transition.delay || 0;
-  let { elapsed = 0 } = transition;
-  elapsed = elapsed - /* @__PURE__ */ secondsToMilliseconds(delay2);
-  const options = {
-    keyframes: Array.isArray(target) ? target : [null, target],
-    ease: "easeOut",
-    velocity: value.getVelocity(),
-    ...valueTransition,
-    delay: -elapsed,
-    onUpdate: (v) => {
-      value.set(v);
-      valueTransition.onUpdate && valueTransition.onUpdate(v);
-    },
-    onComplete: () => {
-      onComplete();
-      valueTransition.onComplete && valueTransition.onComplete();
-    },
-    name,
-    motionValue: value,
-    element: isHandoff ? void 0 : element
-  };
-  if (!isTransitionDefined(valueTransition)) {
-    Object.assign(options, getDefaultTransition(name, options));
-  }
-  options.duration && (options.duration = /* @__PURE__ */ secondsToMilliseconds(options.duration));
-  options.repeatDelay && (options.repeatDelay = /* @__PURE__ */ secondsToMilliseconds(options.repeatDelay));
-  if (options.from !== void 0) {
-    options.keyframes[0] = options.from;
-  }
-  let shouldSkip = false;
-  if (options.type === false || options.duration === 0 && !options.repeatDelay) {
-    makeAnimationInstant(options);
-    if (options.delay === 0) {
-      shouldSkip = true;
-    }
-  }
-  if (MotionGlobalConfig.instantAnimations || MotionGlobalConfig.skipAnimations || (element == null ? void 0 : element.shouldSkipAnimations)) {
-    shouldSkip = true;
-    makeAnimationInstant(options);
-    options.delay = 0;
-  }
-  options.allowFlatten = !valueTransition.type && !valueTransition.ease;
-  if (shouldSkip && !isHandoff && value.get() !== void 0) {
-    const finalKeyframe = getFinalKeyframe(options.keyframes, valueTransition);
-    if (finalKeyframe !== void 0) {
-      frame.update(() => {
-        options.onUpdate(finalKeyframe);
-        options.onComplete();
-      });
-      return;
-    }
-  }
-  return valueTransition.isSync ? new JSAnimation(options) : new AsyncMotionValueAnimation(options);
-};
-function getValueState(visualElement) {
-  const state = [{}, {}];
-  visualElement == null ? void 0 : visualElement.values.forEach((value, key) => {
-    state[0][key] = value.get();
-    state[1][key] = value.getVelocity();
-  });
-  return state;
-}
-function resolveVariantFromProps(props, definition, custom, visualElement) {
-  if (typeof definition === "function") {
-    const [current, velocity] = getValueState(visualElement);
-    definition = definition(custom !== void 0 ? custom : props.custom, current, velocity);
-  }
-  if (typeof definition === "string") {
-    definition = props.variants && props.variants[definition];
-  }
-  if (typeof definition === "function") {
-    const [current, velocity] = getValueState(visualElement);
-    definition = definition(custom !== void 0 ? custom : props.custom, current, velocity);
-  }
-  return definition;
-}
-function resolveVariant(visualElement, definition, custom) {
-  const props = visualElement.getProps();
-  return resolveVariantFromProps(props, definition, custom !== void 0 ? custom : props.custom, visualElement);
-}
-const positionalKeys = /* @__PURE__ */ new Set([
-  "width",
-  "height",
-  "top",
-  "left",
-  "right",
-  "bottom",
-  ...transformPropOrder
-]);
 const MAX_VELOCITY_DELTA = 30;
 const isFloat = (value) => {
   return !isNaN(parseFloat(value));
@@ -6309,7 +6130,7 @@ class MotionValue {
       return 0;
     }
     const delta = Math.min(this.updatedAt - this.prevUpdatedAt, MAX_VELOCITY_DELTA);
-    return velocityPerSecond(parseFloat(this.current) - parseFloat(this.prevFrameValue), delta);
+    return /* @__PURE__ */ velocityPerSecond(parseFloat(this.current) - parseFloat(this.prevFrameValue), delta);
   }
   /**
    * Registers a new animation to control this `MotionValue`. Only one
@@ -6384,6 +6205,181 @@ class MotionValue {
 function motionValue(init, options) {
   return new MotionValue(init, options);
 }
+function resolveTransition(transition, parentTransition) {
+  if ((transition == null ? void 0 : transition.inherit) && parentTransition) {
+    const { inherit: _, ...rest } = transition;
+    return { ...parentTransition, ...rest };
+  }
+  return transition;
+}
+function getValueTransition(transition, key) {
+  const valueTransition = (transition == null ? void 0 : transition[key]) ?? (transition == null ? void 0 : transition["default"]) ?? transition;
+  if (valueTransition !== transition) {
+    return resolveTransition(valueTransition, transition);
+  }
+  return valueTransition;
+}
+const underDampedSpring = {
+  type: "spring",
+  stiffness: 500,
+  damping: 25,
+  restSpeed: 10
+};
+const criticallyDampedSpring = (target) => ({
+  type: "spring",
+  stiffness: 550,
+  damping: target === 0 ? 2 * Math.sqrt(550) : 30,
+  restSpeed: 10
+});
+const keyframesTransition = {
+  type: "keyframes",
+  duration: 0.8
+};
+const ease = {
+  type: "keyframes",
+  ease: [0.25, 0.1, 0.35, 1],
+  duration: 0.3
+};
+const getDefaultTransition = (valueKey, { keyframes: keyframes2 }) => {
+  if (keyframes2.length > 2) {
+    return keyframesTransition;
+  } else if (transformProps.has(valueKey)) {
+    return valueKey.startsWith("scale") ? criticallyDampedSpring(keyframes2[1]) : underDampedSpring;
+  }
+  return ease;
+};
+const orchestrationKeys = /* @__PURE__ */ new Set([
+  "when",
+  "delay",
+  "delayChildren",
+  "staggerChildren",
+  "staggerDirection",
+  "repeat",
+  "repeatType",
+  "repeatDelay",
+  "from",
+  "elapsed"
+]);
+function isTransitionDefined(transition) {
+  for (const key in transition) {
+    if (!orchestrationKeys.has(key))
+      return true;
+  }
+  return false;
+}
+const animateMotionValue = (name, value, target, transition = {}, element, isHandoff) => (onComplete) => {
+  const valueTransition = getValueTransition(transition, name) || {};
+  const delay2 = valueTransition.delay || transition.delay || 0;
+  let { elapsed = 0 } = transition;
+  elapsed = elapsed - /* @__PURE__ */ secondsToMilliseconds(delay2);
+  const options = {
+    keyframes: Array.isArray(target) ? target : [null, target],
+    ease: "easeOut",
+    velocity: value.getVelocity(),
+    ...valueTransition,
+    delay: -elapsed,
+    onUpdate: (v) => {
+      value.set(v);
+      valueTransition.onUpdate && valueTransition.onUpdate(v);
+    },
+    onComplete: () => {
+      onComplete();
+      valueTransition.onComplete && valueTransition.onComplete();
+    },
+    name,
+    motionValue: value,
+    element: isHandoff ? void 0 : element
+  };
+  if (!isTransitionDefined(valueTransition)) {
+    Object.assign(options, getDefaultTransition(name, options));
+  }
+  options.duration && (options.duration = /* @__PURE__ */ secondsToMilliseconds(options.duration));
+  options.repeatDelay && (options.repeatDelay = /* @__PURE__ */ secondsToMilliseconds(options.repeatDelay));
+  if (options.from !== void 0) {
+    options.keyframes[0] = options.from;
+  }
+  let shouldSkip = false;
+  if (options.type === false || options.duration === 0 && !options.repeatDelay) {
+    makeAnimationInstant(options);
+    if (options.delay === 0) {
+      shouldSkip = true;
+    }
+  }
+  if (MotionGlobalConfig.instantAnimations || MotionGlobalConfig.skipAnimations || (element == null ? void 0 : element.shouldSkipAnimations) || valueTransition.skipAnimations) {
+    shouldSkip = true;
+    makeAnimationInstant(options);
+    options.delay = 0;
+  }
+  options.allowFlatten = !valueTransition.type && !valueTransition.ease;
+  if (shouldSkip && !isHandoff && value.get() !== void 0) {
+    const finalKeyframe = getFinalKeyframe(options.keyframes, valueTransition);
+    if (finalKeyframe !== void 0) {
+      frame.update(() => {
+        options.onUpdate(finalKeyframe);
+        options.onComplete();
+      });
+      return;
+    }
+  }
+  return valueTransition.isSync ? new JSAnimation(options) : new AsyncMotionValueAnimation(options);
+};
+const splitCSSVariableRegex = (
+  // eslint-disable-next-line redos-detector/no-unsafe-regex -- false positive, as it can match a lot of words
+  /^var\(--(?:([\w-]+)|([\w-]+), ?([a-zA-Z\d ()%#.,-]+))\)/u
+);
+function parseCSSVariable(current) {
+  const match = splitCSSVariableRegex.exec(current);
+  if (!match)
+    return [,];
+  const [, token1, token2, fallback] = match;
+  return [`--${token1 ?? token2}`, fallback];
+}
+function getVariableValue(current, element, depth = 1) {
+  const [token, fallback] = parseCSSVariable(current);
+  if (!token)
+    return;
+  const resolved = window.getComputedStyle(element).getPropertyValue(token);
+  if (resolved) {
+    const trimmed = resolved.trim();
+    return isNumericalString(trimmed) ? parseFloat(trimmed) : trimmed;
+  }
+  return isCSSVariableToken(fallback) ? getVariableValue(fallback, element, depth + 1) : fallback;
+}
+function getValueState(visualElement) {
+  const state = [{}, {}];
+  visualElement == null ? void 0 : visualElement.values.forEach((value, key) => {
+    state[0][key] = value.get();
+    state[1][key] = value.getVelocity();
+  });
+  return state;
+}
+function resolveVariantFromProps(props, definition, custom, visualElement) {
+  if (typeof definition === "function") {
+    const [current, velocity] = getValueState(visualElement);
+    definition = definition(custom !== void 0 ? custom : props.custom, current, velocity);
+  }
+  if (typeof definition === "string") {
+    definition = props.variants && props.variants[definition];
+  }
+  if (typeof definition === "function") {
+    const [current, velocity] = getValueState(visualElement);
+    definition = definition(custom !== void 0 ? custom : props.custom, current, velocity);
+  }
+  return definition;
+}
+function resolveVariant(visualElement, definition, custom) {
+  const props = visualElement.getProps();
+  return resolveVariantFromProps(props, definition, custom !== void 0 ? custom : props.custom, visualElement);
+}
+const positionalKeys = /* @__PURE__ */ new Set([
+  "width",
+  "height",
+  "top",
+  "left",
+  "right",
+  "bottom",
+  ...transformPropOrder
+]);
 const isKeyframesTarget = (v) => {
   return Array.isArray(v);
 };
@@ -6438,10 +6434,15 @@ function animateTarget(visualElement, targetAndTransition, { delay: delay2 = 0, 
   const defaultTransition = visualElement.getDefaultTransition();
   transition = transition ? resolveTransition(transition, defaultTransition) : defaultTransition;
   const reduceMotion = transition == null ? void 0 : transition.reduceMotion;
+  const skipAnimations = transition == null ? void 0 : transition.skipAnimations;
   if (transitionOverride)
     transition = transitionOverride;
   const animations2 = [];
   const animationTypeState = type && visualElement.animationState && visualElement.animationState.getState()[type];
+  const path = transition == null ? void 0 : transition.path;
+  if (path) {
+    path.animateVisualElement(visualElement, target, transition, delay2, animations2);
+  }
   for (const key in target) {
     const value = visualElement.getValue(key, visualElement.latestValues[key] ?? null);
     const valueTarget = target[key];
@@ -6452,6 +6453,8 @@ function animateTarget(visualElement, targetAndTransition, { delay: delay2 = 0, 
       delay: delay2,
       ...getValueTransition(transition || {}, key)
     };
+    if (skipAnimations)
+      valueTransition.skipAnimations = true;
     const currentValue = value.get();
     if (currentValue !== void 0 && !value.isAnimating() && !Array.isArray(valueTarget) && valueTarget === currentValue && !valueTransition.velocity) {
       frame.update(() => value.set(valueTarget));
@@ -6587,6 +6590,12 @@ const int = {
 };
 const transformValueTypes = {
   rotate: degrees,
+  /**
+   * Internal channel for `transition.path` orientToPath. Composed onto
+   * `rotate` at the transform-build sites so the user's `rotate` is
+   * never read or overwritten. Not part of `transformPropOrder`.
+   */
+  pathRotation: degrees,
   rotateX: degrees,
   rotateY: degrees,
   rotateZ: degrees,
@@ -6815,6 +6824,12 @@ class DOMKeyframesResolver extends KeyframeResolver {
     this.resolveNoneKeyframes();
   }
 }
+const cornerRadiusProps = [
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
+  "borderBottomRightRadius",
+  "borderBottomLeftRadius"
+];
 function resolveElements(elementOrSelector, scope, selectorCache) {
   if (elementOrSelector == null) {
     return [];
@@ -7007,9 +7022,10 @@ function press(targetOrSelector, onPressStart, options = {}) {
       claimedPointerDownEvents.add(startEvent);
     }
     const onPressEnd = onPressStart(target, startEvent);
+    const endEventOptions = { ...eventOptions, capture: true };
     const onPointerEnd = (endEvent, success) => {
-      window.removeEventListener("pointerup", onPointerUp);
-      window.removeEventListener("pointercancel", onPointerCancel);
+      window.removeEventListener("pointerup", onPointerUp, endEventOptions);
+      window.removeEventListener("pointercancel", onPointerCancel, endEventOptions);
       if (isPressing.has(target)) {
         isPressing.delete(target);
       }
@@ -7026,8 +7042,8 @@ function press(targetOrSelector, onPressStart, options = {}) {
     const onPointerCancel = (cancelEvent) => {
       onPointerEnd(cancelEvent, false);
     };
-    window.addEventListener("pointerup", onPointerUp, eventOptions);
-    window.addEventListener("pointercancel", onPointerCancel, eventOptions);
+    window.addEventListener("pointerup", onPointerUp, endEventOptions);
+    window.addEventListener("pointercancel", onPointerCancel, endEventOptions);
   };
   targets.forEach((target) => {
     const pointerDownTarget = options.useGlobalTarget ? window : target;
@@ -7406,8 +7422,6 @@ class VisualElement {
       removeOnChange();
       if (removeSyncCheck)
         removeSyncCheck();
-      if (value.owner)
-        value.stop();
     });
   }
   sortNodePosition(other) {
@@ -7814,6 +7828,11 @@ function buildTransform(latestValues, transform, transformTemplate) {
       }
     }
   }
+  const pathRotation = latestValues.pathRotation;
+  if (pathRotation) {
+    transformIsDefault = false;
+    transformString += `rotate(${getValueAsType(pathRotation, numberValueTypes.pathRotation)}) `;
+  }
   transformString = transformString.trim();
   if (transformTemplate) {
     transformString = transformTemplate(transform, transformIsDefault ? "" : transformString);
@@ -7911,12 +7930,7 @@ const correctBoxShadow = {
 const scaleCorrectors = {
   borderRadius: {
     ...correctBorderRadius,
-    applyTo: [
-      "borderTopLeftRadius",
-      "borderTopRightRadius",
-      "borderBottomLeftRadius",
-      "borderBottomRightRadius"
-    ]
+    applyTo: [...cornerRadiusProps]
   },
   borderTopLeftRadius: correctBorderRadius,
   borderTopRightRadius: correctBorderRadius,
@@ -8238,7 +8252,7 @@ function createAnimationState(visualElement) {
           continue;
         let valueHasChanged = false;
         if (isKeyframesTarget(next) && isKeyframesTarget(prev)) {
-          valueHasChanged = !shallowCompare(next, prev);
+          valueHasChanged = !shallowCompare(next, prev) || variantDidChange;
         } else {
           valueHasChanged = next !== prev;
         }
@@ -8490,11 +8504,13 @@ function buildProjectionTransform(delta, treeScale, latestTransform) {
     transform += `scale(${1 / treeScale.x}, ${1 / treeScale.y}) `;
   }
   if (latestTransform) {
-    const { transformPerspective, rotate: rotate2, rotateX, rotateY, skewX, skewY } = latestTransform;
+    const { transformPerspective, rotate: rotate2, pathRotation, rotateX, rotateY, skewX, skewY } = latestTransform;
     if (transformPerspective)
       transform = `perspective(${transformPerspective}px) ${transform}`;
     if (rotate2)
       transform += `rotate(${rotate2}deg) `;
+    if (pathRotation)
+      transform += `rotate(${pathRotation}deg) `;
     if (rotateX)
       transform += `rotateX(${rotateX}deg) `;
     if (rotateY)
@@ -8511,13 +8527,7 @@ function buildProjectionTransform(delta, treeScale, latestTransform) {
   }
   return transform || "none";
 }
-const borderLabels = [
-  "borderTopLeftRadius",
-  "borderTopRightRadius",
-  "borderBottomLeftRadius",
-  "borderBottomRightRadius"
-];
-const numBorders = borderLabels.length;
+const numBorders = cornerRadiusProps.length;
 const asNumber = (value) => typeof value === "string" ? parseFloat(value) : value;
 const isPx = (value) => typeof value === "number" || px.test(value);
 function mixValues(target, follow, lead, progress2, shouldCrossfadeOpacity, isOnlyMember) {
@@ -8528,7 +8538,7 @@ function mixValues(target, follow, lead, progress2, shouldCrossfadeOpacity, isOn
     target.opacity = mixNumber$1(follow.opacity ?? 1, lead.opacity ?? 1, progress2);
   }
   for (let i = 0; i < numBorders; i++) {
-    const borderLabel = borderLabels[i];
+    const borderLabel = cornerRadiusProps[i];
     let followRadius = getRadius(follow, borderLabel);
     let leadRadius = getRadius(lead, borderLabel);
     if (followRadius === void 0 && leadRadius === void 0)
@@ -8570,7 +8580,7 @@ function animateSingleValue(value, keyframes2, options) {
 }
 function addDomEvent(target, eventName, handler, options = { passive: true }) {
   target.addEventListener(eventName, handler, options);
-  return () => target.removeEventListener(eventName, handler);
+  return () => target.removeEventListener(eventName, handler, options);
 }
 const compareByDepth = (a, b) => a.depth - b.depth;
 class FlatTree {
@@ -8870,7 +8880,7 @@ function createProjectionNode$1({ attachResizeListener, defaultParent, measureSc
               animationOptions.type = false;
             }
             this.startAnimation(animationOptions);
-            this.setAnimationOrigin(delta, hasOnlyRelativeTargetChanged);
+            this.setAnimationOrigin(delta, hasOnlyRelativeTargetChanged, animationOptions.path);
           } else {
             if (!hasLayoutChanged) {
               finishAnimation(this);
@@ -9349,7 +9359,7 @@ function createProjectionNode$1({ attachResizeListener, defaultParent, measureSc
       this.projectionDelta = createDelta();
       this.projectionDeltaWithTransform = createDelta();
     }
-    setAnimationOrigin(delta, hasOnlyRelativeTargetChanged = false) {
+    setAnimationOrigin(delta, hasOnlyRelativeTargetChanged = false, pathFn) {
       const snapshot = this.snapshot;
       const snapshotLatestValues = snapshot ? snapshot.latestValues : {};
       const mixedValues = { ...this.latestValues };
@@ -9367,10 +9377,23 @@ function createProjectionNode$1({ attachResizeListener, defaultParent, measureSc
       const shouldCrossfadeOpacity = Boolean(isSharedLayoutAnimation && !isOnlyMember && this.options.crossfade === true && !this.path.some(hasOpacityCrossfade));
       this.animationProgress = 0;
       let prevRelativeTarget;
+      const interpolate2 = pathFn == null ? void 0 : pathFn.interpolateProjection(delta);
       this.mixTargetDelta = (latest) => {
         const progress2 = latest / 1e3;
-        mixAxisDelta(targetDelta.x, delta.x, progress2);
-        mixAxisDelta(targetDelta.y, delta.y, progress2);
+        const point = interpolate2 == null ? void 0 : interpolate2(progress2);
+        if (point) {
+          targetDelta.x.translate = point.x;
+          targetDelta.x.scale = mixNumber$1(delta.x.scale, 1, progress2);
+          targetDelta.x.origin = delta.x.origin;
+          targetDelta.x.originPoint = delta.x.originPoint;
+          targetDelta.y.translate = point.y;
+          targetDelta.y.scale = mixNumber$1(delta.y.scale, 1, progress2);
+          targetDelta.y.origin = delta.y.origin;
+          targetDelta.y.originPoint = delta.y.originPoint;
+        } else {
+          mixAxisDeltaLinear(targetDelta.x, delta.x, progress2);
+          mixAxisDeltaLinear(targetDelta.y, delta.y, progress2);
+        }
         this.setTargetDelta(targetDelta);
         if (this.relativeTarget && this.relativeTargetOrigin && this.layout && this.relativeParent && this.relativeParent.layout) {
           calcRelativePosition(relativeLayout, this.layout.layoutBox, this.relativeParent.layout.layoutBox, this.options.layoutAnchor || void 0);
@@ -9385,6 +9408,11 @@ function createProjectionNode$1({ attachResizeListener, defaultParent, measureSc
         if (isSharedLayoutAnimation) {
           this.animationValues = mixedValues;
           mixValues(mixedValues, snapshotLatestValues, this.latestValues, progress2, shouldCrossfadeOpacity, isOnlyMember);
+        }
+        if (point && point.rotate !== void 0) {
+          if (!this.animationValues)
+            this.animationValues = mixedValues;
+          this.animationValues.pathRotation = point.rotate;
         }
         this.root.scheduleUpdateProjection();
         this.scheduleRender();
@@ -9412,8 +9440,6 @@ function createProjectionNode$1({ attachResizeListener, defaultParent, measureSc
           onUpdate: (latest) => {
             this.mixTargetDelta(latest);
             options.onUpdate && options.onUpdate(latest);
-          },
-          onStop: () => {
           },
           onComplete: () => {
             options.onComplete && options.onComplete();
@@ -9749,7 +9775,7 @@ function resetSkewAndRotation(node) {
 function removeLeadSnapshots(stack) {
   stack.removeLeadSnapshot();
 }
-function mixAxisDelta(output, delta, p) {
+function mixAxisDeltaLinear(output, delta, p) {
   output.translate = mixNumber$1(delta.translate, 0, p);
   output.scale = mixNumber$1(delta.scale, 1, p);
   output.origin = delta.origin;
@@ -10166,6 +10192,9 @@ function useMotionRef(visualState, visualElement, externalRef) {
     if (instance) {
       (_a2 = visualState.onMount) == null ? void 0 : _a2.call(visualState, instance);
     }
+    if (visualElement) {
+      instance ? visualElement.mount(instance) : visualElement.unmount();
+    }
     const ref = externalRefContainer.current;
     if (typeof ref === "function") {
       if (instance) {
@@ -10181,9 +10210,6 @@ function useMotionRef(visualState, visualElement, externalRef) {
       }
     } else if (ref) {
       ref.current = instance;
-    }
-    if (visualElement) {
-      instance ? visualElement.mount(instance) : visualElement.unmount();
     }
   }, [visualElement]);
 }
@@ -10419,7 +10445,7 @@ class ExitAnimationFeature extends Feature {
     if (isPresent && prevIsPresent === false) {
       if (this.isExitComplete) {
         const { initial, custom } = this.node.getProps();
-        if (typeof initial === "string") {
+        if (typeof initial === "string" || typeof initial === "object" && initial !== null && !Array.isArray(initial)) {
           const resolved = resolveVariant(this.node, initial, custom);
           if (resolved) {
             const { transition, transitionEnd, ...target } = resolved;
@@ -10557,7 +10583,8 @@ class PanSession {
     this.history = [{ ...point, timestamp }];
     const { onSessionStart } = handlers;
     onSessionStart && onSessionStart(event, getPanInfo(initialInfo, this.history));
-    this.removeListeners = pipe(addPointerEvent(this.contextWindow, "pointermove", this.handlePointerMove), addPointerEvent(this.contextWindow, "pointerup", this.handlePointerUp), addPointerEvent(this.contextWindow, "pointercancel", this.handlePointerUp));
+    const eventOptions = { passive: true, capture: true };
+    this.removeListeners = pipe(addPointerEvent(this.contextWindow, "pointermove", this.handlePointerMove, eventOptions), addPointerEvent(this.contextWindow, "pointerup", this.handlePointerUp, eventOptions), addPointerEvent(this.contextWindow, "pointercancel", this.handlePointerUp, eventOptions));
     if (element) {
       this.startScrollTracking(element);
     }
@@ -10966,6 +10993,10 @@ class VisualElementDragControls {
     const { projection } = this.visualElement;
     if (!projection || !projection.layout)
       return false;
+    if (projection.root) {
+      projection.root.scroll = void 0;
+      projection.root.updateScroll();
+    }
     const constraintsBox = measurePageBox(constraintsElement, projection.root, this.visualElement.getTransformPagePoint());
     let measuredConstraints = calcViewportConstraints(projection.layout.layoutBox, constraintsBox);
     if (onMeasureDragConstraints) {
@@ -11022,7 +11053,7 @@ class VisualElementDragControls {
     const dragKey = `_drag${axis.toUpperCase()}`;
     const props = this.visualElement.getProps();
     const externalMotionValue = props[dragKey];
-    return externalMotionValue ? externalMotionValue : this.visualElement.getValue(axis, (props.initial ? props.initial[axis] : void 0) || 0);
+    return externalMotionValue ? externalMotionValue : this.visualElement.getValue(axis, this.visualElement.latestValues[axis] ?? 0);
   }
   snapToCursor(point) {
     eachAxis((axis) => {
@@ -11553,7 +11584,8 @@ const featureBundle = {
   ...drag,
   ...layout
 };
-const motion = /* @__PURE__ */ createMotionProxy(featureBundle, createDomVisualElement);
+const motion$1 = /* @__PURE__ */ createMotionProxy(featureBundle, createDomVisualElement);
+const motion = motion$1;
 const CreateBoardMemberArgs = Record({
   "bio": Text,
   "linkedIn": Text,
@@ -11612,6 +11644,19 @@ const Job = Record({
   "isActive": Bool,
   "department": Text,
   "location": Text
+});
+const Value = Variant({
+  "int": Int,
+  "nat": Nat,
+  "float": Float64,
+  "bool": Bool,
+  "null": Null,
+  "text": Text
+});
+const Cell = Record({ "value": Value, "name": Text });
+const Result = Record({
+  "hasMore": Bool,
+  "rows": Vec(Vec(Cell))
 });
 const FirmInfo = Record({
   "missionStatement": Text,
@@ -11692,6 +11737,7 @@ Service({
   "deleteBoardMember": Func([BoardMemberId], [Bool], []),
   "deleteBrand": Func([BrandId], [Bool], []),
   "deleteJob": Func([JobId], [Bool], []),
+  "execute": Func([Text], [Result], ["query"]),
   "getBoardMember": Func(
     [BoardMemberId],
     [Opt(BoardMember)],
@@ -11715,6 +11761,7 @@ Service({
     ["query"]
   ),
   "listJobs": Func([], [Vec(Job)], ["query"]),
+  "schema": Func([], [Text], ["query"]),
   "submitApplication": Func([SubmitApplicationArgs], [JobApplication], []),
   "submitContact": Func([SubmitContactArgs], [ContactSubmission], []),
   "updateBoardMember": Func(
@@ -11785,6 +11832,19 @@ const idlFactory = ({ IDL: IDL2 }) => {
     "isActive": IDL2.Bool,
     "department": IDL2.Text,
     "location": IDL2.Text
+  });
+  const Value2 = IDL2.Variant({
+    "int": IDL2.Int,
+    "nat": IDL2.Nat,
+    "float": IDL2.Float64,
+    "bool": IDL2.Bool,
+    "null": IDL2.Null,
+    "text": IDL2.Text
+  });
+  const Cell2 = IDL2.Record({ "value": Value2, "name": IDL2.Text });
+  const Result2 = IDL2.Record({
+    "hasMore": IDL2.Bool,
+    "rows": IDL2.Vec(IDL2.Vec(Cell2))
   });
   const FirmInfo2 = IDL2.Record({
     "missionStatement": IDL2.Text,
@@ -11865,6 +11925,7 @@ const idlFactory = ({ IDL: IDL2 }) => {
     "deleteBoardMember": IDL2.Func([BoardMemberId2], [IDL2.Bool], []),
     "deleteBrand": IDL2.Func([BrandId2], [IDL2.Bool], []),
     "deleteJob": IDL2.Func([JobId2], [IDL2.Bool], []),
+    "execute": IDL2.Func([IDL2.Text], [Result2], ["query"]),
     "getBoardMember": IDL2.Func(
       [BoardMemberId2],
       [IDL2.Opt(BoardMember2)],
@@ -11888,6 +11949,7 @@ const idlFactory = ({ IDL: IDL2 }) => {
       ["query"]
     ),
     "listJobs": IDL2.Func([], [IDL2.Vec(Job2)], ["query"]),
+    "schema": IDL2.Func([], [IDL2.Text], ["query"]),
     "submitApplication": IDL2.Func(
       [SubmitApplicationArgs2],
       [JobApplication2],
@@ -11904,6 +11966,9 @@ const idlFactory = ({ IDL: IDL2 }) => {
     "updateJob": IDL2.Func([UpdateJobArgs2], [IDL2.Opt(Job2)], [])
   });
 };
+new TextEncoder().encode("icfs-chunk/");
+new TextEncoder().encode("icfs-metadata/");
+new TextEncoder().encode("ynode/");
 var JobType = /* @__PURE__ */ ((JobType2) => {
   JobType2["contract"] = "contract";
   JobType2["partTime"] = "partTime";
@@ -12001,32 +12066,46 @@ class Backend {
       return result;
     }
   }
+  async execute(arg0) {
+    if (this.processError) {
+      try {
+        const result = await this.actor.execute(arg0);
+        return from_candid_Result_n9(this._uploadFile, this._downloadFile, result);
+      } catch (e) {
+        this.processError(e);
+        throw new Error("unreachable");
+      }
+    } else {
+      const result = await this.actor.execute(arg0);
+      return from_candid_Result_n9(this._uploadFile, this._downloadFile, result);
+    }
+  }
   async getBoardMember(arg0) {
     if (this.processError) {
       try {
         const result = await this.actor.getBoardMember(arg0);
-        return from_candid_opt_n9(this._uploadFile, this._downloadFile, result);
+        return from_candid_opt_n17(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
       const result = await this.actor.getBoardMember(arg0);
-      return from_candid_opt_n9(this._uploadFile, this._downloadFile, result);
+      return from_candid_opt_n17(this._uploadFile, this._downloadFile, result);
     }
   }
   async getBrand(arg0) {
     if (this.processError) {
       try {
         const result = await this.actor.getBrand(arg0);
-        return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
+        return from_candid_opt_n18(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
       const result = await this.actor.getBrand(arg0);
-      return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
+      return from_candid_opt_n18(this._uploadFile, this._downloadFile, result);
     }
   }
   async getFirmInfo() {
@@ -12047,28 +12126,28 @@ class Backend {
     if (this.processError) {
       try {
         const result = await this.actor.getJob(arg0);
-        return from_candid_opt_n11(this._uploadFile, this._downloadFile, result);
+        return from_candid_opt_n19(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
       const result = await this.actor.getJob(arg0);
-      return from_candid_opt_n11(this._uploadFile, this._downloadFile, result);
+      return from_candid_opt_n19(this._uploadFile, this._downloadFile, result);
     }
   }
   async listActiveJobs() {
     if (this.processError) {
       try {
         const result = await this.actor.listActiveJobs();
-        return from_candid_vec_n12(this._uploadFile, this._downloadFile, result);
+        return from_candid_vec_n20(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
       const result = await this.actor.listActiveJobs();
-      return from_candid_vec_n12(this._uploadFile, this._downloadFile, result);
+      return from_candid_vec_n20(this._uploadFile, this._downloadFile, result);
     }
   }
   async listApplications() {
@@ -12145,14 +12224,28 @@ class Backend {
     if (this.processError) {
       try {
         const result = await this.actor.listJobs();
-        return from_candid_vec_n12(this._uploadFile, this._downloadFile, result);
+        return from_candid_vec_n20(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
       const result = await this.actor.listJobs();
-      return from_candid_vec_n12(this._uploadFile, this._downloadFile, result);
+      return from_candid_vec_n20(this._uploadFile, this._downloadFile, result);
+    }
+  }
+  async schema() {
+    if (this.processError) {
+      try {
+        const result = await this.actor.schema();
+        return result;
+      } catch (e) {
+        this.processError(e);
+        throw new Error("unreachable");
+      }
+    } else {
+      const result = await this.actor.schema();
+      return result;
     }
   }
   async submitApplication(arg0) {
@@ -12187,28 +12280,28 @@ class Backend {
     if (this.processError) {
       try {
         const result = await this.actor.updateBoardMember(arg0);
-        return from_candid_opt_n9(this._uploadFile, this._downloadFile, result);
+        return from_candid_opt_n17(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
       const result = await this.actor.updateBoardMember(arg0);
-      return from_candid_opt_n9(this._uploadFile, this._downloadFile, result);
+      return from_candid_opt_n17(this._uploadFile, this._downloadFile, result);
     }
   }
   async updateBrand(arg0) {
     if (this.processError) {
       try {
         const result = await this.actor.updateBrand(arg0);
-        return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
+        return from_candid_opt_n18(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
       const result = await this.actor.updateBrand(arg0);
-      return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
+      return from_candid_opt_n18(this._uploadFile, this._downloadFile, result);
     }
   }
   async updateFirmInfo(arg0) {
@@ -12228,17 +12321,20 @@ class Backend {
   async updateJob(arg0) {
     if (this.processError) {
       try {
-        const result = await this.actor.updateJob(to_candid_UpdateJobArgs_n13(this._uploadFile, this._downloadFile, arg0));
-        return from_candid_opt_n11(this._uploadFile, this._downloadFile, result);
+        const result = await this.actor.updateJob(to_candid_UpdateJobArgs_n21(this._uploadFile, this._downloadFile, arg0));
+        return from_candid_opt_n19(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
-      const result = await this.actor.updateJob(to_candid_UpdateJobArgs_n13(this._uploadFile, this._downloadFile, arg0));
-      return from_candid_opt_n11(this._uploadFile, this._downloadFile, result);
+      const result = await this.actor.updateJob(to_candid_UpdateJobArgs_n21(this._uploadFile, this._downloadFile, arg0));
+      return from_candid_opt_n19(this._uploadFile, this._downloadFile, result);
     }
   }
+}
+function from_candid_Cell_n13(_uploadFile, _downloadFile, value) {
+  return from_candid_record_n14(_uploadFile, _downloadFile, value);
 }
 function from_candid_JobType_n7(_uploadFile, _downloadFile, value) {
   return from_candid_variant_n8(_uploadFile, _downloadFile, value);
@@ -12246,14 +12342,32 @@ function from_candid_JobType_n7(_uploadFile, _downloadFile, value) {
 function from_candid_Job_n5(_uploadFile, _downloadFile, value) {
   return from_candid_record_n6(_uploadFile, _downloadFile, value);
 }
-function from_candid_opt_n10(_uploadFile, _downloadFile, value) {
+function from_candid_Result_n9(_uploadFile, _downloadFile, value) {
+  return from_candid_record_n10(_uploadFile, _downloadFile, value);
+}
+function from_candid_Value_n15(_uploadFile, _downloadFile, value) {
+  return from_candid_variant_n16(_uploadFile, _downloadFile, value);
+}
+function from_candid_opt_n17(_uploadFile, _downloadFile, value) {
   return value.length === 0 ? null : value[0];
 }
-function from_candid_opt_n11(_uploadFile, _downloadFile, value) {
+function from_candid_opt_n18(_uploadFile, _downloadFile, value) {
+  return value.length === 0 ? null : value[0];
+}
+function from_candid_opt_n19(_uploadFile, _downloadFile, value) {
   return value.length === 0 ? null : from_candid_Job_n5(_uploadFile, _downloadFile, value[0]);
 }
-function from_candid_opt_n9(_uploadFile, _downloadFile, value) {
-  return value.length === 0 ? null : value[0];
+function from_candid_record_n10(_uploadFile, _downloadFile, value) {
+  return {
+    hasMore: value.hasMore,
+    rows: from_candid_vec_n11(_uploadFile, _downloadFile, value.rows)
+  };
+}
+function from_candid_record_n14(_uploadFile, _downloadFile, value) {
+  return {
+    value: from_candid_Value_n15(_uploadFile, _downloadFile, value.value),
+    name: value.name
+  };
 }
 function from_candid_record_n6(_uploadFile, _downloadFile, value) {
   return {
@@ -12266,10 +12380,37 @@ function from_candid_record_n6(_uploadFile, _downloadFile, value) {
     location: value.location
   };
 }
+function from_candid_variant_n16(_uploadFile, _downloadFile, value) {
+  return "int" in value ? {
+    __kind__: "int",
+    int: value.int
+  } : "nat" in value ? {
+    __kind__: "nat",
+    nat: value.nat
+  } : "float" in value ? {
+    __kind__: "float",
+    float: value.float
+  } : "bool" in value ? {
+    __kind__: "bool",
+    bool: value.bool
+  } : "null" in value ? {
+    __kind__: "null",
+    null: value.null
+  } : "text" in value ? {
+    __kind__: "text",
+    text: value.text
+  } : value;
+}
 function from_candid_variant_n8(_uploadFile, _downloadFile, value) {
   return "contract" in value ? "contract" : "partTime" in value ? "partTime" : "fullTime" in value ? "fullTime" : value;
 }
+function from_candid_vec_n11(_uploadFile, _downloadFile, value) {
+  return value.map((x) => from_candid_vec_n12(_uploadFile, _downloadFile, x));
+}
 function from_candid_vec_n12(_uploadFile, _downloadFile, value) {
+  return value.map((x) => from_candid_Cell_n13(_uploadFile, _downloadFile, x));
+}
+function from_candid_vec_n20(_uploadFile, _downloadFile, value) {
   return value.map((x) => from_candid_Job_n5(_uploadFile, _downloadFile, x));
 }
 function to_candid_CreateJobArgs_n1(_uploadFile, _downloadFile, value) {
@@ -12278,12 +12419,11 @@ function to_candid_CreateJobArgs_n1(_uploadFile, _downloadFile, value) {
 function to_candid_JobType_n3(_uploadFile, _downloadFile, value) {
   return to_candid_variant_n4(_uploadFile, _downloadFile, value);
 }
-function to_candid_UpdateJobArgs_n13(_uploadFile, _downloadFile, value) {
-  return to_candid_record_n14(_uploadFile, _downloadFile, value);
+function to_candid_UpdateJobArgs_n21(_uploadFile, _downloadFile, value) {
+  return to_candid_record_n22(_uploadFile, _downloadFile, value);
 }
-function to_candid_record_n14(_uploadFile, _downloadFile, value) {
+function to_candid_record_n2(_uploadFile, _downloadFile, value) {
   return {
-    id: value.id,
     title: value.title,
     jobType: to_candid_JobType_n3(_uploadFile, _downloadFile, value.jobType),
     description: value.description,
@@ -12292,8 +12432,9 @@ function to_candid_record_n14(_uploadFile, _downloadFile, value) {
     location: value.location
   };
 }
-function to_candid_record_n2(_uploadFile, _downloadFile, value) {
+function to_candid_record_n22(_uploadFile, _downloadFile, value) {
   return {
+    id: value.id,
     title: value.title,
     jobType: to_candid_JobType_n3(_uploadFile, _downloadFile, value.jobType),
     description: value.description,
@@ -12394,14 +12535,13 @@ function useFirmInfo() {
     queryFn: async () => {
       if (!actor) {
         return {
-          heroHeadline: "Building Enduring Value",
-          heroCopy: "We partner with exceptional management teams to build transformative companies.",
+          heroHeadline: "RTHS is the leading multi-sector conglomerate",
+          heroCopy: "Royal Treasure Holding's is a premier multi-sector conglomerate managing an elite portfolio of over 10 prestigious brands across fashion, finance, software, and retail",
           missionStatement: "Our mission is to create lasting value through disciplined investment and operational excellence.",
           investmentStrategy: "We focus on mid-market businesses with strong fundamentals and clear paths to growth.",
           statsJson: JSON.stringify([
             { label: "Assets Under Management", value: "$4.2B" },
             { label: "Portfolio Companies", value: "10+" },
-            { label: "Years of Excellence", value: "5yrs+" },
             { label: "Realized Returns", value: "3.2x" }
           ])
         };
@@ -12425,8 +12565,8 @@ export {
   useSubmitApplication as g,
   useConstant as h,
   isHTMLElement as i,
-  usePresence as j,
-  useIsomorphicLayoutEffect as k,
+  useIsomorphicLayoutEffect as j,
+  usePresence as k,
   clsx as l,
   motion as m,
   useBrands as u

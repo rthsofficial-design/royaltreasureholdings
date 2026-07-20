@@ -1,12 +1,12 @@
-import { c as createLucideIcon, j as jsxRuntimeExports, L as Layout, a as Link } from "./index-DFKZK4DM.js";
-import { B as Badge } from "./badge-2xLy4ToM.js";
-import { S as Skeleton } from "./skeleton-DBCj5J6f.js";
-import { u as useBrands, a as useFirmInfo, m as motion } from "./useBackend-Bav98165.js";
-import { A as ArrowRight } from "./arrow-right-CnzcdSOD.js";
-import { T as TrendingUp } from "./trending-up-DU4f2BVV.js";
-import { S as Shield, T as Target } from "./target-Cypa044L.js";
-import { C as ChevronRight } from "./chevron-right-C6DcVL7k.js";
-import "./index-43jMSmQZ.js";
+import { c as createLucideIcon, j as jsxRuntimeExports, L as Layout, a as Link } from "./index-DRDYWm4B.js";
+import { B as Badge } from "./badge-BJELzILJ.js";
+import { S as Skeleton } from "./skeleton-BfAubNeL.js";
+import { u as useBrands, a as useFirmInfo, m as motion } from "./useBackend-BYFZNTKf.js";
+import { A as ArrowRight } from "./arrow-right-DzJfcswp.js";
+import { T as TrendingUp } from "./trending-up-BCEbQO5d.js";
+import { S as Shield, T as Target } from "./target-DkNaUz_C.js";
+import { C as ChevronRight } from "./chevron-right-BO0SvMlu.js";
+import "./index-BACm2QCa.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -168,7 +168,7 @@ function StatBar({ stats }) {
     {
       className: "border-t border-b border-border/60 bg-card py-8",
       "data-ocid": "stat-bar",
-      children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x divide-border/40", children: stats.map((stat, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-3 gap-6 lg:gap-0 lg:divide-x divide-border/40", children: stats.map((stat, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
         motion.div,
         {
           initial: { opacity: 0, y: 12 },
@@ -192,9 +192,8 @@ function Home() {
   const displayBrands = brands && brands.length > 0 ? brands : SAMPLE_BRANDS;
   let stats = [
     { label: "Portfolio Brands", value: "10+" },
-    { label: "Years of Excellence", value: "5yrs+" },
     { label: "Markets", value: "15+" },
-    { label: "Team Members", value: "200+" }
+    { label: "Team Members", value: "50+" }
   ];
   if (firmInfo == null ? void 0 : firmInfo.statsJson) {
     try {
@@ -203,8 +202,8 @@ function Home() {
     } catch {
     }
   }
-  const heroHeadline = (firmInfo == null ? void 0 : firmInfo.heroHeadline) ?? "Building Enduring Brands";
-  const heroCopy = (firmInfo == null ? void 0 : firmInfo.heroCopy) ?? "A Mumbai-based holding group that builds, grows, and stewards a portfolio of exceptional brands across luxury, lifestyle, and high-growth sectors.";
+  const heroHeadline = (firmInfo == null ? void 0 : firmInfo.heroHeadline) ?? "RTHS is the leading multi-sector conglomerate";
+  const heroCopy = (firmInfo == null ? void 0 : firmInfo.heroCopy) ?? "Royal Treasure Holding's is a premier multi-sector conglomerate managing an elite portfolio of over 10 prestigious brands across fashion, finance, software, and retail";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Layout, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "section",

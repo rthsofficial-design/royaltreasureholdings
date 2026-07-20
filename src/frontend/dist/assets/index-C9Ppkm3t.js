@@ -1,6 +1,6 @@
-import { j as jsxRuntimeExports, r as reactExports } from "./index-DFKZK4DM.js";
-import { S as Slot, a as cva, b as createSlot } from "./index-43jMSmQZ.js";
-import { c as cn } from "./useBackend-Bav98165.js";
+import { j as jsxRuntimeExports, r as reactExports, d as reactDomExports } from "./index-DRDYWm4B.js";
+import { S as Slot, a as cva, c as createSlot } from "./index-BACm2QCa.js";
+import { c as cn } from "./useBackend-BYFZNTKf.js";
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
@@ -75,7 +75,11 @@ var Primitive = NODES.reduce((primitive, node) => {
   Node.displayName = `Primitive.${node}`;
   return { ...primitive, [node]: Node };
 }, {});
+function dispatchDiscreteCustomEvent(target, event) {
+  if (target) reactDomExports.flushSync(() => target.dispatchEvent(event));
+}
 export {
   Button as B,
-  Primitive as P
+  Primitive as P,
+  dispatchDiscreteCustomEvent as d
 };

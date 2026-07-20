@@ -7,9 +7,8 @@ import type { Stat } from "../types";
 
 const FALLBACK_STATS: Stat[] = [
   { label: "Portfolio Brands", value: "10+" },
-  { label: "Years of Excellence", value: "4+" },
   { label: "Markets", value: "15+" },
-  { label: "Team Members", value: "200+" },
+  { label: "Team Members", value: "50+" },
 ];
 
 const INVESTMENT_PILLARS = [
@@ -189,8 +188,8 @@ export function About() {
         data-ocid="about-stats-bar"
       >
         {isLoading ? (
-          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-0">
-            {[0, 1, 2, 3].map((i) => (
+          <div className="max-w-5xl mx-auto grid grid-cols-3 gap-0">
+            {[0, 1, 2].map((i) => (
               <div
                 key={i}
                 className="flex flex-col items-center py-8 px-6 border-r border-border last:border-r-0"
@@ -201,7 +200,7 @@ export function About() {
             ))}
           </div>
         ) : (
-          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-0">
+          <div className="max-w-5xl mx-auto grid grid-cols-3 gap-0">
             {stats.map((stat, i) => (
               <StatCard key={stat.label} stat={stat} index={i} />
             ))}

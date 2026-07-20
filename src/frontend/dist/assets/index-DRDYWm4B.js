@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Home-B90F-4er.js","assets/badge-2xLy4ToM.js","assets/index-43jMSmQZ.js","assets/useBackend-Bav98165.js","assets/skeleton-DBCj5J6f.js","assets/arrow-right-CnzcdSOD.js","assets/trending-up-DU4f2BVV.js","assets/target-Cypa044L.js","assets/chevron-right-C6DcVL7k.js","assets/Portfolio-C2Wm3R3J.js","assets/input-CgEtxYTz.js","assets/building-2-CLGs_GjC.js","assets/BrandDetail-BxvuX6t5.js","assets/index-CH509zmm.js","assets/Board-D85MKz-D.js","assets/About-Di1vCa7m.js","assets/Contact-CbRlzl5q.js","assets/index.esm-CRzw20HT.js","assets/Jobs-DGIF0t2Z.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Home-DVhlbOnu.js","assets/badge-BJELzILJ.js","assets/index-BACm2QCa.js","assets/useBackend-BYFZNTKf.js","assets/skeleton-BfAubNeL.js","assets/arrow-right-DzJfcswp.js","assets/trending-up-BCEbQO5d.js","assets/target-DkNaUz_C.js","assets/chevron-right-BO0SvMlu.js","assets/Portfolio-CZ5Vq8cO.js","assets/input-f30WsVcI.js","assets/building-2-BIleRazB.js","assets/BrandDetail-BGJwRNaL.js","assets/index-C9Ppkm3t.js","assets/Board-CkOz2sGN.js","assets/About-BHDu5meB.js","assets/Contact-Dah8_SVK.js","assets/index.esm-C_fc3RD8.js","assets/Jobs-CbIFyniw.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -18,7 +18,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     return __privateGet(obj, member, getter);
   }
 });
-var _disableTimeVerification, _agent, _inner, _expirationTime, _rawKey, _derKey, _a2, _currentInterval, _randomizationFactor, _multiplier, _maxInterval, _startTime, _maxElapsedTime, _maxIterations, _date, _count, _rootKeyPromise, _shouldFetchRootKey, _timeDiffMsecs, _hasSyncedTime, _syncTimePromise, _shouldSyncTime, _identity, _fetch, _fetchOptions, _callOptions, _credentials, _retryTimes, _backoffStrategy, _maxIngressExpiryInMinutes, _HttpAgent_instances, maxIngressExpiryInMs_get, _queryPipeline, _updatePipeline, _subnetKeys, _verifyQuerySignatures, requestAndRetryQuery_fn, requestAndRetry_fn, _verifyQueryResponse, asyncGuard_fn, rootKeyGuard_fn, syncTimeGuard_fn, _focused, _cleanup, _setup, _b2, _provider, _providerCalled, _c, _online, _cleanup2, _setup2, _d, _gcTimeout, _e, _initialState, _revertState, _cache, _client, _retryer, _defaultOptions, _abortSignalConsumed, _Query_instances, isInitialPausedFetch_fn, dispatch_fn, _f, _client2, _observers, _mutationCache, _retryer2, _Mutation_instances, dispatch_fn2, _g, _mutations, _scopes, _mutationId, _h, _queries, _i, _queryCache, _mutationCache2, _defaultOptions2, _queryDefaults, _mutationDefaults, _mountCount, _unsubscribeFocus, _unsubscribeOnline, _j, _rawKey2, _derKey2, _publicKey, _privateKey, _inner2, _delegation, _options;
+var _disableTimeVerification, _agent, _inner, _expirationTime, _rawKey, _derKey, _a2, _currentInterval, _randomizationFactor, _multiplier, _maxInterval, _startTime, _maxElapsedTime, _maxIterations, _date, _count, _rootKeyPromise, _shouldFetchRootKey, _timeDiffMsecs, _hasSyncedTime, _syncTimePromise, _shouldSyncTime, _identity, _fetch, _fetchOptions, _callOptions, _credentials, _retryTimes, _backoffStrategy, _maxIngressExpiryInMinutes, _HttpAgent_instances, maxIngressExpiryInMs_get, _queryPipeline, _updatePipeline, _subnetKeys, _verifyQuerySignatures, requestAndRetryQuery_fn, requestAndRetry_fn, _verifyQueryResponse, asyncGuard_fn, rootKeyGuard_fn, syncTimeGuard_fn, _focused, _cleanup, _setup, _b2, _provider, _providerCalled, _c, _online, _cleanup2, _setup2, _d, _gcTimeout, _e, _queryType, _initialState, _revertState, _cache, _client, _retryer, _defaultOptions, _abortSignalConsumed, _Query_instances, isInitialPausedFetch_fn, dispatch_fn, _f, _client2, _observers, _mutationCache, _retryer2, _Mutation_instances, dispatch_fn2, _g, _mutations, _scopes, _mutationId, _h, _queries, _i, _queryCache, _mutationCache2, _defaultOptions2, _queryDefaults, _mutationDefaults, _mountCount, _unsubscribeFocus, _unsubscribeOnline, _j, _rawKey2, _derKey2, _publicKey, _privateKey, _inner2, _delegation, _options;
 function _mergeNamespaces(n, m2) {
   for (var i = 0; i < m2.length; i++) {
     const e = m2[i];
@@ -206,7 +206,7 @@ function base32Decode(input) {
   let skip = 0;
   let byte = 0;
   const output = new Uint8Array(input.length * 4 / 3 | 0);
-  let o2 = 0;
+  let o = 0;
   function decodeChar(char) {
     let val = lookupTable[char.toLowerCase()];
     if (val === void 0) {
@@ -216,7 +216,7 @@ function base32Decode(input) {
     byte |= val >>> skip;
     skip += 5;
     if (skip >= 8) {
-      output[o2++] = byte;
+      output[o++] = byte;
       skip -= 8;
       if (skip > 0) {
         byte = val << 5 - skip & 255;
@@ -228,7 +228,7 @@ function base32Decode(input) {
   for (const c2 of input) {
     decodeChar(c2);
   }
-  return output.slice(0, o2);
+  return output.slice(0, o);
 }
 const lookUpTable = new Uint32Array([
   0,
@@ -635,9 +635,9 @@ function setBigUint64(view, byteOffset, value, isLE) {
   const wh = Number(value >> _32n2 & _u32_max);
   const wl = Number(value & _u32_max);
   const h2 = isLE ? 4 : 0;
-  const l = isLE ? 0 : 4;
+  const l2 = isLE ? 0 : 4;
   view.setUint32(byteOffset + h2, wh, isLE);
-  view.setUint32(byteOffset + l, wl, isLE);
+  view.setUint32(byteOffset + l2, wl, isLE);
 }
 function Chi(a2, b2, c2) {
   return a2 & b2 ^ ~a2 & c2;
@@ -785,20 +785,20 @@ function split(lst, le = false) {
   let Ah = new Uint32Array(len);
   let Al = new Uint32Array(len);
   for (let i = 0; i < len; i++) {
-    const { h: h2, l } = fromBig(lst[i], le);
-    [Ah[i], Al[i]] = [h2, l];
+    const { h: h2, l: l2 } = fromBig(lst[i], le);
+    [Ah[i], Al[i]] = [h2, l2];
   }
   return [Ah, Al];
 }
-const shrSH = (h2, _l, s2) => h2 >>> s2;
-const shrSL = (h2, l, s2) => h2 << 32 - s2 | l >>> s2;
-const rotrSH = (h2, l, s2) => h2 >>> s2 | l << 32 - s2;
-const rotrSL = (h2, l, s2) => h2 << 32 - s2 | l >>> s2;
-const rotrBH = (h2, l, s2) => h2 << 64 - s2 | l >>> s2 - 32;
-const rotrBL = (h2, l, s2) => h2 >>> s2 - 32 | l << 64 - s2;
+const shrSH = (h2, _l, s) => h2 >>> s;
+const shrSL = (h2, l2, s) => h2 << 32 - s | l2 >>> s;
+const rotrSH = (h2, l2, s) => h2 >>> s | l2 << 32 - s;
+const rotrSL = (h2, l2, s) => h2 << 32 - s | l2 >>> s;
+const rotrBH = (h2, l2, s) => h2 << 64 - s | l2 >>> s - 32;
+const rotrBL = (h2, l2, s) => h2 >>> s - 32 | l2 << 64 - s;
 function add(Ah, Al, Bh, Bl) {
-  const l = (Al >>> 0) + (Bl >>> 0);
-  return { h: Ah + Bh + (l / 2 ** 32 | 0) | 0, l: l | 0 };
+  const l2 = (Al >>> 0) + (Bl >>> 0);
+  return { h: Ah + Bh + (l2 / 2 ** 32 | 0) | 0, l: l2 | 0 };
 }
 const add3L = (Al, Bl, Cl) => (Al >>> 0) + (Bl >>> 0) + (Cl >>> 0);
 const add3H = (low, Ah, Bh, Ch) => Ah + Bh + Ch + (low / 2 ** 32 | 0) | 0;
@@ -886,12 +886,12 @@ class SHA256 extends HashMD {
     this.H = SHA256_IV[7] | 0;
   }
   get() {
-    const { A: A2, B: B2, C: C2, D, E: E2, F: F2, G: G2, H: H2 } = this;
-    return [A2, B2, C2, D, E2, F2, G2, H2];
+    const { A, B: B2, C: C2, D, E: E2, F: F2, G: G2, H: H2 } = this;
+    return [A, B2, C2, D, E2, F2, G2, H2];
   }
   // prettier-ignore
-  set(A2, B2, C2, D, E2, F2, G2, H2) {
-    this.A = A2 | 0;
+  set(A, B2, C2, D, E2, F2, G2, H2) {
+    this.A = A | 0;
     this.B = B2 | 0;
     this.C = C2 | 0;
     this.D = D | 0;
@@ -910,22 +910,22 @@ class SHA256 extends HashMD {
       const s1 = rotr(W2, 17) ^ rotr(W2, 19) ^ W2 >>> 10;
       SHA256_W[i] = s1 + SHA256_W[i - 7] + s0 + SHA256_W[i - 16] | 0;
     }
-    let { A: A2, B: B2, C: C2, D, E: E2, F: F2, G: G2, H: H2 } = this;
+    let { A, B: B2, C: C2, D, E: E2, F: F2, G: G2, H: H2 } = this;
     for (let i = 0; i < 64; i++) {
       const sigma1 = rotr(E2, 6) ^ rotr(E2, 11) ^ rotr(E2, 25);
       const T1 = H2 + sigma1 + Chi(E2, F2, G2) + SHA256_K[i] + SHA256_W[i] | 0;
-      const sigma0 = rotr(A2, 2) ^ rotr(A2, 13) ^ rotr(A2, 22);
-      const T2 = sigma0 + Maj(A2, B2, C2) | 0;
+      const sigma0 = rotr(A, 2) ^ rotr(A, 13) ^ rotr(A, 22);
+      const T2 = sigma0 + Maj(A, B2, C2) | 0;
       H2 = G2;
       G2 = F2;
       F2 = E2;
       E2 = D + T1 | 0;
       D = C2;
       C2 = B2;
-      B2 = A2;
-      A2 = T1 + T2 | 0;
+      B2 = A;
+      A = T1 + T2 | 0;
     }
-    A2 = A2 + this.A | 0;
+    A = A + this.A | 0;
     B2 = B2 + this.B | 0;
     C2 = C2 + this.C | 0;
     D = D + this.D | 0;
@@ -933,7 +933,7 @@ class SHA256 extends HashMD {
     F2 = F2 + this.F | 0;
     G2 = G2 + this.G | 0;
     H2 = H2 + this.H | 0;
-    this.set(A2, B2, C2, D, E2, F2, G2, H2);
+    this.set(A, B2, C2, D, E2, F2, G2, H2);
   }
   roundClean() {
     clean(SHA256_W);
@@ -2053,9 +2053,9 @@ function uint8ToDataView(uint8) {
   }
   return new DataView(uint8.buffer, uint8.byteOffset, uint8.byteLength);
 }
-function idlHash(s2) {
+function idlHash(s) {
   const utf8encoder = new TextEncoder();
-  const array = utf8encoder.encode(s2);
+  const array = utf8encoder.encode(s);
   let h2 = 0;
   for (const c2 of array) {
     h2 = (h2 * 223 + c2) % 2 ** 32;
@@ -2251,8 +2251,8 @@ var IDLTypeIds;
 })(IDLTypeIds || (IDLTypeIds = {}));
 const magicNumber = "DIDL";
 const toReadableString_max = 400;
-function zipWith(xs, ys, f) {
-  return xs.map((x2, i) => f(x2, ys[i]));
+function zipWith(xs, ys, f2) {
+  return xs.map((x2, i) => f2(x2, ys[i]));
 }
 class TypeTable {
   constructor() {
@@ -4317,294 +4317,300 @@ class AnonymousIdentity {
   }
 }
 class w extends Error {
-  constructor(n) {
-    super(n), this.name = "DecodingError";
+  constructor(e) {
+    super(e), this.name = "DecodingError";
   }
 }
-const m = 55799, L = Symbol("CBOR_STOP_CODE");
-var g = /* @__PURE__ */ ((t) => (t[t.False = 20] = "False", t[t.True = 21] = "True", t[t.Null = 22] = "Null", t[t.Undefined = 23] = "Undefined", t[t.Break = 31] = "Break", t))(g || {}), c = /* @__PURE__ */ ((t) => (t[t.UnsignedInteger = 0] = "UnsignedInteger", t[t.NegativeInteger = 1] = "NegativeInteger", t[t.ByteString = 2] = "ByteString", t[t.TextString = 3] = "TextString", t[t.Array = 4] = "Array", t[t.Map = 5] = "Map", t[t.Tag = 6] = "Tag", t[t.Simple = 7] = "Simple", t))(c || {});
-const z = 23, Y = 255, G = 65535, P = 4294967295, H = BigInt("0xffffffffffffffff");
-var d = /* @__PURE__ */ ((t) => (t[t.Value = 23] = "Value", t[t.OneByte = 24] = "OneByte", t[t.TwoBytes = 25] = "TwoBytes", t[t.FourBytes = 26] = "FourBytes", t[t.EightBytes = 27] = "EightBytes", t[t.Indefinite = 31] = "Indefinite", t))(d || {});
-const h = false;
-function W(t) {
+const L = 55799, R = /* @__PURE__ */ Symbol("CBOR_STOP_CODE");
+var u = /* @__PURE__ */ ((t) => (t[t.False = 20] = "False", t[t.True = 21] = "True", t[t.Null = 22] = "Null", t[t.Undefined = 23] = "Undefined", t[t.Break = 31] = "Break", t))(u || {}), c = /* @__PURE__ */ ((t) => (t[t.UnsignedInteger = 0] = "UnsignedInteger", t[t.NegativeInteger = 1] = "NegativeInteger", t[t.ByteString = 2] = "ByteString", t[t.TextString = 3] = "TextString", t[t.Array = 4] = "Array", t[t.Map = 5] = "Map", t[t.Tag = 6] = "Tag", t[t.Simple = 7] = "Simple", t))(c || {});
+const Y = 23, G = 255, P = 65535, H = 4294967295, W = BigInt("0xffffffffffffffff");
+var f = /* @__PURE__ */ ((t) => (t[t.Value = 23] = "Value", t[t.OneByte = 24] = "OneByte", t[t.TwoBytes = 25] = "TwoBytes", t[t.FourBytes = 26] = "FourBytes", t[t.EightBytes = 27] = "EightBytes", t[t.Indefinite = 31] = "Indefinite", t))(f || {});
+const l = false;
+function K(t) {
   return t == null;
 }
-function R(t, n) {
-  const e = new Uint8Array(n);
-  return e.set(t), e;
+function Z(t, e) {
+  const n = new Uint8Array(e);
+  return n.set(t), n;
 }
-const K = new TextDecoder();
-function Z(t) {
+const q = new TextDecoder();
+function J(t) {
   return (t & 224) >> 5;
 }
-function q(t) {
+function Q(t) {
   return t & 31;
 }
-let A = new Uint8Array(), y, a = 0;
-function ut(t, n) {
-  A = t, a = 0;
-  const e = B();
-  return (n == null ? void 0 : n(e)) ?? e;
+let S = new Uint8Array(), U, d = 0;
+function ut(t, e) {
+  S = t, d = 0;
+  const n = B();
+  return (e == null ? void 0 : e(n)) ?? n;
 }
 function B(t) {
-  const [n, e] = N();
-  switch (n) {
+  const [e, n] = N();
+  switch (e) {
     case c.UnsignedInteger:
-      return E(e);
+      return h(n);
     case c.NegativeInteger:
-      return j(e);
+      return M(n);
     case c.ByteString:
-      return $(e);
+      return $(n);
     case c.TextString:
-      return F(e);
+      return F(n);
     case c.Array:
-      return J(e);
+      return p(n);
     case c.Map:
-      return b(e);
+      return j(n);
     case c.Tag:
-      return M(e);
+      return v(n);
     case c.Simple:
-      return Q(e);
+      return b(n);
   }
-  throw new w(`Unsupported major type: ${n}`);
+  throw new w(`Unsupported major type: ${e}`);
 }
 function N() {
-  const t = A.at(a);
-  if (W(t))
+  const t = S.at(d);
+  if (K(t))
     throw new w("Provided CBOR data is empty");
-  const n = Z(t), e = q(t);
-  return a++, [n, e];
+  const e = J(t), n = Q(t);
+  return d++, [e, n];
 }
-function J(t, n) {
-  const e = E(t);
-  if (e === 1 / 0) {
-    const u = [];
-    let f = B();
-    for (; f !== L; )
-      u.push(f), f = B();
-    return u;
+function p(t, e) {
+  const n = h(t);
+  if (n === 1 / 0) {
+    const o = [];
+    let i = B();
+    for (; i !== R; )
+      o.push(i), i = B();
+    return o;
   }
-  const i = new Array(e);
-  for (let u = 0; u < e; u++) {
-    const f = B();
-    i[u] = f;
+  const s = new Array(n);
+  for (let o = 0; o < n; o++) {
+    const i = B();
+    s[o] = i;
   }
-  return i;
+  return s;
 }
-function Q(t) {
+function b(t) {
   switch (t) {
-    case g.False:
+    case u.False:
       return false;
-    case g.True:
+    case u.True:
       return true;
-    case g.Null:
+    case u.Null:
       return null;
-    case g.Undefined:
+    case u.Undefined:
       return;
-    case g.Break:
-      return L;
+    case u.Break:
+      return R;
   }
   throw new w(`Unrecognized simple type: ${t.toString(2)}`);
 }
-function b(t, n) {
-  const e = E(t), i = {};
-  if (e === 1 / 0) {
-    let [u, f] = N();
-    for (; u !== c.Simple && f !== g.Break; ) {
-      const l = F(f), U = B();
-      i[l] = U, [u, f] = N();
+function j(t, e) {
+  const n = h(t), s = {};
+  if (n === 1 / 0) {
+    let [o, i] = N();
+    for (; o !== c.Simple && i !== u.Break; ) {
+      const A = F(i), I = B();
+      s[A] = I, [o, i] = N();
     }
-    return i;
+    return s;
   }
-  for (let u = 0; u < e; u++) {
-    const [f, l] = N();
-    if (f !== c.TextString)
+  for (let o = 0; o < n; o++) {
+    const [i, A] = N();
+    if (i !== c.TextString)
       throw new w("Map keys must be text strings");
-    const U = F(l), D = B();
-    i[U] = D;
+    const I = F(A), D = B();
+    s[I] = D;
   }
-  return i;
+  return s;
 }
-function E(t) {
-  if (t <= d.Value)
+function h(t) {
+  if (t <= f.Value)
     return t;
-  switch (y = new DataView(A.buffer, A.byteOffset + a), t) {
-    case d.OneByte:
-      return a++, y.getUint8(0);
-    case d.TwoBytes:
-      return a += 2, y.getUint16(0, h);
-    case d.FourBytes:
-      return a += 4, y.getUint32(0, h);
-    case d.EightBytes:
-      return a += 8, y.getBigUint64(0, h);
-    case d.Indefinite:
+  switch (U = new DataView(S.buffer, S.byteOffset + d), t) {
+    case f.OneByte:
+      return d++, U.getUint8(0);
+    case f.TwoBytes:
+      return d += 2, U.getUint16(0, l);
+    case f.FourBytes:
+      return d += 4, U.getUint32(0, l);
+    case f.EightBytes:
+      return d += 8, U.getBigUint64(0, l);
+    case f.Indefinite:
       return 1 / 0;
     default:
       throw new w(`Unsupported integer info: ${t.toString(2)}`);
   }
 }
-function j(t) {
-  const n = E(t);
-  return typeof n == "number" ? -1 - n : -1n - n;
+function M(t) {
+  const e = h(t);
+  return typeof e == "number" ? -1 - e : -1n - e;
 }
 function $(t) {
-  const n = E(t);
-  if (n > Number.MAX_SAFE_INTEGER)
+  const e = h(t);
+  if (e > Number.MAX_SAFE_INTEGER)
     throw new w("Byte length is too large");
-  const e = Number(n);
-  return a += e, A.slice(a - e, a);
+  const n = Number(e);
+  return d += n, S.slice(d - n, d);
 }
 function F(t) {
-  const n = $(t);
-  return K.decode(n);
+  const e = $(t);
+  return q.decode(e);
 }
-function M(t, n) {
-  const e = E(t);
-  if (e === m)
+function v(t, e) {
+  const n = h(t);
+  if (n === L)
     return B();
-  throw new w(`Unsupported tag: ${e}.`);
+  throw new w(`Unsupported tag: ${n}.`);
 }
 class x extends Error {
-  constructor(n) {
-    super(n), this.name = "SerializationError";
+  constructor(e) {
+    super(e), this.name = "SerializationError";
   }
 }
-const p = 2 * 1024, C = 100, v = new TextEncoder();
-function S(t) {
+const C = 2 * 1024, V = 100, tt = new TextEncoder();
+function y(t) {
   return t << 5;
 }
-let o = new Uint8Array(p), r = new DataView(o.buffer), s = 0, O = [];
-function dt(t, n) {
-  s = 0;
-  const e = (n == null ? void 0 : n(t)) ?? t;
-  return it(m, e, n), o.slice(0, s);
+let a = new Uint8Array(C), g = new DataView(a.buffer), r = 0, O = [];
+function gt(t, e) {
+  r = 0;
+  const n = (e == null ? void 0 : e(t)) ?? t;
+  return ft(L, n, e), a.slice(0, r);
 }
-function _(t, n) {
-  if (s > o.length - C && (o = R(o, o.length * 2), r = new DataView(o.buffer)), t === false || t === true || t === null || t === void 0) {
-    et(t);
+function k(t) {
+  let e = a.length * 2;
+  for (; e < t; )
+    e *= 2;
+  a = Z(a, e), g = new DataView(a.buffer);
+}
+function _(t, e) {
+  if (t === false || t === true || t === null || t === void 0) {
+    rt(t);
     return;
   }
   if (typeof t == "number" || typeof t == "bigint") {
-    ft(t);
+    ot(t);
     return;
   }
   if (typeof t == "string") {
-    X$1(t);
+    z(t);
     return;
   }
   if (t instanceof Uint8Array) {
-    V(t);
+    m(t);
     return;
   }
   if (t instanceof ArrayBuffer) {
-    V(new Uint8Array(t));
+    m(new Uint8Array(t));
     return;
   }
   if (Array.isArray(t)) {
-    tt(t, n);
+    et(t, e);
     return;
   }
   if (typeof t == "object") {
-    nt(t, n);
+    nt(t, e);
     return;
   }
   throw new x(`Unsupported type: ${typeof t}`);
 }
-function tt(t, n) {
-  I(c.Array, t.length), t.forEach((e, i) => {
-    _((n == null ? void 0 : n(e, i.toString())) ?? e, n);
+function et(t, e) {
+  E(c.Array, t.length), t.forEach((n, s) => {
+    _((e == null ? void 0 : e(n, s.toString())) ?? n, e);
   });
 }
-function nt(t, n) {
-  O = Object.entries(t), I(c.Map, O.length), O.forEach(([e, i]) => {
-    X$1(e), _((n == null ? void 0 : n(i, e)) ?? i, n);
+function nt(t, e) {
+  O = Object.entries(t), E(c.Map, O.length), O.forEach(([n, s]) => {
+    z(n), _((e == null ? void 0 : e(s, n)) ?? s, e);
   });
 }
-function I(t, n) {
-  if (n <= z) {
-    r.setUint8(
-      s++,
-      S(t) | Number(n)
+function E(t, e) {
+  if (r > a.length - V && k(r + V), e <= Y) {
+    g.setUint8(
+      r++,
+      y(t) | Number(e)
     );
     return;
   }
-  if (n <= Y) {
-    r.setUint8(
-      s++,
-      S(t) | d.OneByte
-    ), r.setUint8(s, Number(n)), s += 1;
+  if (e <= G) {
+    g.setUint8(
+      r++,
+      y(t) | f.OneByte
+    ), g.setUint8(r, Number(e)), r += 1;
     return;
   }
-  if (n <= G) {
-    r.setUint8(
-      s++,
-      S(t) | d.TwoBytes
-    ), r.setUint16(s, Number(n), h), s += 2;
+  if (e <= P) {
+    g.setUint8(
+      r++,
+      y(t) | f.TwoBytes
+    ), g.setUint16(r, Number(e), l), r += 2;
     return;
   }
-  if (n <= P) {
-    r.setUint8(
-      s++,
-      S(t) | d.FourBytes
-    ), r.setUint32(s, Number(n), h), s += 4;
+  if (e <= H) {
+    g.setUint8(
+      r++,
+      y(t) | f.FourBytes
+    ), g.setUint32(r, Number(e), l), r += 4;
     return;
   }
-  if (n <= H) {
-    r.setUint8(
-      s++,
-      S(t) | d.EightBytes
-    ), r.setBigUint64(s, BigInt(n), h), s += 8;
+  if (e <= W) {
+    g.setUint8(
+      r++,
+      y(t) | f.EightBytes
+    ), g.setBigUint64(r, BigInt(e), l), r += 8;
     return;
   }
-  throw new x(`Value too large to encode: ${n}`);
+  throw new x(`Value too large to encode: ${e}`);
 }
-function et(t) {
-  I(c.Simple, st(t));
-}
-function st(t) {
-  if (t === false)
-    return g.False;
-  if (t === true)
-    return g.True;
-  if (t === null)
-    return g.Null;
-  if (t === void 0)
-    return g.Undefined;
-  throw new x(`Unrecognized simple value: ${t.toString()}`);
-}
-function k(t, n) {
-  I(t, n.length), s > o.length - n.length && (o = R(o, o.length + n.length), r = new DataView(o.buffer)), o.set(n, s), s += n.length;
-}
-function T(t, n) {
-  I(t, n);
+function rt(t) {
+  E(c.Simple, ct(t));
 }
 function ct(t) {
-  T(c.UnsignedInteger, t);
+  if (t === false)
+    return u.False;
+  if (t === true)
+    return u.True;
+  if (t === null)
+    return u.Null;
+  if (t === void 0)
+    return u.Undefined;
+  throw new x(`Unrecognized simple value: ${t.toString()}`);
 }
-function ot(t) {
-  T(
+function T(t, e) {
+  E(t, e.length), r > a.length - e.length && k(r + e.length), a.set(e, r), r += e.length;
+}
+function X$1(t, e) {
+  E(t, e);
+}
+function it(t) {
+  X$1(c.UnsignedInteger, t);
+}
+function st(t) {
+  X$1(
     c.NegativeInteger,
     typeof t == "bigint" ? -1n - t : -1 - t
   );
 }
-function ft(t) {
-  t >= 0 ? ct(t) : ot(t);
+function ot(t) {
+  t >= 0 ? it(t) : st(t);
 }
-function X$1(t) {
-  k(c.TextString, v.encode(t));
+function z(t) {
+  T(c.TextString, tt.encode(t));
 }
-function V(t) {
-  k(c.ByteString, t);
+function m(t) {
+  T(c.ByteString, t);
 }
-function it(t, n, e) {
-  I(c.Tag, t), _(n, e);
+function ft(t, e, n) {
+  E(c.Tag, t), _(e, n);
 }
 function hasCborValueMethod(value) {
   return typeof value === "object" && value !== null && "toCborValue" in value;
 }
 function encode$1(value) {
   try {
-    return dt(value, (value2) => {
+    return gt(value, (value2) => {
       if (Principal$1.isPrincipal(value2)) {
         return value2.toUint8Array();
       }
@@ -4893,12 +4899,12 @@ function invert(number, modulo) {
     throw new Error("invert: expected positive modulus, got " + modulo);
   let a2 = mod(number, modulo);
   let b2 = modulo;
-  let x2 = _0n$6, u = _1n$7;
+  let x2 = _0n$6, u2 = _1n$7;
   while (a2 !== _0n$6) {
     const q2 = b2 / a2;
     const r2 = b2 % a2;
-    const m2 = x2 - u * q2;
-    b2 = a2, a2 = r2, x2 = u, u = m2;
+    const m2 = x2 - u2 * q2;
+    b2 = a2, a2 = r2, x2 = u2, u2 = m2;
   }
   const gcd = b2;
   if (gcd !== _1n$7)
@@ -5120,7 +5126,7 @@ function Field(ORDER, bitLenOrOpts, isLE = false, opts = {}) {
   if (BYTES > 2048)
     throw new Error("invalid field: expected ORDER of <= 2048 bytes");
   let sqrtP;
-  const f = Object.freeze({
+  const f2 = Object.freeze({
     ORDER,
     isLE,
     BITS,
@@ -5137,7 +5143,7 @@ function Field(ORDER, bitLenOrOpts, isLE = false, opts = {}) {
     },
     is0: (num) => num === _0n$6,
     // is valid and invertible
-    isValidNot0: (num) => !f.is0(num) && f.isValid(num),
+    isValidNot0: (num) => !f2.is0(num) && f2.isValid(num),
     isOdd: (num) => (num & _1n$7) === _1n$7,
     neg: (num) => mod(-num, ORDER),
     eql: (lhs, rhs) => lhs === rhs,
@@ -5145,7 +5151,7 @@ function Field(ORDER, bitLenOrOpts, isLE = false, opts = {}) {
     add: (lhs, rhs) => mod(lhs + rhs, ORDER),
     sub: (lhs, rhs) => mod(lhs - rhs, ORDER),
     mul: (lhs, rhs) => mod(lhs * rhs, ORDER),
-    pow: (num, power) => FpPow(f, num, power),
+    pow: (num, power) => FpPow(f2, num, power),
     div: (lhs, rhs) => mod(lhs * invert(rhs, ORDER), ORDER),
     // Same as above, but doesn't normalize
     sqrN: (num) => num * num,
@@ -5156,7 +5162,7 @@ function Field(ORDER, bitLenOrOpts, isLE = false, opts = {}) {
     sqrt: _sqrt || ((n) => {
       if (!sqrtP)
         sqrtP = FpSqrt(ORDER);
-      return sqrtP(f, n);
+      return sqrtP(f2, n);
     }),
     toBytes: (num) => isLE ? numberToBytesLE(num, BYTES) : numberToBytesBE(num, BYTES),
     fromBytes: (bytes, skipValidation = true) => {
@@ -5174,18 +5180,18 @@ function Field(ORDER, bitLenOrOpts, isLE = false, opts = {}) {
       if (modFromBytes)
         scalar = mod(scalar, ORDER);
       if (!skipValidation) {
-        if (!f.isValid(scalar))
+        if (!f2.isValid(scalar))
           throw new Error("invalid field element: outside of range 0..ORDER");
       }
       return scalar;
     },
     // TODO: we don't need it here, move out to separate fn
-    invertBatch: (lst) => FpInvertBatch(f, lst),
+    invertBatch: (lst) => FpInvertBatch(f2, lst),
     // We can't move this out because Fp6, Fp12 implement it
     // and it's unclear what to return in there.
     cmov: (a2, b2, c2) => c2 ? b2 : a2
   });
-  return Object.freeze(f);
+  return Object.freeze(f2);
 }
 function getFieldBytesLength(fieldOrder) {
   if (typeof fieldOrder !== "bigint")
@@ -5258,8 +5264,8 @@ function validateMSMPoints(points, c2) {
 function validateMSMScalars(scalars, field) {
   if (!Array.isArray(scalars))
     throw new Error("array of scalars expected");
-  scalars.forEach((s2, i) => {
-    if (!field.isValid(s2))
+  scalars.forEach((s, i) => {
+    if (!field.isValid(s))
       throw new Error("invalid scalar at index " + i);
   });
 }
@@ -5329,19 +5335,19 @@ class wNAF {
     if (!this.Fn.isValid(n))
       throw new Error("invalid scalar");
     let p2 = this.ZERO;
-    let f = this.BASE;
+    let f2 = this.BASE;
     const wo = calcWOpts(W2, this.bits);
     for (let window2 = 0; window2 < wo.windows; window2++) {
       const { nextN, offset, isZero, isNeg, isNegF, offsetF } = calcOffsets(n, window2, wo);
       n = nextN;
       if (isZero) {
-        f = f.add(negateCt(isNegF, precomputes[offsetF]));
+        f2 = f2.add(negateCt(isNegF, precomputes[offsetF]));
       } else {
         p2 = p2.add(negateCt(isNeg, precomputes[offset]));
       }
     }
     assert0(n);
-    return { p: p2, f };
+    return { p: p2, f: f2 };
   }
   /**
    * Implements ec unsafe (non const-time) multiplication using precomputed tables and w-ary non-adjacent form.
@@ -5573,7 +5579,7 @@ function hash_to_field(msg, count, options) {
   } else {
     throw new Error('expand must be "xmd" or "xof"');
   }
-  const u = new Array(count);
+  const u2 = new Array(count);
   for (let i = 0; i < count; i++) {
     const e = new Array(m2);
     for (let j2 = 0; j2 < m2; j2++) {
@@ -5581,9 +5587,9 @@ function hash_to_field(msg, count, options) {
       const tv = prb.subarray(elm_offset, elm_offset + L2);
       e[j2] = mod(os2ip(tv), p2);
     }
-    u[i] = e;
+    u2[i] = e;
   }
-  return u;
+  return u2;
 }
 function isogenyMap(field, map) {
   const coeff = map.map((i) => Array.from(i).reverse());
@@ -5613,16 +5619,16 @@ function createHasher(Point, mapToCurve, defaults) {
     defaults,
     hashToCurve(msg, options) {
       const opts = Object.assign({}, defaults, options);
-      const u = hash_to_field(msg, 2, opts);
-      const u0 = map(u[0]);
-      const u1 = map(u[1]);
+      const u2 = hash_to_field(msg, 2, opts);
+      const u0 = map(u2[0]);
+      const u1 = map(u2[1]);
       return clear(u0.add(u1));
     },
     encodeToCurve(msg, options) {
       const optsDst = defaults.encodeDST ? { DST: defaults.encodeDST } : {};
       const opts = Object.assign({}, defaults, optsDst, options);
-      const u = hash_to_field(msg, 1, opts);
-      const u0 = map(u[0]);
+      const u2 = hash_to_field(msg, 1, opts);
+      const u0 = map(u2[0]);
       return clear(u0);
     },
     /** See {@link H2CHasher} */
@@ -6017,9 +6023,9 @@ function weierstrassN(params, extraOpts = {}) {
         fake = k1f.add(k2f);
         point = finishEndo(endo2.beta, k1p, k2p, k1neg, k2neg);
       } else {
-        const { p: p2, f } = mul(scalar);
+        const { p: p2, f: f2 } = mul(scalar);
         point = p2;
-        fake = f;
+        fake = f2;
       }
       return normalizeZ(Point, [point, fake])[0];
     }
@@ -6132,10 +6138,10 @@ function pprefix(hasEvenY) {
 }
 function SWUFpSqrtRatio(Fp3, Z2) {
   const q2 = Fp3.ORDER;
-  let l = _0n$4;
-  for (let o2 = q2 - _1n$5; o2 % _2n$5 === _0n$4; o2 /= _2n$5)
-    l += _1n$5;
-  const c1 = l;
+  let l2 = _0n$4;
+  for (let o = q2 - _1n$5; o % _2n$5 === _0n$4; o /= _2n$5)
+    l2 += _1n$5;
+  const c1 = l2;
   const _2n_pow_c1_1 = _2n$5 << c1 - _1n$5 - _1n$5;
   const _2n_pow_c1 = _2n_pow_c1_1 * _2n$5;
   const c2 = (q2 - _1n$5) / _2n_pow_c1;
@@ -6144,16 +6150,16 @@ function SWUFpSqrtRatio(Fp3, Z2) {
   const c5 = _2n_pow_c1_1;
   const c6 = Fp3.pow(Z2, c2);
   const c7 = Fp3.pow(Z2, (c2 + _1n$5) / _2n$5);
-  let sqrtRatio = (u, v2) => {
+  let sqrtRatio = (u2, v2) => {
     let tv1 = c6;
     let tv2 = Fp3.pow(v2, c4);
     let tv3 = Fp3.sqr(tv2);
     tv3 = Fp3.mul(tv3, v2);
-    let tv5 = Fp3.mul(u, tv3);
+    let tv5 = Fp3.mul(u2, tv3);
     tv5 = Fp3.pow(tv5, c3);
     tv5 = Fp3.mul(tv5, tv2);
     tv2 = Fp3.mul(tv5, v2);
-    tv3 = Fp3.mul(tv5, u);
+    tv3 = Fp3.mul(tv5, u2);
     let tv4 = Fp3.mul(tv3, tv2);
     tv5 = Fp3.pow(tv4, c5);
     let isQR = Fp3.eql(tv5, Fp3.ONE);
@@ -6177,15 +6183,15 @@ function SWUFpSqrtRatio(Fp3, Z2) {
   if (Fp3.ORDER % _4n$1 === _3n$3) {
     const c12 = (Fp3.ORDER - _3n$3) / _4n$1;
     const c22 = Fp3.sqrt(Fp3.neg(Z2));
-    sqrtRatio = (u, v2) => {
+    sqrtRatio = (u2, v2) => {
       let tv1 = Fp3.sqr(v2);
-      const tv2 = Fp3.mul(u, v2);
+      const tv2 = Fp3.mul(u2, v2);
       tv1 = Fp3.mul(tv1, tv2);
       let y1 = Fp3.pow(tv1, c12);
       y1 = Fp3.mul(y1, tv2);
       const y2 = Fp3.mul(y1, c22);
       const tv3 = Fp3.mul(Fp3.sqr(y1), v2);
-      const isQR = Fp3.eql(tv3, u);
+      const isQR = Fp3.eql(tv3, u2);
       let y3 = Fp3.cmov(y2, y1, isQR);
       return { isValid: isQR, value: y3 };
     };
@@ -6194,25 +6200,25 @@ function SWUFpSqrtRatio(Fp3, Z2) {
 }
 function mapToCurveSimpleSWU(Fp3, opts) {
   validateField(Fp3);
-  const { A: A2, B: B2, Z: Z2 } = opts;
-  if (!Fp3.isValid(A2) || !Fp3.isValid(B2) || !Fp3.isValid(Z2))
+  const { A, B: B2, Z: Z2 } = opts;
+  if (!Fp3.isValid(A) || !Fp3.isValid(B2) || !Fp3.isValid(Z2))
     throw new Error("mapToCurveSimpleSWU: invalid opts");
   const sqrtRatio = SWUFpSqrtRatio(Fp3, Z2);
   if (!Fp3.isOdd)
     throw new Error("Field does not have .isOdd()");
-  return (u) => {
+  return (u2) => {
     let tv1, tv2, tv3, tv4, tv5, tv6, x2, y2;
-    tv1 = Fp3.sqr(u);
+    tv1 = Fp3.sqr(u2);
     tv1 = Fp3.mul(tv1, Z2);
     tv2 = Fp3.sqr(tv1);
     tv2 = Fp3.add(tv2, tv1);
     tv3 = Fp3.add(tv2, Fp3.ONE);
     tv3 = Fp3.mul(tv3, B2);
     tv4 = Fp3.cmov(Z2, Fp3.neg(tv2), !Fp3.eql(tv2, Fp3.ZERO));
-    tv4 = Fp3.mul(tv4, A2);
+    tv4 = Fp3.mul(tv4, A);
     tv2 = Fp3.sqr(tv3);
     tv6 = Fp3.sqr(tv4);
-    tv5 = Fp3.mul(tv6, A2);
+    tv5 = Fp3.mul(tv6, A);
     tv2 = Fp3.add(tv2, tv5);
     tv2 = Fp3.mul(tv2, tv3);
     tv6 = Fp3.mul(tv6, tv4);
@@ -6220,11 +6226,11 @@ function mapToCurveSimpleSWU(Fp3, opts) {
     tv2 = Fp3.add(tv2, tv5);
     x2 = Fp3.mul(tv1, tv3);
     const { isValid, value } = sqrtRatio(tv2, tv6);
-    y2 = Fp3.mul(tv1, u);
+    y2 = Fp3.mul(tv1, u2);
     y2 = Fp3.mul(y2, value);
     x2 = Fp3.cmov(x2, tv3, isValid);
     y2 = Fp3.cmov(y2, value, isValid);
-    const e1 = Fp3.isOdd(u) === Fp3.isOdd(y2);
+    const e1 = Fp3.isOdd(u2) === Fp3.isOdd(y2);
     y2 = Fp3.cmov(Fp3.neg(y2), y2, e1);
     const tv4_inv = FpInvertBatch(Fp3, [tv4], true)[0];
     x2 = Fp3.mul(x2, tv4_inv);
@@ -6256,7 +6262,7 @@ function _weierstrass_legacy_opts_to_new(c2) {
     Gy: c2.Gy
   };
   const Fp3 = c2.Fp;
-  let allowedLengths = c2.allowedPrivateKeyLengths ? Array.from(new Set(c2.allowedPrivateKeyLengths.map((l) => Math.ceil(l / 2)))) : void 0;
+  let allowedLengths = c2.allowedPrivateKeyLengths ? Array.from(new Set(c2.allowedPrivateKeyLengths.map((l2) => Math.ceil(l2 / 2)))) : void 0;
   const Fn = Field(CURVE.n, {
     BITS: c2.nBitLength,
     allowedLengths,
@@ -6321,9 +6327,9 @@ function createBlsPairing(fields, G1, G2, params) {
   const { twistType, ateLoopSize, xNegative, postPrecompute } = params;
   let lineFunction;
   if (twistType === "multiplicative") {
-    lineFunction = (c0, c1, c2, f, Px, Py) => Fp122.mul014(f, c0, Fp22.mul(c1, Px), Fp22.mul(c2, Py));
+    lineFunction = (c0, c1, c2, f2, Px, Py) => Fp122.mul014(f2, c0, Fp22.mul(c1, Px), Fp22.mul(c2, Py));
   } else if (twistType === "divisive") {
-    lineFunction = (c0, c1, c2, f, Px, Py) => Fp122.mul034(f, Fp22.mul(c2, Py), Fp22.mul(c1, Px), c0);
+    lineFunction = (c0, c1, c2, f2, Px, Py) => Fp122.mul034(f2, Fp22.mul(c2, Py), Fp22.mul(c1, Px), c0);
   } else
     throw new Error("bls: unknown twist type");
   const Fp2div2 = Fp22.div(Fp22.ONE, Fp22.mul(Fp22.ONE, _2n$4));
@@ -6511,7 +6517,7 @@ function createBlsSig(blsPairing, PubCurve, SigCurve, SignatureCoder, isSigG1) {
     aggregateSignatures(signatures) {
       aNonEmpty(signatures);
       signatures = signatures.map((sig) => normSig(sig));
-      const agg = signatures.reduce((sum, s2) => sum.add(s2), SigCurve.Point.ZERO);
+      const agg = signatures.reduce((sum, s) => sum.add(s), SigCurve.Point.ZERO);
       agg.assertValidity();
       return agg;
     },
@@ -8067,9 +8073,9 @@ async function reconstruct(t) {
       throw UNREACHABLE_ERROR;
   }
 }
-function domain_sep(s2) {
-  const len = new Uint8Array([s2.length]);
-  const str = new TextEncoder().encode(s2);
+function domain_sep(s) {
+  const len = new Uint8Array([s.length]);
+  const str = new TextEncoder().encode(s);
   return concatBytes(len, str);
 }
 function pathToLabel(path) {
@@ -8486,9 +8492,9 @@ function edwards(params, extraOpts = {}) {
   _validateObject(extraOpts, {}, { uvRatio: "function" });
   const MASK = _2n$1 << BigInt(Fn.BYTES * 8) - _1n$1;
   const modP = (n) => Fp3.create(n);
-  const uvRatio2 = extraOpts.uvRatio || ((u, v2) => {
+  const uvRatio2 = extraOpts.uvRatio || ((u2, v2) => {
     try {
-      return { isValid: true, value: Fp3.sqrt(Fp3.div(u, v2)) };
+      return { isValid: true, value: Fp3.sqrt(Fp3.div(u2, v2)) };
     } catch (e) {
       return { isValid: false, value: _0n };
     }
@@ -8570,9 +8576,9 @@ function edwards(params, extraOpts = {}) {
       const max = zip215 ? MASK : Fp3.ORDER;
       aInRange("point.y", y2, _0n, max);
       const y22 = modP(y2 * y2);
-      const u = modP(y22 - _1n$1);
+      const u2 = modP(y22 - _1n$1);
       const v2 = modP(d2 * y22 - a2);
-      let { isValid, value: x2 } = uvRatio2(u, v2);
+      let { isValid, value: x2 } = uvRatio2(u2, v2);
       if (!isValid)
         throw new Error("bad point: invalid y coordinate");
       const isXOdd = (x2 & _1n$1) === _1n$1;
@@ -8625,12 +8631,12 @@ function edwards(params, extraOpts = {}) {
     double() {
       const { a: a2 } = CURVE;
       const { X: X1, Y: Y1, Z: Z1 } = this;
-      const A2 = modP(X1 * X1);
+      const A = modP(X1 * X1);
       const B2 = modP(Y1 * Y1);
       const C2 = modP(_2n$1 * modP(Z1 * Z1));
-      const D = modP(a2 * A2);
+      const D = modP(a2 * A);
       const x1y1 = X1 + Y1;
-      const E2 = modP(modP(x1y1 * x1y1) - A2 - B2);
+      const E2 = modP(modP(x1y1 * x1y1) - A - B2);
       const G2 = D + B2;
       const F2 = G2 - C2;
       const H2 = D - B2;
@@ -8648,14 +8654,14 @@ function edwards(params, extraOpts = {}) {
       const { a: a2, d: d2 } = CURVE;
       const { X: X1, Y: Y1, Z: Z1, T: T1 } = this;
       const { X: X2, Y: Y2, Z: Z2, T: T2 } = other;
-      const A2 = modP(X1 * X2);
+      const A = modP(X1 * X2);
       const B2 = modP(Y1 * Y2);
       const C2 = modP(T1 * d2 * T2);
       const D = modP(Z1 * Z2);
-      const E2 = modP((X1 + Y1) * (X2 + Y2) - A2 - B2);
+      const E2 = modP((X1 + Y1) * (X2 + Y2) - A - B2);
       const F2 = D - C2;
       const G2 = D + C2;
-      const H2 = modP(B2 - a2 * A2);
+      const H2 = modP(B2 - a2 * A);
       const X3 = modP(E2 * F2);
       const Y3 = modP(G2 * H2);
       const T3 = modP(E2 * H2);
@@ -8669,8 +8675,8 @@ function edwards(params, extraOpts = {}) {
     multiply(scalar) {
       if (!Fn.isValidNot0(scalar))
         throw new Error("invalid scalar: expected 1 <= sc < curve.n");
-      const { p: p2, f } = wnaf.cached(this, scalar, (p3) => normalizeZ(Point, p3));
-      return normalizeZ(Point, [p2, f])[0];
+      const { p: p2, f: f2 } = wnaf.cached(this, scalar, (p3) => normalizeZ(Point, p3));
+      return normalizeZ(Point, [p2, f2])[0];
     }
     // Non-constant-time multiplication. Uses double-and-add algorithm.
     // It's faster, but should only be used when you don't care about
@@ -8807,10 +8813,10 @@ function eddsa(Point, cHash, eddsaOpts = {}) {
     const r2 = hashDomainToScalar(options.context, prefix2, msg);
     const R2 = BASE.multiply(r2).toBytes();
     const k2 = hashDomainToScalar(options.context, R2, pointBytes, msg);
-    const s2 = Fn.create(r2 + k2 * scalar);
-    if (!Fn.isValid(s2))
+    const s = Fn.create(r2 + k2 * scalar);
+    if (!Fn.isValid(s))
       throw new Error("sign failed: invalid s");
-    const rs = concatBytes(R2, Fn.toBytes(s2));
+    const rs = concatBytes(R2, Fn.toBytes(s));
     return _abytes2(rs, lengths.signature, "result");
   }
   const verifyOpts = { zip215: true };
@@ -8826,19 +8832,19 @@ function eddsa(Point, cHash, eddsaOpts = {}) {
       msg = prehash(msg);
     const mid = len / 2;
     const r2 = sig.subarray(0, mid);
-    const s2 = bytesToNumberLE(sig.subarray(mid, len));
-    let A2, R2, SB;
+    const s = bytesToNumberLE(sig.subarray(mid, len));
+    let A, R2, SB;
     try {
-      A2 = Point.fromBytes(publicKey, zip215);
+      A = Point.fromBytes(publicKey, zip215);
       R2 = Point.fromBytes(r2, zip215);
-      SB = BASE.multiplyUnsafe(s2);
+      SB = BASE.multiplyUnsafe(s);
     } catch (error) {
       return false;
     }
-    if (!zip215 && A2.isSmallOrder())
+    if (!zip215 && A.isSmallOrder())
       return false;
-    const k2 = hashDomainToScalar(context, R2.toBytes(), A2.toBytes(), msg);
-    const RkA = R2.add(A2.multiplyUnsafe(k2));
+    const k2 = hashDomainToScalar(context, R2.toBytes(), A.toBytes(), msg);
+    const RkA = R2.add(A.multiplyUnsafe(k2));
     return RkA.subtract(SB).clearCofactor().is0();
   }
   const _size = Fp3.BYTES;
@@ -8885,8 +8891,8 @@ function eddsa(Point, cHash, eddsaOpts = {}) {
       const is25519 = size === 32;
       if (!is25519 && size !== 57)
         throw new Error("only defined for 25519 and 448");
-      const u = is25519 ? Fp3.div(_1n$1 + y2, _1n$1 - y2) : Fp3.div(y2 - _1n$1, y2 + _1n$1);
-      return Fp3.toBytes(u);
+      const u2 = is25519 ? Fp3.div(_1n$1 + y2, _1n$1 - y2) : Fp3.div(y2 - _1n$1, y2 + _1n$1);
+      return Fp3.toBytes(u2);
     },
     toMontgomerySecret(secretKey) {
       const size = lengths.secretKey;
@@ -8987,18 +8993,18 @@ function adjustScalarBytes(bytes) {
   return bytes;
 }
 const ED25519_SQRT_M1 = /* @__PURE__ */ BigInt("19681161376707505956807079304988542015446066515923890162744021073123829784752");
-function uvRatio(u, v2) {
+function uvRatio(u2, v2) {
   const P2 = ed25519_CURVE_p;
   const v3 = mod(v2 * v2 * v2, P2);
   const v7 = mod(v3 * v3 * v2, P2);
-  const pow = ed25519_pow_2_252_3(u * v7).pow_p_5_8;
-  let x2 = mod(u * v3 * pow, P2);
+  const pow = ed25519_pow_2_252_3(u2 * v7).pow_p_5_8;
+  let x2 = mod(u2 * v3 * pow, P2);
   const vx2 = mod(v2 * x2 * x2, P2);
   const root1 = x2;
   const root2 = mod(x2 * ED25519_SQRT_M1, P2);
-  const useRoot1 = vx2 === u;
-  const useRoot2 = vx2 === mod(-u, P2);
-  const noRoot = vx2 === mod(-u * ED25519_SQRT_M1, P2);
+  const useRoot1 = vx2 === u2;
+  const useRoot2 = vx2 === mod(-u2, P2);
+  const noRoot = vx2 === mod(-u2 * ED25519_SQRT_M1, P2);
   if (useRoot1)
     x2 = root1;
   if (useRoot2 || noRoot)
@@ -10950,8 +10956,8 @@ function timeUntilStale(updatedAt, staleTime) {
 function resolveStaleTime(staleTime, query) {
   return typeof staleTime === "function" ? staleTime(query) : staleTime;
 }
-function resolveEnabled(enabled, query) {
-  return typeof enabled === "function" ? enabled(query) : enabled;
+function resolveQueryBoolean(option, query) {
+  return typeof option === "function" ? option(query) : option;
 }
 function matchQuery(filters, query) {
   const {
@@ -11085,11 +11091,11 @@ function shallowEqualObjects(a2, b2) {
 function isPlainArray$1(value) {
   return Array.isArray(value) && value.length === Object.keys(value).length;
 }
-function isPlainObject$1(o2) {
-  if (!hasObjectPrototype$1(o2)) {
+function isPlainObject$1(o) {
+  if (!hasObjectPrototype$1(o)) {
     return false;
   }
-  const ctor = o2.constructor;
+  const ctor = o.constructor;
   if (ctor === void 0) {
     return true;
   }
@@ -11100,13 +11106,13 @@ function isPlainObject$1(o2) {
   if (!prot.hasOwnProperty("isPrototypeOf")) {
     return false;
   }
-  if (Object.getPrototypeOf(o2) !== Object.prototype) {
+  if (Object.getPrototypeOf(o) !== Object.prototype) {
     return false;
   }
   return true;
 }
-function hasObjectPrototype$1(o2) {
-  return Object.prototype.toString.call(o2) === "[object Object]";
+function hasObjectPrototype$1(o) {
+  return Object.prototype.toString.call(o) === "[object Object]";
 }
 function sleep(timeout) {
   return new Promise((resolve) => {
@@ -11488,16 +11494,120 @@ var Removable = (_e = class {
     );
   }
   clearGcTimeout() {
-    if (__privateGet(this, _gcTimeout)) {
+    if (__privateGet(this, _gcTimeout) !== void 0) {
       timeoutManager.clearTimeout(__privateGet(this, _gcTimeout));
       __privateSet(this, _gcTimeout, void 0);
     }
   }
 }, _gcTimeout = new WeakMap(), _e);
+function infiniteQueryBehavior(pages) {
+  return {
+    onFetch: (context, query) => {
+      var _a3, _b3, _c2, _d2, _e2;
+      const options = context.options;
+      const direction = (_c2 = (_b3 = (_a3 = context.fetchOptions) == null ? void 0 : _a3.meta) == null ? void 0 : _b3.fetchMore) == null ? void 0 : _c2.direction;
+      const oldPages = ((_d2 = context.state.data) == null ? void 0 : _d2.pages) || [];
+      const oldPageParams = ((_e2 = context.state.data) == null ? void 0 : _e2.pageParams) || [];
+      let result = { pages: [], pageParams: [] };
+      let currentPage = 0;
+      const fetchFn = async () => {
+        let cancelled = false;
+        const addSignalProperty = (object) => {
+          addConsumeAwareSignal(
+            object,
+            () => context.signal,
+            () => cancelled = true
+          );
+        };
+        const queryFn = ensureQueryFn(context.options, context.fetchOptions);
+        const fetchPage = async (data, param, previous) => {
+          if (cancelled) {
+            return Promise.reject(context.signal.reason);
+          }
+          if (param == null && data.pages.length) {
+            return Promise.resolve(data);
+          }
+          const createQueryFnContext = () => {
+            const queryFnContext2 = {
+              client: context.client,
+              queryKey: context.queryKey,
+              pageParam: param,
+              direction: previous ? "backward" : "forward",
+              meta: context.options.meta
+            };
+            addSignalProperty(queryFnContext2);
+            return queryFnContext2;
+          };
+          const queryFnContext = createQueryFnContext();
+          const page = await queryFn(queryFnContext);
+          const { maxPages } = context.options;
+          const addTo = previous ? addToStart : addToEnd;
+          return {
+            pages: addTo(data.pages, page, maxPages),
+            pageParams: addTo(data.pageParams, param, maxPages)
+          };
+        };
+        if (direction && oldPages.length) {
+          const previous = direction === "backward";
+          const pageParamFn = previous ? getPreviousPageParam : getNextPageParam;
+          const oldData = {
+            pages: oldPages,
+            pageParams: oldPageParams
+          };
+          const param = pageParamFn(options, oldData);
+          result = await fetchPage(oldData, param, previous);
+        } else {
+          const remainingPages = pages ?? oldPages.length;
+          do {
+            const param = currentPage === 0 ? oldPageParams[0] ?? options.initialPageParam : getNextPageParam(options, result);
+            if (currentPage > 0 && param == null) {
+              break;
+            }
+            result = await fetchPage(result, param);
+            currentPage++;
+          } while (currentPage < remainingPages);
+        }
+        return result;
+      };
+      if (context.options.persister) {
+        context.fetchFn = () => {
+          var _a4, _b4;
+          return (_b4 = (_a4 = context.options).persister) == null ? void 0 : _b4.call(
+            _a4,
+            fetchFn,
+            {
+              client: context.client,
+              queryKey: context.queryKey,
+              meta: context.options.meta,
+              signal: context.signal
+            },
+            query
+          );
+        };
+      } else {
+        context.fetchFn = fetchFn;
+      }
+    }
+  };
+}
+function getNextPageParam(options, { pages, pageParams }) {
+  const lastIndex = pages.length - 1;
+  return pages.length > 0 ? options.getNextPageParam(
+    pages[lastIndex],
+    pages,
+    pageParams[lastIndex],
+    pageParams
+  ) : void 0;
+}
+function getPreviousPageParam(options, { pages, pageParams }) {
+  var _a3;
+  return pages.length > 0 ? (_a3 = options.getPreviousPageParam) == null ? void 0 : _a3.call(options, pages[0], pages, pageParams[0], pageParams) : void 0;
+}
 var Query = (_f = class extends Removable {
   constructor(config) {
     super();
     __privateAdd(this, _Query_instances);
+    __privateAdd(this, _queryType);
     __privateAdd(this, _initialState);
     __privateAdd(this, _revertState);
     __privateAdd(this, _cache);
@@ -11520,12 +11630,18 @@ var Query = (_f = class extends Removable {
   get meta() {
     return this.options.meta;
   }
+  get queryType() {
+    return __privateGet(this, _queryType);
+  }
   get promise() {
     var _a3;
     return (_a3 = __privateGet(this, _retryer)) == null ? void 0 : _a3.promise;
   }
   setOptions(options) {
     this.options = { ...__privateGet(this, _defaultOptions), ...options };
+    if (options == null ? void 0 : options._type) {
+      __privateSet(this, _queryType, options._type);
+    }
     this.updateGcTime(this.options.gcTime);
     if (this.state && this.state.data === void 0) {
       const defaultState = getDefaultState$1(this.options);
@@ -11552,8 +11668,8 @@ var Query = (_f = class extends Removable {
     });
     return data;
   }
-  setState(state, setStateOptions) {
-    __privateMethod(this, _Query_instances, dispatch_fn).call(this, { type: "setState", state, setStateOptions });
+  setState(state) {
+    __privateMethod(this, _Query_instances, dispatch_fn).call(this, { type: "setState", state });
   }
   cancel(options) {
     var _a3, _b3;
@@ -11574,7 +11690,7 @@ var Query = (_f = class extends Removable {
   }
   isActive() {
     return this.observers.some(
-      (observer) => resolveEnabled(observer.options.enabled, this) !== false
+      (observer) => resolveQueryBoolean(observer.options.enabled, this) !== false
     );
   }
   isDisabled() {
@@ -11658,7 +11774,7 @@ var Query = (_f = class extends Removable {
     }
   }
   async fetch(options, fetchOptions) {
-    var _a3, _b3, _c2, _d2, _e2, _f2, _g2, _h2, _i2, _j2, _k, _l;
+    var _a3, _b3, _c2, _d2, _e2, _f2, _g2, _h2, _i2, _j2, _k;
     if (this.state.fetchStatus !== "idle" && // If the promise in the retryer is already rejected, we have to definitely
     // re-start the fetch; there is a chance that the query is still in a
     // pending state when that happens
@@ -11724,10 +11840,13 @@ var Query = (_f = class extends Removable {
       return context2;
     };
     const context = createFetchContext();
-    (_b3 = this.options.behavior) == null ? void 0 : _b3.onFetch(context, this);
+    const behavior = __privateGet(this, _queryType) === "infinite" ? infiniteQueryBehavior(
+      this.options.pages
+    ) : this.options.behavior;
+    behavior == null ? void 0 : behavior.onFetch(context, this);
     __privateSet(this, _revertState, this.state);
-    if (this.state.fetchStatus === "idle" || this.state.fetchMeta !== ((_c2 = context.fetchOptions) == null ? void 0 : _c2.meta)) {
-      __privateMethod(this, _Query_instances, dispatch_fn).call(this, { type: "fetch", meta: (_d2 = context.fetchOptions) == null ? void 0 : _d2.meta });
+    if (this.state.fetchStatus === "idle" || this.state.fetchMeta !== ((_b3 = context.fetchOptions) == null ? void 0 : _b3.meta)) {
+      __privateMethod(this, _Query_instances, dispatch_fn).call(this, { type: "fetch", meta: (_c2 = context.fetchOptions) == null ? void 0 : _c2.meta });
     }
     __privateSet(this, _retryer, createRetryer({
       initialPromise: fetchOptions == null ? void 0 : fetchOptions.initialPromise,
@@ -11762,9 +11881,9 @@ var Query = (_f = class extends Removable {
         throw new Error(`${this.queryHash} data is undefined`);
       }
       this.setData(data);
-      (_f2 = (_e2 = __privateGet(this, _cache).config).onSuccess) == null ? void 0 : _f2.call(_e2, data, this);
-      (_h2 = (_g2 = __privateGet(this, _cache).config).onSettled) == null ? void 0 : _h2.call(
-        _g2,
+      (_e2 = (_d2 = __privateGet(this, _cache).config).onSuccess) == null ? void 0 : _e2.call(_d2, data, this);
+      (_g2 = (_f2 = __privateGet(this, _cache).config).onSettled) == null ? void 0 : _g2.call(
+        _f2,
         data,
         this.state.error,
         this
@@ -11785,13 +11904,13 @@ var Query = (_f = class extends Removable {
         type: "error",
         error
       });
-      (_j2 = (_i2 = __privateGet(this, _cache).config).onError) == null ? void 0 : _j2.call(
-        _i2,
+      (_i2 = (_h2 = __privateGet(this, _cache).config).onError) == null ? void 0 : _i2.call(
+        _h2,
         error,
         this
       );
-      (_l = (_k = __privateGet(this, _cache).config).onSettled) == null ? void 0 : _l.call(
-        _k,
+      (_k = (_j2 = __privateGet(this, _cache).config).onSettled) == null ? void 0 : _k.call(
+        _j2,
         this.state.data,
         error,
         this
@@ -11801,7 +11920,7 @@ var Query = (_f = class extends Removable {
       this.scheduleGc();
     }
   }
-}, _initialState = new WeakMap(), _revertState = new WeakMap(), _cache = new WeakMap(), _client = new WeakMap(), _retryer = new WeakMap(), _defaultOptions = new WeakMap(), _abortSignalConsumed = new WeakMap(), _Query_instances = new WeakSet(), isInitialPausedFetch_fn = function() {
+}, _queryType = new WeakMap(), _initialState = new WeakMap(), _revertState = new WeakMap(), _cache = new WeakMap(), _client = new WeakMap(), _retryer = new WeakMap(), _defaultOptions = new WeakMap(), _abortSignalConsumed = new WeakMap(), _Query_instances = new WeakSet(), isInitialPausedFetch_fn = function() {
   return this.state.fetchStatus === "paused" && this.state.status === "pending";
 }, dispatch_fn = function(action) {
   const reducer = (state) => {
@@ -11914,109 +12033,6 @@ function getDefaultState$1(options) {
     status: hasData ? "success" : "pending",
     fetchStatus: "idle"
   };
-}
-function infiniteQueryBehavior(pages) {
-  return {
-    onFetch: (context, query) => {
-      var _a3, _b3, _c2, _d2, _e2;
-      const options = context.options;
-      const direction = (_c2 = (_b3 = (_a3 = context.fetchOptions) == null ? void 0 : _a3.meta) == null ? void 0 : _b3.fetchMore) == null ? void 0 : _c2.direction;
-      const oldPages = ((_d2 = context.state.data) == null ? void 0 : _d2.pages) || [];
-      const oldPageParams = ((_e2 = context.state.data) == null ? void 0 : _e2.pageParams) || [];
-      let result = { pages: [], pageParams: [] };
-      let currentPage = 0;
-      const fetchFn = async () => {
-        let cancelled = false;
-        const addSignalProperty = (object) => {
-          addConsumeAwareSignal(
-            object,
-            () => context.signal,
-            () => cancelled = true
-          );
-        };
-        const queryFn = ensureQueryFn(context.options, context.fetchOptions);
-        const fetchPage = async (data, param, previous) => {
-          if (cancelled) {
-            return Promise.reject();
-          }
-          if (param == null && data.pages.length) {
-            return Promise.resolve(data);
-          }
-          const createQueryFnContext = () => {
-            const queryFnContext2 = {
-              client: context.client,
-              queryKey: context.queryKey,
-              pageParam: param,
-              direction: previous ? "backward" : "forward",
-              meta: context.options.meta
-            };
-            addSignalProperty(queryFnContext2);
-            return queryFnContext2;
-          };
-          const queryFnContext = createQueryFnContext();
-          const page = await queryFn(queryFnContext);
-          const { maxPages } = context.options;
-          const addTo = previous ? addToStart : addToEnd;
-          return {
-            pages: addTo(data.pages, page, maxPages),
-            pageParams: addTo(data.pageParams, param, maxPages)
-          };
-        };
-        if (direction && oldPages.length) {
-          const previous = direction === "backward";
-          const pageParamFn = previous ? getPreviousPageParam : getNextPageParam;
-          const oldData = {
-            pages: oldPages,
-            pageParams: oldPageParams
-          };
-          const param = pageParamFn(options, oldData);
-          result = await fetchPage(oldData, param, previous);
-        } else {
-          const remainingPages = pages ?? oldPages.length;
-          do {
-            const param = currentPage === 0 ? oldPageParams[0] ?? options.initialPageParam : getNextPageParam(options, result);
-            if (currentPage > 0 && param == null) {
-              break;
-            }
-            result = await fetchPage(result, param);
-            currentPage++;
-          } while (currentPage < remainingPages);
-        }
-        return result;
-      };
-      if (context.options.persister) {
-        context.fetchFn = () => {
-          var _a4, _b4;
-          return (_b4 = (_a4 = context.options).persister) == null ? void 0 : _b4.call(
-            _a4,
-            fetchFn,
-            {
-              client: context.client,
-              queryKey: context.queryKey,
-              meta: context.options.meta,
-              signal: context.signal
-            },
-            query
-          );
-        };
-      } else {
-        context.fetchFn = fetchFn;
-      }
-    }
-  };
-}
-function getNextPageParam(options, { pages, pageParams }) {
-  const lastIndex = pages.length - 1;
-  return pages.length > 0 ? options.getNextPageParam(
-    pages[lastIndex],
-    pages,
-    pageParams[lastIndex],
-    pageParams
-  ) : void 0;
-}
-function getPreviousPageParam(options, { pages, pageParams }) {
-  var _a3;
-  return pages.length > 0 ? (_a3 = options.getPreviousPageParam) == null ? void 0 : _a3.call(options, pages[0], pages, pageParams[0], pageParams) : void 0;
 }
 var Mutation = (_g = class extends Removable {
   constructor(config) {
@@ -12688,14 +12704,14 @@ var QueryClient = (_j = class {
     return this.fetchQuery(options).then(noop$6).catch(noop$6);
   }
   fetchInfiniteQuery(options) {
-    options.behavior = infiniteQueryBehavior(options.pages);
+    options._type = "infinite";
     return this.fetchQuery(options);
   }
   prefetchInfiniteQuery(options) {
     return this.fetchInfiniteQuery(options).then(noop$6).catch(noop$6);
   }
   ensureInfiniteQueryData(options) {
-    options.behavior = infiniteQueryBehavior(options.pages);
+    options._type = "infinite";
     return this.ensureQueryData(options);
   }
   resumePausedMutations() {
@@ -13228,7 +13244,7 @@ react_production.useSyncExternalStore = function(subscribe2, getSnapshot, getSer
 react_production.useTransition = function() {
   return ReactSharedInternals$2.H.useTransition();
 };
-react_production.version = "19.1.5";
+react_production.version = "19.1.8";
 {
   react.exports = react_production;
 }
@@ -13807,8 +13823,8 @@ function isDelegationValid(chain, checks) {
     }
   }
   const scopes = [];
-  for (const s2 of scopes) {
-    const scope = s2.toText();
+  for (const s of scopes) {
+    const scope = s.toText();
     for (const { delegation } of chain.delegations) {
       if (delegation.targets === void 0) {
         continue;
@@ -14720,7 +14736,7 @@ var scheduler_production = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-(function(exports$1) {
+(function(exports) {
   function push2(heap, node) {
     var index2 = heap.length;
     heap.push(node);
@@ -14754,15 +14770,15 @@ var scheduler_production = {};
     var diff = a2.sortIndex - b2.sortIndex;
     return 0 !== diff ? diff : a2.id - b2.id;
   }
-  exports$1.unstable_now = void 0;
+  exports.unstable_now = void 0;
   if ("object" === typeof performance && "function" === typeof performance.now) {
     var localPerformance = performance;
-    exports$1.unstable_now = function() {
+    exports.unstable_now = function() {
       return localPerformance.now();
     };
   } else {
     var localDate = Date, initialTime = localDate.now();
-    exports$1.unstable_now = function() {
+    exports.unstable_now = function() {
       return localDate.now() - initialTime;
     };
   }
@@ -14789,12 +14805,12 @@ var scheduler_production = {};
   }
   var isMessageLoopRunning = false, taskTimeoutID = -1, frameInterval = 5, startTime = -1;
   function shouldYieldToHost() {
-    return needsPaint ? true : exports$1.unstable_now() - startTime < frameInterval ? false : true;
+    return needsPaint ? true : exports.unstable_now() - startTime < frameInterval ? false : true;
   }
   function performWorkUntilDeadline() {
     needsPaint = false;
     if (isMessageLoopRunning) {
-      var currentTime = exports$1.unstable_now();
+      var currentTime = exports.unstable_now();
       startTime = currentTime;
       var hasMoreWork = true;
       try {
@@ -14814,7 +14830,7 @@ var scheduler_production = {};
                   var continuationCallback = callback(
                     currentTask.expirationTime <= currentTime
                   );
-                  currentTime = exports$1.unstable_now();
+                  currentTime = exports.unstable_now();
                   if ("function" === typeof continuationCallback) {
                     currentTask.callback = continuationCallback;
                     advanceTimers(currentTime);
@@ -14864,27 +14880,27 @@ var scheduler_production = {};
     };
   function requestHostTimeout(callback, ms) {
     taskTimeoutID = localSetTimeout(function() {
-      callback(exports$1.unstable_now());
+      callback(exports.unstable_now());
     }, ms);
   }
-  exports$1.unstable_IdlePriority = 5;
-  exports$1.unstable_ImmediatePriority = 1;
-  exports$1.unstable_LowPriority = 4;
-  exports$1.unstable_NormalPriority = 3;
-  exports$1.unstable_Profiling = null;
-  exports$1.unstable_UserBlockingPriority = 2;
-  exports$1.unstable_cancelCallback = function(task) {
+  exports.unstable_IdlePriority = 5;
+  exports.unstable_ImmediatePriority = 1;
+  exports.unstable_LowPriority = 4;
+  exports.unstable_NormalPriority = 3;
+  exports.unstable_Profiling = null;
+  exports.unstable_UserBlockingPriority = 2;
+  exports.unstable_cancelCallback = function(task) {
     task.callback = null;
   };
-  exports$1.unstable_forceFrameRate = function(fps) {
+  exports.unstable_forceFrameRate = function(fps) {
     0 > fps || 125 < fps ? console.error(
       "forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported"
     ) : frameInterval = 0 < fps ? Math.floor(1e3 / fps) : 5;
   };
-  exports$1.unstable_getCurrentPriorityLevel = function() {
+  exports.unstable_getCurrentPriorityLevel = function() {
     return currentPriorityLevel;
   };
-  exports$1.unstable_next = function(eventHandler) {
+  exports.unstable_next = function(eventHandler) {
     switch (currentPriorityLevel) {
       case 1:
       case 2:
@@ -14902,10 +14918,10 @@ var scheduler_production = {};
       currentPriorityLevel = previousPriorityLevel;
     }
   };
-  exports$1.unstable_requestPaint = function() {
+  exports.unstable_requestPaint = function() {
     needsPaint = true;
   };
-  exports$1.unstable_runWithPriority = function(priorityLevel, eventHandler) {
+  exports.unstable_runWithPriority = function(priorityLevel, eventHandler) {
     switch (priorityLevel) {
       case 1:
       case 2:
@@ -14924,8 +14940,8 @@ var scheduler_production = {};
       currentPriorityLevel = previousPriorityLevel;
     }
   };
-  exports$1.unstable_scheduleCallback = function(priorityLevel, callback, options) {
-    var currentTime = exports$1.unstable_now();
+  exports.unstable_scheduleCallback = function(priorityLevel, callback, options) {
+    var currentTime = exports.unstable_now();
     "object" === typeof options && null !== options ? (options = options.delay, options = "number" === typeof options && 0 < options ? currentTime + options : currentTime) : options = currentTime;
     switch (priorityLevel) {
       case 1:
@@ -14955,8 +14971,8 @@ var scheduler_production = {};
     options > currentTime ? (priorityLevel.sortIndex = options, push2(timerQueue, priorityLevel), null === peek(taskQueue) && priorityLevel === peek(timerQueue) && (isHostTimeoutScheduled ? (localClearTimeout(taskTimeoutID), taskTimeoutID = -1) : isHostTimeoutScheduled = true, requestHostTimeout(handleTimeout, options - currentTime))) : (priorityLevel.sortIndex = timeout, push2(taskQueue, priorityLevel), isHostCallbackScheduled || isPerformingWork || (isHostCallbackScheduled = true, isMessageLoopRunning || (isMessageLoopRunning = true, schedulePerformWorkUntilDeadline())));
     return priorityLevel;
   };
-  exports$1.unstable_shouldYield = shouldYieldToHost;
-  exports$1.unstable_wrapCallback = function(callback) {
+  exports.unstable_shouldYield = shouldYieldToHost;
+  exports.unstable_wrapCallback = function(callback) {
     var parentPriorityLevel = currentPriorityLevel;
     return function() {
       var previousPriorityLevel = currentPriorityLevel;
@@ -15124,7 +15140,7 @@ reactDom_production.useFormState = function(action, initialState, permalink) {
 reactDom_production.useFormStatus = function() {
   return ReactSharedInternals$1.H.useHostTransitionStatus();
 };
-reactDom_production.version = "19.1.5";
+reactDom_production.version = "19.1.8";
 function checkDCE$1() {
   if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
     return;
@@ -15140,7 +15156,6 @@ function checkDCE$1() {
   reactDom.exports = reactDom_production;
 }
 var reactDomExports = reactDom.exports;
-const ReactDOM$2 = /* @__PURE__ */ getDefaultExportFromCjs(reactDomExports);
 /**
  * @license React
  * react-dom-client.production.js
@@ -26105,12 +26120,12 @@ ReactDOMHydrationRoot.prototype.unstable_scheduleHydration = function(target) {
   }
 };
 var isomorphicReactPackageVersion$jscomp$inline_1785 = React$2.version;
-if ("19.1.5" !== isomorphicReactPackageVersion$jscomp$inline_1785)
+if ("19.1.8" !== isomorphicReactPackageVersion$jscomp$inline_1785)
   throw Error(
     formatProdErrorMessage(
       527,
       isomorphicReactPackageVersion$jscomp$inline_1785,
-      "19.1.5"
+      "19.1.8"
     )
   );
 ReactDOMSharedInternals.findDOMNode = function(componentOrElement) {
@@ -26128,10 +26143,10 @@ ReactDOMSharedInternals.findDOMNode = function(componentOrElement) {
 };
 var internals$jscomp$inline_2256 = {
   bundleType: 0,
-  version: "19.1.5",
+  version: "19.1.8",
   rendererPackageName: "react-dom",
   currentDispatcherRef: ReactSharedInternals,
-  reconcilerVersion: "19.1.5"
+  reconcilerVersion: "19.1.8"
 };
 if ("undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__) {
   var hook$jscomp$inline_2257 = __REACT_DEVTOOLS_GLOBAL_HOOK__;
@@ -26198,7 +26213,7 @@ reactDomClient_production.hydrateRoot = function(container, initialChildren, opt
   listenToAllSupportedEvents(container);
   return new ReactDOMHydrationRoot(initialChildren);
 };
-reactDomClient_production.version = "19.1.5";
+reactDomClient_production.version = "19.1.8";
 function checkDCE() {
   if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
     return;
@@ -26431,10 +26446,10 @@ class Derived {
     this._subscriptions = [];
     this.lastSeenDepValues = [];
     this.getDepVals = () => {
-      const l = this.options.deps.length;
-      const prevDepVals = new Array(l);
-      const currDepVals = new Array(l);
-      for (let i = 0; i < l; i++) {
+      const l2 = this.options.deps.length;
+      const prevDepVals = new Array(l2);
+      const currDepVals = new Array(l2);
+      for (let i = 0; i < l2; i++) {
         const dep = this.options.deps[i];
         prevDepVals[i] = dep.prevState;
         currDepVals[i] = dep.state;
@@ -26978,25 +26993,25 @@ function replaceEqualDeep(prev, _next) {
   }
   return prevSize === nextSize && equalItems === prevSize ? prev : copy;
 }
-function getEnumerableOwnKeys(o2) {
+function getEnumerableOwnKeys(o) {
   const keys = [];
-  const names = Object.getOwnPropertyNames(o2);
+  const names = Object.getOwnPropertyNames(o);
   for (const name of names) {
-    if (!Object.prototype.propertyIsEnumerable.call(o2, name)) return false;
+    if (!Object.prototype.propertyIsEnumerable.call(o, name)) return false;
     keys.push(name);
   }
-  const symbols = Object.getOwnPropertySymbols(o2);
+  const symbols = Object.getOwnPropertySymbols(o);
   for (const symbol of symbols) {
-    if (!Object.prototype.propertyIsEnumerable.call(o2, symbol)) return false;
+    if (!Object.prototype.propertyIsEnumerable.call(o, symbol)) return false;
     keys.push(symbol);
   }
   return keys;
 }
-function isPlainObject(o2) {
-  if (!hasObjectPrototype(o2)) {
+function isPlainObject(o) {
+  if (!hasObjectPrototype(o)) {
     return false;
   }
-  const ctor = o2.constructor;
+  const ctor = o.constructor;
   if (typeof ctor === "undefined") {
     return true;
   }
@@ -27009,8 +27024,8 @@ function isPlainObject(o2) {
   }
   return true;
 }
-function hasObjectPrototype(o2) {
-  return Object.prototype.toString.call(o2) === "[object Object]";
+function hasObjectPrototype(o) {
+  return Object.prototype.toString.call(o) === "[object Object]";
 }
 function isPlainArray(value) {
   return Array.isArray(value) && value.length === Object.keys(value).length;
@@ -27024,7 +27039,7 @@ function deepEqual(a2, b2, opts) {
   }
   if (Array.isArray(a2) && Array.isArray(b2)) {
     if (a2.length !== b2.length) return false;
-    for (let i = 0, l = a2.length; i < l; i++) {
+    for (let i = 0, l2 = a2.length; i < l2; i++) {
       if (!deepEqual(a2[i], b2[i], opts)) return false;
     }
     return true;
@@ -29261,15 +29276,15 @@ class RouterCore {
         }
       }
       const pendingMatches = this.matchRoutes(this.latestLocation);
-      this.__store.setState((s2) => ({
-        ...s2,
+      this.__store.setState((s) => ({
+        ...s,
         status: "pending",
         statusCode: 200,
         isLoading: true,
         location: this.latestLocation,
         pendingMatches,
         // If a cached moved to pendingMatches, remove it from cachedMatches
-        cachedMatches: s2.cachedMatches.filter(
+        cachedMatches: s.cachedMatches.filter(
           (d2) => !pendingMatches.some((e) => e.id === d2.id)
         )
       }));
@@ -29314,9 +29329,9 @@ class RouterCore {
                   let enteringMatches;
                   let stayingMatches;
                   batch(() => {
-                    this.__store.setState((s2) => {
-                      const previousMatches = s2.matches;
-                      const newMatches = s2.pendingMatches || s2.matches;
+                    this.__store.setState((s) => {
+                      const previousMatches = s.matches;
+                      const newMatches = s.pendingMatches || s.matches;
                       exitingMatches = previousMatches.filter(
                         (match) => !newMatches.some((d2) => d2.id === match.id)
                       );
@@ -29327,13 +29342,13 @@ class RouterCore {
                         (match) => newMatches.some((d2) => d2.id === match.id)
                       );
                       return {
-                        ...s2,
+                        ...s,
                         isLoading: false,
                         loadedAt: Date.now(),
                         matches: newMatches,
                         pendingMatches: void 0,
                         cachedMatches: [
-                          ...s2.cachedMatches,
+                          ...s.cachedMatches,
                           ...exitingMatches.filter((d2) => d2.status !== "error")
                         ]
                       };
@@ -29366,9 +29381,9 @@ class RouterCore {
             } else if (isNotFound(err)) {
               notFound = err;
             }
-            this.__store.setState((s2) => ({
-              ...s2,
-              statusCode: redirect2 ? redirect2.status : notFound ? 404 : s2.matches.some((d2) => d2.status === "error") ? 500 : 200,
+            this.__store.setState((s) => ({
+              ...s,
+              statusCode: redirect2 ? redirect2.status : notFound ? 404 : s.matches.some((d2) => d2.status === "error") ? 500 : 200,
               redirect: redirect2
             }));
           }
@@ -29386,8 +29401,8 @@ class RouterCore {
         await this.latestLoadPromise;
       }
       if (this.hasNotFoundMatch()) {
-        this.__store.setState((s2) => ({
-          ...s2,
+        this.__store.setState((s) => ({
+          ...s,
           statusCode: 404
         }));
       }
@@ -29422,11 +29437,11 @@ class RouterCore {
       var _a3;
       const matchesKey = ((_a3 = this.state.pendingMatches) == null ? void 0 : _a3.some((d2) => d2.id === id)) ? "pendingMatches" : this.state.matches.some((d2) => d2.id === id) ? "matches" : this.state.cachedMatches.some((d2) => d2.id === id) ? "cachedMatches" : "";
       if (matchesKey) {
-        this.__store.setState((s2) => {
+        this.__store.setState((s) => {
           var _a22;
           return {
-            ...s2,
-            [matchesKey]: (_a22 = s2[matchesKey]) == null ? void 0 : _a22.map((d2) => d2.id === id ? updater(d2) : d2)
+            ...s,
+            [matchesKey]: (_a22 = s[matchesKey]) == null ? void 0 : _a22.map((d2) => d2.id === id ? updater(d2) : d2)
           };
         });
       }
@@ -29448,13 +29463,13 @@ class RouterCore {
         }
         return d2;
       };
-      this.__store.setState((s2) => {
+      this.__store.setState((s) => {
         var _a3;
         return {
-          ...s2,
-          matches: s2.matches.map(invalidate),
-          cachedMatches: s2.cachedMatches.map(invalidate),
-          pendingMatches: (_a3 = s2.pendingMatches) == null ? void 0 : _a3.map(invalidate)
+          ...s,
+          matches: s.matches.map(invalidate),
+          cachedMatches: s.cachedMatches.map(invalidate),
+          pendingMatches: (_a3 = s.pendingMatches) == null ? void 0 : _a3.map(invalidate)
         };
       });
       this.shouldViewTransition = false;
@@ -29473,18 +29488,18 @@ class RouterCore {
     this.clearCache = (opts) => {
       const filter = opts == null ? void 0 : opts.filter;
       if (filter !== void 0) {
-        this.__store.setState((s2) => {
+        this.__store.setState((s) => {
           return {
-            ...s2,
-            cachedMatches: s2.cachedMatches.filter(
+            ...s,
+            cachedMatches: s.cachedMatches.filter(
               (m2) => !filter(m2)
             )
           };
         });
       } else {
-        this.__store.setState((s2) => {
+        this.__store.setState((s) => {
           return {
-            ...s2,
+            ...s,
             cachedMatches: []
           };
         });
@@ -29524,9 +29539,9 @@ class RouterCore {
       batch(() => {
         matches.forEach((match) => {
           if (!loadedMatchIds.has(match.id)) {
-            this.__store.setState((s2) => ({
-              ...s2,
-              cachedMatches: [...s2.cachedMatches, match]
+            this.__store.setState((s) => ({
+              ...s,
+              cachedMatches: [...s.cachedMatches, match]
             }));
           }
         });
@@ -30458,8 +30473,8 @@ function useLoaderData(opts) {
     from: opts.from,
     strict: opts.strict,
     structuralSharing: opts.structuralSharing,
-    select: (s2) => {
-      return opts.select ? opts.select(s2.loaderData) : s2.loaderData;
+    select: (s) => {
+      return opts.select ? opts.select(s.loaderData) : s.loaderData;
     }
   });
 }
@@ -30467,8 +30482,8 @@ function useLoaderDeps(opts) {
   const { select, ...rest } = opts;
   return useMatch({
     ...rest,
-    select: (s2) => {
-      return select ? select(s2.loaderDeps) : s2.loaderDeps;
+    select: (s) => {
+      return select ? select(s.loaderDeps) : s.loaderDeps;
     }
   });
 }
@@ -30592,7 +30607,7 @@ function useLinkProps(options, forwardedRef) {
     return "internal";
   }, [to]);
   const currentSearch = useRouterState({
-    select: (s2) => s2.location.search,
+    select: (s) => s.location.search,
     structuralSharing: true
   });
   const from = options.from;
@@ -30623,11 +30638,11 @@ function useLinkProps(options, forwardedRef) {
   const preload3 = options.reloadDocument || isExternal ? false : userPreload ?? router2.options.defaultPreload;
   const preloadDelay = userPreloadDelay ?? router2.options.defaultPreloadDelay ?? 0;
   const isActive = useRouterState({
-    select: (s2) => {
+    select: (s) => {
       if (isExternal) return false;
       if (activeOptions == null ? void 0 : activeOptions.exact) {
         const testExact = exactPathTest(
-          s2.location.pathname,
+          s.location.pathname,
           next.pathname,
           router2.basepath
         );
@@ -30636,7 +30651,7 @@ function useLinkProps(options, forwardedRef) {
         }
       } else {
         const currentPathSplit = removeTrailingSlash(
-          s2.location.pathname,
+          s.location.pathname,
           router2.basepath
         );
         const nextPathSplit = removeTrailingSlash(
@@ -30649,7 +30664,7 @@ function useLinkProps(options, forwardedRef) {
         }
       }
       if ((activeOptions == null ? void 0 : activeOptions.includeSearch) ?? true) {
-        const searchTest = deepEqual(s2.location.search, next.search, {
+        const searchTest = deepEqual(s.location.search, next.search, {
           partial: !(activeOptions == null ? void 0 : activeOptions.exact),
           ignoreUndefined: !(activeOptions == null ? void 0 : activeOptions.explicitUndefined)
         });
@@ -30658,7 +30673,7 @@ function useLinkProps(options, forwardedRef) {
         }
       }
       if (activeOptions == null ? void 0 : activeOptions.includeHash) {
-        return s2.location.hash === next.hash;
+        return s.location.hash === next.hash;
       }
       return true;
     }
@@ -31026,9 +31041,9 @@ function Transitioner() {
   const mountLoadForRouter = reactExports.useRef({ router: router2, mounted: false });
   const [isTransitioning, setIsTransitioning] = reactExports.useState(false);
   const { hasPendingMatches, isLoading } = useRouterState({
-    select: (s2) => ({
-      isLoading: s2.isLoading,
-      hasPendingMatches: s2.matches.some((d2) => d2.status === "pending")
+    select: (s) => ({
+      isLoading: s.isLoading,
+      hasPendingMatches: s.matches.some((d2) => d2.status === "pending")
     }),
     structuralSharing: true
   });
@@ -31101,10 +31116,10 @@ function Transitioner() {
         type: "onResolved",
         ...getLocationChangeInfo(router2.state)
       });
-      router2.__store.setState((s2) => ({
-        ...s2,
+      router2.__store.setState((s) => ({
+        ...s,
         status: "idle",
-        resolvedLocation: s2.location
+        resolvedLocation: s.location
       }));
       handleHashScroll(router2);
     }
@@ -31113,7 +31128,7 @@ function Transitioner() {
 }
 function CatchNotFound(props) {
   const resetKey = useRouterState({
-    select: (s2) => `not-found-${s2.location.pathname}-${s2.status}`
+    select: (s) => `not-found-${s.location.pathname}-${s.status}`
   });
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     CatchBoundary,
@@ -31198,8 +31213,8 @@ const Match = reactExports.memo(function MatchImpl({
   var _a3, _b3;
   const router2 = useRouter();
   const matchState = useRouterState({
-    select: (s2) => {
-      const match = s2.matches.find((d2) => d2.id === matchId);
+    select: (s) => {
+      const match = s.matches.find((d2) => d2.id === matchId);
       invariant(
         match
       );
@@ -31228,13 +31243,13 @@ const Match = reactExports.memo(function MatchImpl({
   const ResolvedCatchBoundary = routeErrorComponent ? CatchBoundary : SafeFragment;
   const ResolvedNotFoundBoundary = routeNotFoundComponent ? CatchNotFound : SafeFragment;
   const resetKey = useRouterState({
-    select: (s2) => s2.loadedAt
+    select: (s) => s.loadedAt
   });
   const parentRouteId = useRouterState({
-    select: (s2) => {
+    select: (s) => {
       var _a22;
-      const index2 = s2.matches.findIndex((d2) => d2.id === matchId);
-      return (_a22 = s2.matches[index2 - 1]) == null ? void 0 : _a22.routeId;
+      const index2 = s.matches.findIndex((d2) => d2.id === matchId);
+      return (_a22 = s.matches[index2 - 1]) == null ? void 0 : _a22.routeId;
     }
   });
   const ShellComponent = route.isRoot ? route.options.shellComponent ?? SafeFragment : SafeFragment;
@@ -31295,8 +31310,8 @@ const MatchInner = reactExports.memo(function MatchInnerImpl({
   var _a3, _b3, _c2, _d2;
   const router2 = useRouter();
   const { match, key, routeId } = useRouterState({
-    select: (s2) => {
-      const match2 = s2.matches.find((d2) => d2.id === matchId);
+    select: (s) => {
+      const match2 = s.matches.find((d2) => d2.id === matchId);
       const routeId2 = match2.routeId;
       const remountFn = router2.routesById[routeId2].options.remountDeps ?? router2.options.defaultRemountDeps;
       const remountDeps = remountFn == null ? void 0 : remountFn({
@@ -31381,15 +31396,15 @@ const Outlet = reactExports.memo(function OutletImpl() {
   const router2 = useRouter();
   const matchId = reactExports.useContext(matchContext);
   const routeId = useRouterState({
-    select: (s2) => {
+    select: (s) => {
       var _a3;
-      return (_a3 = s2.matches.find((d2) => d2.id === matchId)) == null ? void 0 : _a3.routeId;
+      return (_a3 = s.matches.find((d2) => d2.id === matchId)) == null ? void 0 : _a3.routeId;
     }
   });
   const route = router2.routesById[routeId];
   const parentGlobalNotFound = useRouterState({
-    select: (s2) => {
-      const matches = s2.matches;
+    select: (s) => {
+      const matches = s.matches;
       const parentMatch = matches.find((d2) => d2.id === matchId);
       invariant(
         parentMatch
@@ -31398,9 +31413,9 @@ const Outlet = reactExports.memo(function OutletImpl() {
     }
   });
   const childMatchId = useRouterState({
-    select: (s2) => {
+    select: (s) => {
       var _a3;
-      const matches = s2.matches;
+      const matches = s.matches;
       const index2 = matches.findIndex((d2) => d2.id === matchId);
       return (_a3 = matches[index2 + 1]) == null ? void 0 : _a3.id;
     }
@@ -31431,13 +31446,13 @@ function Matches() {
 function MatchesInner() {
   const router2 = useRouter();
   const matchId = useRouterState({
-    select: (s2) => {
+    select: (s) => {
       var _a3;
-      return (_a3 = s2.matches[0]) == null ? void 0 : _a3.id;
+      return (_a3 = s.matches[0]) == null ? void 0 : _a3.id;
     }
   });
   const resetKey = useRouterState({
-    select: (s2) => s2.loadedAt
+    select: (s) => s.loadedAt
   });
   const matchComponent = matchId ? /* @__PURE__ */ jsxRuntimeExports.jsx(Match, { matchId }) : null;
   return /* @__PURE__ */ jsxRuntimeExports.jsx(matchContext.Provider, { value: matchId, children: router2.options.disableGlobalCatchBoundary ? matchComponent : /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -31491,64 +31506,6 @@ function RouterContextProvider({
 }
 function RouterProvider({ router: router2, ...rest }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(RouterContextProvider, { router: router2, ...rest, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Matches, {}) });
-}
-const footerLinks = [
-  { label: "Portfolio", path: "/portfolio" },
-  { label: "About Us", path: "/about" },
-  { label: "Board", path: "/board" },
-  { label: "Careers", path: "/jobs" },
-  { label: "Contact", path: "/contact" }
-];
-function Footer() {
-  const year = (/* @__PURE__ */ new Date()).getFullYear();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("footer", { className: "bg-primary text-primary-foreground", "data-ocid": "footer", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6 py-16", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-12", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "img",
-            {
-              src: "/assets/images/rths-logo.jpeg",
-              alt: "RTHS",
-              className: "w-8 h-8 rounded-sm object-cover"
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display text-lg tracking-wide text-primary-foreground", children: "Royal Treasure Holding'S" })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-primary-foreground/60 leading-relaxed max-w-xs", children: "Building enduring value through disciplined investment and operational excellence." })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xs font-semibold tracking-widest uppercase text-primary-foreground/40 mb-5", children: "Navigation" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "space-y-3", children: footerLinks.map((link) => /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Link,
-          {
-            to: link.path,
-            className: "text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200",
-            children: link.label
-          }
-        ) }, link.path)) })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xs font-semibold tracking-widest uppercase text-primary-foreground/40 mb-5", children: "Contact" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2 text-sm text-primary-foreground/70", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Mumbai, Maharashtra, India" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "pt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "a",
-            {
-              href: "mailto:info@royaltreasureholdings.com",
-              className: "hover:text-primary-foreground transition-colors duration-200",
-              children: "info@royaltreasureholdings.com"
-            }
-          ) })
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-12 pt-8 border-t border-primary-foreground/10", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-primary-foreground/40", children: [
-      "© ",
-      year,
-      " Royal Treasure Holding'S. All rights reserved."
-    ] }) })
-  ] }) });
 }
 /**
  * @license lucide-react v0.511.0 - ISC
@@ -31655,6 +31612,24 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
+const __iconNode$2 = [
+  [
+    "path",
+    {
+      d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z",
+      key: "c2jq9f"
+    }
+  ],
+  ["rect", { width: "4", height: "12", x: "2", y: "9", key: "mk3on5" }],
+  ["circle", { cx: "4", cy: "4", r: "2", key: "bt5ra8" }]
+];
+const Linkedin = createLucideIcon("linkedin", __iconNode$2);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
 const __iconNode$1 = [
   ["path", { d: "M4 12h16", key: "1lakjw" }],
   ["path", { d: "M4 18h16", key: "19g7jn" }],
@@ -31672,6 +31647,202 @@ const __iconNode = [
   ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
 ];
 const X = createLucideIcon("x", __iconNode);
+var DefaultContext = {
+  color: void 0,
+  size: void 0,
+  className: void 0,
+  style: void 0,
+  attr: void 0
+};
+var IconContext = React$4.createContext && /* @__PURE__ */ React$4.createContext(DefaultContext);
+var _excluded = ["attr", "size", "title"];
+function _objectWithoutProperties(e, t) {
+  if (null == e) return {};
+  var o, r2, i = _objectWithoutPropertiesLoose(e, t);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e);
+    for (r2 = 0; r2 < n.length; r2++) o = n[r2], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]);
+  }
+  return i;
+}
+function _objectWithoutPropertiesLoose(r2, e) {
+  if (null == r2) return {};
+  var t = {};
+  for (var n in r2) if ({}.hasOwnProperty.call(r2, n)) {
+    if (-1 !== e.indexOf(n)) continue;
+    t[n] = r2[n];
+  }
+  return t;
+}
+function _extends() {
+  return _extends = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r2 in t) ({}).hasOwnProperty.call(t, r2) && (n[r2] = t[r2]);
+    }
+    return n;
+  }, _extends.apply(null, arguments);
+}
+function ownKeys(e, r2) {
+  var t = Object.keys(e);
+  if (Object.getOwnPropertySymbols) {
+    var o = Object.getOwnPropertySymbols(e);
+    r2 && (o = o.filter(function(r3) {
+      return Object.getOwnPropertyDescriptor(e, r3).enumerable;
+    })), t.push.apply(t, o);
+  }
+  return t;
+}
+function _objectSpread(e) {
+  for (var r2 = 1; r2 < arguments.length; r2++) {
+    var t = null != arguments[r2] ? arguments[r2] : {};
+    r2 % 2 ? ownKeys(Object(t), true).forEach(function(r3) {
+      _defineProperty(e, r3, t[r3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r3) {
+      Object.defineProperty(e, r3, Object.getOwnPropertyDescriptor(t, r3));
+    });
+  }
+  return e;
+}
+function _defineProperty(e, r2, t) {
+  return (r2 = _toPropertyKey(r2)) in e ? Object.defineProperty(e, r2, { value: t, enumerable: true, configurable: true, writable: true }) : e[r2] = t, e;
+}
+function _toPropertyKey(t) {
+  var i = _toPrimitive(t, "string");
+  return "symbol" == typeof i ? i : i + "";
+}
+function _toPrimitive(t, r2) {
+  if ("object" != typeof t || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r2);
+    if ("object" != typeof i) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return ("string" === r2 ? String : Number)(t);
+}
+function Tree2Element(tree) {
+  return tree && tree.map((node, i) => /* @__PURE__ */ React$4.createElement(node.tag, _objectSpread({
+    key: i
+  }, node.attr), Tree2Element(node.child)));
+}
+function GenIcon(data) {
+  return (props) => /* @__PURE__ */ React$4.createElement(IconBase, _extends({
+    attr: _objectSpread({}, data.attr)
+  }, props), Tree2Element(data.child));
+}
+function IconBase(props) {
+  var elem = (conf) => {
+    var attr = props.attr, size = props.size, title = props.title, svgProps = _objectWithoutProperties(props, _excluded);
+    var computedSize = size || conf.size || "1em";
+    var className;
+    if (conf.className) className = conf.className;
+    if (props.className) className = (className ? className + " " : "") + props.className;
+    return /* @__PURE__ */ React$4.createElement("svg", _extends({
+      stroke: "currentColor",
+      fill: "currentColor",
+      strokeWidth: "0"
+    }, conf.attr, attr, svgProps, {
+      className,
+      style: _objectSpread(_objectSpread({
+        color: props.color || conf.color
+      }, conf.style), props.style),
+      height: computedSize,
+      width: computedSize,
+      xmlns: "http://www.w3.org/2000/svg"
+    }), title && /* @__PURE__ */ React$4.createElement("title", null, title), props.children);
+  };
+  return IconContext !== void 0 ? /* @__PURE__ */ React$4.createElement(IconContext.Consumer, null, (conf) => elem(conf)) : elem(DefaultContext);
+}
+function SiX(props) {
+  return GenIcon({ "attr": { "role": "img", "viewBox": "0 0 24 24" }, "child": [{ "tag": "path", "attr": { "d": "M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" }, "child": [] }] })(props);
+}
+const footerLinks = [
+  { label: "Portfolio", path: "/portfolio" },
+  { label: "About Us", path: "/about" },
+  { label: "Board", path: "/board" },
+  { label: "Careers", path: "/jobs" },
+  { label: "Contact", path: "/contact" }
+];
+function Footer() {
+  const year = (/* @__PURE__ */ new Date()).getFullYear();
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("footer", { className: "bg-primary text-primary-foreground", "data-ocid": "footer", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6 py-16", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-12", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "img",
+            {
+              src: "/assets/images/rths-logo.jpeg",
+              alt: "RTHS",
+              className: "w-8 h-8 rounded-sm object-cover"
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display text-lg tracking-wide text-primary-foreground", children: "Royal Treasure Holding'S" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-primary-foreground/60 leading-relaxed max-w-xs", children: "Building enduring value through disciplined investment and operational excellence." })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xs font-semibold tracking-widest uppercase text-primary-foreground/40 mb-5", children: "Navigation" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "space-y-3", children: footerLinks.map((link) => /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Link,
+          {
+            to: link.path,
+            className: "text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200",
+            children: link.label
+          }
+        ) }, link.path)) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xs font-semibold tracking-widest uppercase text-primary-foreground/40 mb-5", children: "Contact" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2 text-sm text-primary-foreground/70", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Mumbai, Maharashtra, India" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "pt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "a",
+            {
+              href: "mailto:info@rths.in",
+              className: "hover:text-primary-foreground transition-colors duration-200",
+              children: "info@rths.in"
+            }
+          ) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "pt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "a",
+            {
+              href: "https://www.linkedin.com/company/rths-pvt-ltd/",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              "aria-label": "Visit RTHS on LinkedIn",
+              className: "inline-flex items-center gap-2 hover:text-primary-foreground transition-colors duration-200",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Linkedin, { size: 16 }),
+                "LinkedIn"
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "pt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "a",
+            {
+              href: "http://x.com/rthsofficial",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              "aria-label": "Visit RTHS on X",
+              className: "inline-flex items-center gap-2 hover:text-primary-foreground transition-colors duration-200",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(SiX, { size: 16 }),
+                "X"
+              ]
+            }
+          ) })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-12 pt-8 border-t border-primary-foreground/10", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-primary-foreground/40", children: [
+      "© ",
+      year,
+      " Royal Treasure Holding'S. All rights reserved."
+    ] }) })
+  ] }) });
+}
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "Portfolio", path: "/portfolio" },
@@ -31814,25 +31985,25 @@ function NotFound() {
   ) });
 }
 const Home = reactExports.lazy(
-  () => __vitePreload(() => import("./Home-B90F-4er.js"), true ? __vite__mapDeps([0,1,2,3,4,5,6,7,8]) : void 0).then((m2) => ({ default: m2.Home }))
+  () => __vitePreload(() => import("./Home-DVhlbOnu.js"), true ? __vite__mapDeps([0,1,2,3,4,5,6,7,8]) : void 0).then((m2) => ({ default: m2.Home }))
 );
 const Portfolio = reactExports.lazy(
-  () => __vitePreload(() => import("./Portfolio-C2Wm3R3J.js"), true ? __vite__mapDeps([9,1,2,3,10,4,6,11,5]) : void 0).then((m2) => ({ default: m2.Portfolio }))
+  () => __vitePreload(() => import("./Portfolio-CZ5Vq8cO.js"), true ? __vite__mapDeps([9,1,2,3,10,4,6,11,5]) : void 0).then((m2) => ({ default: m2.Portfolio }))
 );
 const BrandDetail = reactExports.lazy(
-  () => __vitePreload(() => import("./BrandDetail-BxvuX6t5.js"), true ? __vite__mapDeps([12,1,2,3,13,4,8,11]) : void 0).then((m2) => ({ default: m2.BrandDetail }))
+  () => __vitePreload(() => import("./BrandDetail-BGJwRNaL.js"), true ? __vite__mapDeps([12,1,2,3,13,4,8,11]) : void 0).then((m2) => ({ default: m2.BrandDetail }))
 );
 const Board = reactExports.lazy(
-  () => __vitePreload(() => import("./Board-D85MKz-D.js"), true ? __vite__mapDeps([14,1,2,3,4]) : void 0).then((m2) => ({ default: m2.Board }))
+  () => __vitePreload(() => import("./Board-CkOz2sGN.js"), true ? __vite__mapDeps([14,1,2,3,4]) : void 0).then((m2) => ({ default: m2.Board }))
 );
 const About = reactExports.lazy(
-  () => __vitePreload(() => import("./About-Di1vCa7m.js"), true ? __vite__mapDeps([15,4,3,7,6]) : void 0).then((m2) => ({ default: m2.About }))
+  () => __vitePreload(() => import("./About-BHDu5meB.js"), true ? __vite__mapDeps([15,4,3,7,6]) : void 0).then((m2) => ({ default: m2.About }))
 );
 const Contact = reactExports.lazy(
-  () => __vitePreload(() => import("./Contact-CbRlzl5q.js"), true ? __vite__mapDeps([16,13,2,3,10,17]) : void 0).then((m2) => ({ default: m2.Contact }))
+  () => __vitePreload(() => import("./Contact-Dah8_SVK.js"), true ? __vite__mapDeps([16,13,2,3,10,17]) : void 0).then((m2) => ({ default: m2.Contact }))
 );
 const Jobs = reactExports.lazy(
-  () => __vitePreload(() => import("./Jobs-DGIF0t2Z.js"), true ? __vite__mapDeps([18,1,2,3,13,10,17,4,11]) : void 0).then((m2) => ({ default: m2.Jobs }))
+  () => __vitePreload(() => import("./Jobs-CbIFyniw.js"), true ? __vite__mapDeps([18,1,2,3,13,10,17,4,11]) : void 0).then((m2) => ({ default: m2.Jobs }))
 );
 function PageLoader() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Layout, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center min-h-[60vh]", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" }) }) });
@@ -31904,7 +32075,7 @@ export {
   decode$2 as A,
   pendingThenable as B,
   Certificate as C,
-  resolveEnabled as D,
+  resolveQueryBoolean as D,
   ExternalError as E,
   shallowEqualObjects as F,
   resolveStaleTime as G,
@@ -31936,18 +32107,19 @@ export {
   createActorWithConfig as a4,
   Record as a5,
   Variant as a6,
-  Service as a7,
-  Func as a8,
-  Opt as a9,
-  Vec as aa,
+  Vec as a7,
+  Service as a8,
+  Func as a9,
+  Opt as aa,
   Nat as ab,
   Text as ac,
   Bool as ad,
   Null as ae,
-  Int as af,
-  reactDomExports as b,
+  Float64 as af,
+  Int as ag,
+  Linkedin as b,
   createLucideIcon as c,
-  ReactDOM$2 as d,
+  reactDomExports as d,
   React$4 as e,
   utf8ToBytes as f,
   RequestStatusResponseStatus as g,

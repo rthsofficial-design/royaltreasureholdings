@@ -19,7 +19,7 @@ const CONTACT_DETAILS = [
   {
     icon: Mail,
     label: "Email",
-    lines: ["info@royaltreasurehgs.com"],
+    lines: ["info@rths.in"],
   },
 ] as const;
 
@@ -310,7 +310,7 @@ export function Contact() {
                           <AlertCircle className="w-4 h-4 shrink-0" />
                           <span>
                             Something went wrong. Please try again or contact us
-                            directly at&nbsp;info@royaltreasurehgs.com.
+                            directly at&nbsp;info@rths.in.
                           </span>
                         </div>
                       )}

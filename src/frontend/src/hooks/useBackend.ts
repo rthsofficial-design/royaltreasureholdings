@@ -256,9 +256,9 @@ export function useFirmInfo() {
     queryFn: async () => {
       if (!actor) {
         return {
-          heroHeadline: "Building Enduring Value",
+          heroHeadline: "RTHS is the leading multi-sector conglomerate",
           heroCopy:
-            "We partner with exceptional management teams to build transformative companies.",
+            "Royal Treasure Holding's is a premier multi-sector conglomerate managing an elite portfolio of over 10 prestigious brands across fashion, finance, software, and retail",
           missionStatement:
             "Our mission is to create lasting value through disciplined investment and operational excellence.",
           investmentStrategy:
@@ -266,7 +266,6 @@ export function useFirmInfo() {
           statsJson: JSON.stringify([
             { label: "Assets Under Management", value: "$4.2B" },
             { label: "Portfolio Companies", value: "10+" },
-            { label: "Years of Excellence", value: "5yrs+" },
             { label: "Realized Returns", value: "3.2x" },
           ]),
         };

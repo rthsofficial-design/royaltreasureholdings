@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { Linkedin } from "lucide-react";
+import { SiX } from "react-icons/si";
 
 const footerLinks = [
   { label: "Portfolio", path: "/portfolio" },
@@ -61,10 +63,33 @@ export function Footer() {
               <p>Mumbai, Maharashtra, India</p>
               <p className="pt-2">
                 <a
-                  href="mailto:info@royaltreasureholdings.com"
+                  href="mailto:info@rths.in"
                   className="hover:text-primary-foreground transition-colors duration-200"
                 >
-                  info@royaltreasureholdings.com
+                  info@rths.in
+                </a>
+              </p>
+              <p className="pt-2">
+                <a
+                  href="https://www.linkedin.com/company/rths-pvt-ltd/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit RTHS on LinkedIn"
+                  className="inline-flex items-center gap-2 hover:text-primary-foreground transition-colors duration-200"
+                >
+                  <Linkedin size={16} />
+                  LinkedIn
+                </a>
+              </p>
+              <p className="pt-2">
+                <a
+                  href="http://x.com/rthsofficial"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit RTHS on X"
+                  className="inline-flex items-center gap-2 hover:text-primary-foreground transition-colors duration-200"
+                >
+                  <SiX size={16} />X
                 </a>
               </p>
             </div>

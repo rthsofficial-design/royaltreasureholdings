@@ -1,6 +1,6 @@
-import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, e as React } from "./index-DFKZK4DM.js";
-import { M as MotionConfigContext, i as isHTMLElement$1, h as useConstant, P as PresenceContext, j as usePresence, k as useIsomorphicLayoutEffect$1, L as LayoutGroupContext, c as cn } from "./useBackend-Bav98165.js";
-import { P as Primitive } from "./index-CH509zmm.js";
+import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, e as React } from "./index-DRDYWm4B.js";
+import { M as MotionConfigContext, i as isHTMLElement$1, h as useConstant, j as useIsomorphicLayoutEffect$1, P as PresenceContext, k as usePresence, L as LayoutGroupContext, c as cn } from "./useBackend-BYFZNTKf.js";
+import { P as Primitive } from "./index-C9Ppkm3t.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -78,6 +78,7 @@ class PopChildMeasure extends reactExports.Component {
       size.left = element.offsetLeft;
       size.right = parentWidth - size.width - size.left;
       size.bottom = parentHeight - size.height - size.top;
+      size.direction = computedStyle.direction;
     }
     return null;
   }
@@ -100,16 +101,18 @@ function PopChild({ children, isPresent, anchorX, anchorY, root, pop }) {
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0
+    bottom: 0,
+    direction: "ltr"
   });
   const { nonce } = reactExports.useContext(MotionConfigContext);
   const childRef = ((_a = children.props) == null ? void 0 : _a.ref) ?? (children == null ? void 0 : children.ref);
   const composedRef = useComposedRefs(ref, childRef);
   reactExports.useInsertionEffect(() => {
-    const { width, height, top, left, right, bottom } = size.current;
+    const { width, height, top, left, right, bottom, direction } = size.current;
     if (isPresent || pop === false || !ref.current || !width || !height)
       return;
-    const x = anchorX === "left" ? `left: ${left}` : `right: ${right}`;
+    const isRTL = direction === "rtl";
+    const x = anchorX === "left" ? isRTL ? `right: ${right}` : `left: ${left}` : isRTL ? `left: ${left}` : `right: ${right}`;
     const y = anchorY === "bottom" ? `bottom: ${bottom}` : `top: ${top}`;
     ref.current.dataset.motionPopId = id;
     const style = document.createElement("style");
@@ -141,6 +144,12 @@ function PopChild({ children, isPresent, anchorX, anchorY, root, pop }) {
 const PresenceChild = ({ children, initial, isPresent, onExitComplete, custom, presenceAffectsLayout, mode, anchorX, anchorY, root }) => {
   const presenceChildren = useConstant(newChildrenMap);
   const id = reactExports.useId();
+  const isPresentRef = reactExports.useRef(isPresent);
+  const onExitCompleteRef = reactExports.useRef(onExitComplete);
+  useIsomorphicLayoutEffect$1(() => {
+    isPresentRef.current = isPresent;
+    onExitCompleteRef.current = onExitComplete;
+  });
   let isReusedContext = true;
   let context = reactExports.useMemo(() => {
     isReusedContext = false;
@@ -159,7 +168,11 @@ const PresenceChild = ({ children, initial, isPresent, onExitComplete, custom, p
       },
       register: (childId) => {
         presenceChildren.set(childId, false);
-        return () => presenceChildren.delete(childId);
+        return () => {
+          var _a;
+          presenceChildren.delete(childId);
+          !isPresentRef.current && !presenceChildren.size && ((_a = onExitCompleteRef.current) == null ? void 0 : _a.call(onExitCompleteRef));
+        };
       }
     };
   }, [isPresent, presenceChildren, onExitComplete]);
@@ -313,8 +326,7 @@ var isNullOrUndefined = (value) => value == null;
 const isObjectType = (value) => typeof value === "object";
 var isObject = (value) => !isNullOrUndefined(value) && !Array.isArray(value) && isObjectType(value) && !isDateObject(value);
 var getEventValue = (event) => isObject(event) && event.target ? isCheckBoxInput(event.target) ? event.target.checked : event.target.value : event;
-var getNodeParentName = (name) => name.substring(0, name.search(/\.\d+(\.|$)/)) || name;
-var isNameInFieldArray = (names, name) => names.has(getNodeParentName(name));
+var isNameInFieldArray = (names, name) => name.split(".").some((part, index, arr) => !isNaN(Number(part)) && names.has(arr.slice(0, index).join(".")));
 var isPlainObject = (tempObject) => {
   const prototypeCopy = tempObject.constructor && tempObject.constructor.prototype;
   return isObject(prototypeCopy) && prototypeCopy.hasOwnProperty("isPrototypeOf");
@@ -340,38 +352,6 @@ function cloneObject(data) {
   }
   return copy;
 }
-var isKey = (value) => /^\w*$/.test(value);
-var isUndefined = (val) => val === void 0;
-var compact = (value) => Array.isArray(value) ? value.filter(Boolean) : [];
-var stringToPath = (input) => compact(input.replace(/["|']|\]/g, "").split(/\.|\[/));
-var get = (object, path, defaultValue) => {
-  if (!path || !isObject(object)) {
-    return defaultValue;
-  }
-  const result = (isKey(path) ? [path] : stringToPath(path)).reduce((result2, key) => isNullOrUndefined(result2) ? result2 : result2[key], object);
-  return isUndefined(result) || result === object ? isUndefined(object[path]) ? defaultValue : object[path] : result;
-};
-var isBoolean = (value) => typeof value === "boolean";
-var isFunction = (value) => typeof value === "function";
-var set = (object, path, value) => {
-  let index = -1;
-  const tempPath = isKey(path) ? [path] : stringToPath(path);
-  const length = tempPath.length;
-  const lastIndex = length - 1;
-  while (++index < length) {
-    const key = tempPath[index];
-    let newValue = value;
-    if (index !== lastIndex) {
-      const objValue = object[key];
-      newValue = isObject(objValue) || Array.isArray(objValue) ? objValue : !isNaN(+tempPath[index + 1]) ? [] : {};
-    }
-    if (key === "__proto__" || key === "constructor" || key === "prototype") {
-      return;
-    }
-    object[key] = newValue;
-    object = object[key];
-  }
-};
 const EVENTS = {
   BLUR: "blur",
   FOCUS_OUT: "focusout",
@@ -395,14 +375,51 @@ const INPUT_VALIDATION_RULES = {
   required: "required",
   validate: "validate"
 };
-const FORM_ERROR_TYPE = "form";
 const ROOT_ERROR_TYPE = "root";
+const PROTOTYPE_KEYWORDS = ["__proto__", "constructor", "prototype"];
+const IS_KEY_RE = /^\w*$/;
+var isKey = (value) => IS_KEY_RE.test(value);
+var isUndefined = (val) => val === void 0;
+const FIELD_PATH_RE = /[.[\]'"]/;
+var stringToPath = (input) => input.split(FIELD_PATH_RE).filter(Boolean);
+var get = (object, path, defaultValue) => {
+  if (!path || !isObject(object)) {
+    return defaultValue;
+  }
+  const paths = isKey(path) ? [path] : stringToPath(path);
+  if (paths.some((key) => PROTOTYPE_KEYWORDS.includes(key))) {
+    return defaultValue;
+  }
+  const result = paths.reduce((result2, key) => {
+    return isNullOrUndefined(result2) ? void 0 : result2[key];
+  }, object);
+  return isUndefined(result) || result === object ? isUndefined(object[path]) ? defaultValue : object[path] : result;
+};
+var isBoolean = (value) => typeof value === "boolean";
+var isFunction = (value) => typeof value === "function";
+var set = (object, path, value) => {
+  let index = -1;
+  const tempPath = isKey(path) ? [path] : stringToPath(path);
+  const length = tempPath.length;
+  const lastIndex = length - 1;
+  while (++index < length) {
+    const key = tempPath[index];
+    let newValue = value;
+    if (index !== lastIndex) {
+      const objValue = object[key];
+      newValue = isObject(objValue) || Array.isArray(objValue) ? objValue : !isNaN(+tempPath[index + 1]) ? [] : {};
+    }
+    if (PROTOTYPE_KEYWORDS.includes(key)) {
+      return;
+    }
+    object[key] = newValue;
+    object = object[key];
+  }
+};
 const HookFormControlContext = React.createContext(null);
 HookFormControlContext.displayName = "HookFormControlContext";
 var getProxyFormState = (formState, control, localProxyFormState, isRoot = true) => {
-  const result = {
-    defaultValues: control._defaultValues
-  };
+  const result = {};
   for (const key in formState) {
     Object.defineProperty(result, key, {
       get: () => {
@@ -416,7 +433,7 @@ var getProxyFormState = (formState, control, localProxyFormState, isRoot = true)
   }
   return result;
 };
-const useIsomorphicLayoutEffect = typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
+const useIsomorphicLayoutEffect = isWeb ? React.useLayoutEffect : React.useEffect;
 var isString = (value) => typeof value === "string";
 var generateWatchOutput = (names, _names, formValues, isGlobal, defaultValue) => {
   if (isString(names)) {
@@ -430,7 +447,11 @@ var generateWatchOutput = (names, _names, formValues, isGlobal, defaultValue) =>
   return formValues;
 };
 var isPrimitive = (value) => isNullOrUndefined(value) || !isObjectType(value);
-function deepEqual(object1, object2, _internal_visited = /* @__PURE__ */ new WeakSet()) {
+const isEmptyObjectWithCustomPrototype = (object, keys) => keys.length === 0 && !Array.isArray(object) && !isPlainObject(object);
+function deepEqual(object1, object2, visited = /* @__PURE__ */ new WeakMap()) {
+  if (object1 === object2) {
+    return true;
+  }
   if (isPrimitive(object1) || isPrimitive(object2)) {
     return Object.is(object1, object2);
   }
@@ -442,25 +463,51 @@ function deepEqual(object1, object2, _internal_visited = /* @__PURE__ */ new Wea
   if (keys1.length !== keys2.length) {
     return false;
   }
-  if (_internal_visited.has(object1) || _internal_visited.has(object2)) {
+  if (isEmptyObjectWithCustomPrototype(object1, keys1) || isEmptyObjectWithCustomPrototype(object2, keys2)) {
+    return Object.is(object1, object2);
+  }
+  if (!keys1.length && Array.isArray(object1) !== Array.isArray(object2)) {
+    return false;
+  }
+  const visitedPairs = visited.get(object1);
+  if (visitedPairs && visitedPairs.has(object2)) {
     return true;
   }
-  _internal_visited.add(object1);
-  _internal_visited.add(object2);
+  if (visitedPairs) {
+    visitedPairs.add(object2);
+  } else {
+    const ws = /* @__PURE__ */ new WeakSet();
+    ws.add(object2);
+    visited.set(object1, ws);
+  }
   for (const key of keys1) {
     const val1 = object1[key];
-    if (!keys2.includes(key)) {
+    if (!(key in object2)) {
       return false;
     }
     if (key !== "ref") {
       const val2 = object2[key];
-      if (isDateObject(val1) && isDateObject(val2) || isObject(val1) && isObject(val2) || Array.isArray(val1) && Array.isArray(val2) ? !deepEqual(val1, val2, _internal_visited) : !Object.is(val1, val2)) {
+      if (isDateObject(val1) && isDateObject(val2) || (isObject(val1) || Array.isArray(val1)) && (isObject(val2) || Array.isArray(val2)) ? !deepEqual(val1, val2, visited) : !Object.is(val1, val2)) {
         return false;
       }
     }
   }
   return true;
 }
+const flatten = (obj) => {
+  const output = {};
+  for (const key of Object.keys(obj)) {
+    if (isObjectType(obj[key]) && obj[key] !== null && !isDateObject(obj[key])) {
+      const nested = flatten(obj[key]);
+      for (const nestedKey of Object.keys(nested)) {
+        output[`${key}.${nestedKey}`] = nested[nestedKey];
+      }
+    } else {
+      output[key] = obj[key];
+    }
+  }
+  return output;
+};
 const HookFormContext = React.createContext(null);
 HookFormContext.displayName = "HookFormContext";
 var appendErrors = (name, validateAllFieldCriteria, errors, type, message) => validateAllFieldCriteria ? {
@@ -470,6 +517,7 @@ var appendErrors = (name, validateAllFieldCriteria, errors, type, message) => va
     [type]: message || true
   }
 } : {};
+var compact = (value) => Array.isArray(value) ? value.filter(Boolean) : [];
 var convertToArrayPayload = (value) => Array.isArray(value) ? value : [value];
 var createSubject = () => {
   let _observers = [];
@@ -533,7 +581,12 @@ function baseGet(object, updatePath) {
   const length = updatePath.slice(0, -1).length;
   let index = 0;
   while (index < length) {
-    object = isUndefined(object) ? index++ : object[updatePath[index++]];
+    if (isNullOrUndefined(object)) {
+      object = void 0;
+      break;
+    }
+    object = object[updatePath[index]];
+    index++;
   }
   return object;
 }
@@ -546,7 +599,14 @@ function isEmptyArray(obj) {
   return true;
 }
 function unset(object, path) {
+  if (isString(path) && Object.prototype.hasOwnProperty.call(object, path)) {
+    delete object[path];
+    return object;
+  }
   const paths = Array.isArray(path) ? path : isKey(path) ? [path] : stringToPath(path);
+  if (paths.some((segment) => PROTOTYPE_KEYWORDS.includes(String(segment)))) {
+    return object;
+  }
   const childObject = paths.length === 1 ? object : baseGet(object, paths);
   const index = paths.length - 1;
   const key = paths[index];
@@ -581,6 +641,29 @@ function markFieldsDirty(data, fields = {}) {
   }
   return fields;
 }
+function pruneDirtyFields(value) {
+  if (value === false) {
+    return void 0;
+  }
+  if (value === true) {
+    return true;
+  }
+  if (Array.isArray(value)) {
+    const result = value.map((value2) => pruneDirtyFields(value2));
+    return result.some((value2) => value2 !== void 0) ? result : void 0;
+  }
+  if (isObject(value)) {
+    const result = {};
+    for (const key in value) {
+      const pruned = pruneDirtyFields(value[key]);
+      if (!isUndefined(pruned)) {
+        result[key] = pruned;
+      }
+    }
+    return Object.keys(result).length ? result : void 0;
+  }
+  return void 0;
+}
 function getDirtyFields(data, formValues, dirtyFieldsFromValues) {
   if (!dirtyFieldsFromValues) {
     dirtyFieldsFromValues = markFieldsDirty(formValues);
@@ -598,7 +681,7 @@ function getDirtyFields(data, formValues, dirtyFieldsFromValues) {
       dirtyFieldsFromValues[key] = !deepEqual(value, formValue);
     }
   }
-  return dirtyFieldsFromValues;
+  return pruneDirtyFields(dirtyFieldsFromValues) || {};
 }
 const defaultResult = {
   value: false,
@@ -666,9 +749,33 @@ var getValidationModes = (mode) => ({
   isOnTouch: mode === VALIDATION_MODE.onTouched
 });
 const ASYNC_FUNCTION = "AsyncFunction";
-var hasPromiseValidation = (fieldReference) => !!fieldReference && !!fieldReference.validate && !!(isFunction(fieldReference.validate) && fieldReference.validate.constructor.name === ASYNC_FUNCTION || isObject(fieldReference.validate) && Object.values(fieldReference.validate).find((validateFunction) => validateFunction.constructor.name === ASYNC_FUNCTION));
+var hasPromiseValidation = (fieldReference) => {
+  if (!fieldReference || !fieldReference.validate)
+    return false;
+  if (isFunction(fieldReference.validate)) {
+    return fieldReference.validate.constructor.name === ASYNC_FUNCTION;
+  }
+  if (isObject(fieldReference.validate)) {
+    for (const key in fieldReference.validate) {
+      if (fieldReference.validate[key].constructor.name === ASYNC_FUNCTION) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
 var hasValidation = (options) => options.mount && (options.required || options.min || options.max || options.maxLength || options.minLength || options.pattern || options.validate);
-var isWatched = (name, _names, isBlurEvent) => !isBlurEvent && (_names.watchAll || _names.watch.has(name) || [..._names.watch].some((watchName) => name.startsWith(watchName) && /^\.\w+/.test(name.slice(watchName.length))));
+var isWatched = (name, _names, isBlurEvent) => {
+  if (isBlurEvent)
+    return false;
+  if (_names.watchAll || _names.watch.has(name))
+    return true;
+  for (const watchName of _names.watch) {
+    if (name.startsWith(watchName) && name.charAt(watchName.length) === ".")
+      return true;
+  }
+  return false;
+};
 const iterateFieldsByAction = (fields, action, fieldsNames, abortEarly) => {
   for (const key of fieldsNames || Object.keys(fields)) {
     const field = get(fields, key);
@@ -730,9 +837,10 @@ function schemaErrorLookup(errors, _fields, name) {
 var shouldRenderFormState = (formStateData, _proxyFormState, updateFormState, isRoot) => {
   updateFormState(formStateData);
   const { name, ...formState } = formStateData;
-  return isEmptyObject(formState) || Object.keys(formState).length >= Object.keys(_proxyFormState).length || Object.keys(formState).find((key) => _proxyFormState[key] === (!isRoot || VALIDATION_MODE.all));
+  const keys = Object.keys(formState);
+  return !keys.length || isRoot && keys.length >= Object.keys(_proxyFormState).length || keys.find((key) => _proxyFormState[key] === (!isRoot || VALIDATION_MODE.all));
 };
-var shouldSubscribeByName = (name, signalName, exact) => !name || !signalName || name === signalName || convertToArrayPayload(name).some((currentName) => currentName && (exact ? currentName === signalName : currentName.startsWith(signalName) || signalName.startsWith(currentName)));
+var shouldSubscribeByName = (name, signalName, exact) => !name || !signalName || name === signalName || convertToArrayPayload(name).some((currentName) => currentName && (exact ? currentName === signalName || currentName.startsWith(signalName + ".") : currentName.startsWith(signalName) || signalName.startsWith(currentName)));
 var skipValidation = (isBlurEvent, isTouched, isSubmitted, reValidateMode, mode) => {
   if (mode.isOnAll) {
     return false;
@@ -747,7 +855,8 @@ var skipValidation = (isBlurEvent, isTouched, isSubmitted, reValidateMode, mode)
 };
 var unsetEmptyArray = (ref, name) => !compact(get(ref, name)).length && unset(ref, name);
 var updateFieldArrayRootError = (errors, error, name) => {
-  const fieldArrayErrors = convertToArrayPayload(get(errors, name));
+  const existingErrors = get(errors, name);
+  const fieldArrayErrors = Array.isArray(existingErrors) ? existingErrors : [];
   set(fieldArrayErrors, ROOT_ERROR_TYPE, error[name]);
   set(errors, name, fieldArrayErrors);
   return errors;
@@ -774,7 +883,12 @@ var validateField = async (field, disabledFieldNames, formValues, validateAllFie
   const inputRef = refs ? refs[0] : ref;
   const setCustomValidity = (message) => {
     if (shouldUseNativeValidation && inputRef.reportValidity) {
-      inputRef.setCustomValidity(isBoolean(message) ? "" : message || "");
+      const validityMessage = isBoolean(message) ? "" : message || "";
+      if (refs) {
+        refs.forEach((ref2) => ref2.setCustomValidity(validityMessage));
+      } else {
+        inputRef.setCustomValidity(validityMessage);
+      }
       inputRef.reportValidity();
     }
   };
@@ -920,24 +1034,28 @@ const defaultOptions = {
   reValidateMode: VALIDATION_MODE.onChange,
   shouldFocusError: true
 };
+const FORM_ERROR_TYPE = "form";
+const DEFAULT_FORM_STATE = {
+  submitCount: 0,
+  isDirty: false,
+  isReady: false,
+  isValidating: false,
+  isSubmitted: false,
+  isSubmitting: false,
+  isSubmitSuccessful: false,
+  isValid: false,
+  touchedFields: {},
+  dirtyFields: {},
+  validatingFields: {}
+};
 function createFormControl(props = {}) {
   let _options = {
     ...defaultOptions,
     ...props
   };
   let _formState = {
-    submitCount: 0,
-    isDirty: false,
-    isReady: false,
+    ...cloneObject(DEFAULT_FORM_STATE),
     isLoading: isFunction(_options.defaultValues),
-    isValidating: false,
-    isSubmitted: false,
-    isSubmitting: false,
-    isSubmitSuccessful: false,
-    isValid: false,
-    touchedFields: {},
-    dirtyFields: {},
-    validatingFields: {},
     errors: _options.errors || {},
     disabled: _options.disabled || false
   };
@@ -955,10 +1073,14 @@ function createFormControl(props = {}) {
     disabled: /* @__PURE__ */ new Set(),
     unMount: /* @__PURE__ */ new Set(),
     array: /* @__PURE__ */ new Set(),
-    watch: /* @__PURE__ */ new Set()
+    watch: /* @__PURE__ */ new Set(),
+    registerName: /* @__PURE__ */ new Set()
   };
   let delayErrorCallback;
   let timer = 0;
+  let _valuesSubscriberCount = 0;
+  let _validationModeBeforeSubmit = getValidationModes(_options.mode);
+  let _validationModeAfterSubmit = getValidationModes(_options.reValidateMode);
   const defaultProxyFormState = {
     isDirty: false,
     dirtyFields: false,
@@ -1019,6 +1141,9 @@ function createFormControl(props = {}) {
       });
     }
   };
+  const _updateDirtyFields = () => {
+    _formState.dirtyFields = getDirtyFields(_defaultValues, _formValues);
+  };
   const _setFieldArray = (name, values = [], method, args, shouldSetValues = true, shouldUpdateFieldsAndState = true) => {
     if (args && method && !_options.disabled) {
       _state.action = true;
@@ -1036,9 +1161,7 @@ function createFormControl(props = {}) {
         shouldSetValues && set(_formState.touchedFields, name, touchedFields);
       }
       if (_proxyFormState.dirtyFields || _proxySubscribeFormState.dirtyFields) {
-        const fullDirtyFields = getDirtyFields(_defaultValues, _formValues);
-        const rootName = getNodeParentName(name);
-        set(_formState.dirtyFields, rootName, get(fullDirtyFields, rootName));
+        _updateDirtyFields();
       }
       _subjects.state.next({
         name,
@@ -1053,6 +1176,7 @@ function createFormControl(props = {}) {
   };
   const updateErrors = (name, error) => {
     set(_formState.errors, name, error);
+    _formState.errors = { ..._formState.errors };
     _subjects.state.next({
       errors: _formState.errors
     });
@@ -1064,12 +1188,42 @@ function createFormControl(props = {}) {
       isValid: false
     });
   };
+  const hasExplicitNullIntermediate = (name) => {
+    const segments = isKey(name) ? [name] : stringToPath(name);
+    let formValues = _formValues;
+    let defaultValues = _defaultValues;
+    for (let i = 0; i < segments.length - 1; i++) {
+      const key = segments[i];
+      formValues = isNullOrUndefined(formValues) ? formValues : formValues[key];
+      defaultValues = isNullOrUndefined(defaultValues) ? defaultValues : defaultValues[key];
+      if (formValues === null && defaultValues !== null) {
+        return true;
+      }
+    }
+    return false;
+  };
   const updateValidAndValue = (name, shouldSkipSetValueAs, value, ref) => {
     const field = get(_fields, name);
     if (field) {
+      if (hasExplicitNullIntermediate(name)) {
+        return;
+      }
+      const wasUnsetInFormValues = isUndefined(get(_formValues, name));
       const defaultValue = get(_formValues, name, isUndefined(value) ? get(_defaultValues, name) : value);
       isUndefined(defaultValue) || ref && ref.defaultChecked || shouldSkipSetValueAs ? set(_formValues, name, shouldSkipSetValueAs ? defaultValue : getFieldValue(field._f)) : setFieldValue(name, defaultValue);
-      _state.mount && !_state.action && _setValid();
+      if (_state.mount && !_state.action) {
+        _setValid();
+        if (wasUnsetInFormValues && _formState.isDirty && (_proxyFormState.isDirty || _proxySubscribeFormState.isDirty)) {
+          const isDirty = _getDirty();
+          if (!isDirty) {
+            _formState.isDirty = false;
+            _subjects.state.next({ ..._formState });
+          }
+        }
+        if (props.shouldUnregister && wasUnsetInFormValues && !isUndefined(get(_formValues, name)) && isWatched(name, _names)) {
+          _state.watch = true;
+        }
+      }
     }
   };
   const updateTouchAndDirty = (name, fieldValue, isBlurEvent, shouldDirty, shouldRender) => {
@@ -1080,14 +1234,18 @@ function createFormControl(props = {}) {
     };
     if (!_options.disabled) {
       if (!isBlurEvent || shouldDirty) {
+        const isCurrentFieldPristine = deepEqual(get(_defaultValues, name), fieldValue);
         if (_proxyFormState.isDirty || _proxySubscribeFormState.isDirty) {
           isPreviousDirty = _formState.isDirty;
-          _formState.isDirty = output.isDirty = _getDirty();
+          _formState.isDirty = output.isDirty = !isCurrentFieldPristine || _getDirty();
           shouldUpdateField = isPreviousDirty !== output.isDirty;
         }
-        const isCurrentFieldPristine = deepEqual(get(_defaultValues, name), fieldValue);
         isPreviousDirty = !!get(_formState.dirtyFields, name);
-        isCurrentFieldPristine ? unset(_formState.dirtyFields, name) : set(_formState.dirtyFields, name, true);
+        if (isCurrentFieldPristine !== _formState.isDirty) {
+          _formState.dirtyFields = getDirtyFields(_defaultValues, _formValues);
+        } else {
+          isCurrentFieldPristine ? unset(_formState.dirtyFields, name) : set(_formState.dirtyFields, name, true);
+        }
         output.dirtyFields = _formState.dirtyFields;
         shouldUpdateField = shouldUpdateField || (_proxyFormState.dirtyFields || _proxySubscribeFormState.dirtyFields) && isPreviousDirty !== !isCurrentFieldPristine;
       }
@@ -1113,6 +1271,7 @@ function createFormControl(props = {}) {
       clearTimeout(timer);
       delayErrorCallback = null;
       error ? set(_formState.errors, name, error) : unset(_formState.errors, name);
+      _formState.errors = { ..._formState.errors };
     }
     if ((error ? !deepEqual(previousFieldError, error) : previousFieldError) || !isEmptyObject(fieldState) || shouldUpdateValid) {
       const updatedFormState = {
@@ -1138,8 +1297,9 @@ function createFormControl(props = {}) {
     if (names) {
       for (const name of names) {
         const error = get(errors, name);
-        error ? set(_formState.errors, name, error) : unset(_formState.errors, name);
+        error ? _names.array.has(name) && isObject(error) && !Object.keys(error).some((key) => !Number.isNaN(Number(key))) ? updateFieldArrayRootError(_formState.errors, { [name]: error }, name) : set(_formState.errors, name, error) : unset(_formState.errors, name);
       }
+      _formState.errors = { ..._formState.errors };
     } else {
       _formState.errors = errors;
     }
@@ -1158,8 +1318,8 @@ function createFormControl(props = {}) {
           const error = result[key];
           if (error) {
             setError(`${FORM_ERROR_TYPE}.${key}`, {
-              message: isString(result.message) ? result.message : "",
-              type: INPUT_VALIDATION_RULES.validate
+              message: isString(error.message) ? error.message : "",
+              type: error.type || INPUT_VALIDATION_RULES.validate
             });
           }
         }
@@ -1199,11 +1359,12 @@ function createFormControl(props = {}) {
         if (_f) {
           const isFieldArrayRoot = _names.array.has(_f.name);
           const isPromiseFunction = field._f && hasPromiseValidation(field._f);
-          if (isPromiseFunction && _proxyFormState.validatingFields) {
+          const shouldTrackIsValidatingState = _proxyFormState.validatingFields || _proxyFormState.isValidating || _proxySubscribeFormState.validatingFields || _proxySubscribeFormState.isValidating;
+          if (isPromiseFunction && shouldTrackIsValidatingState) {
             _updateIsValidating([_f.name], true);
           }
           const fieldError = await validateField(field, _names.disabled, _formValues, shouldDisplayAllAssociatedErrors, _options.shouldUseNativeValidation && !onlyCheckValid, isFieldArrayRoot);
-          if (isPromiseFunction && _proxyFormState.validatingFields) {
+          if (isPromiseFunction && shouldTrackIsValidatingState) {
             _updateIsValidating([_f.name]);
           }
           if (fieldError[_f.name]) {
@@ -1235,12 +1396,12 @@ function createFormControl(props = {}) {
     }
     _names.unMount = /* @__PURE__ */ new Set();
   };
-  const _getDirty = (name, data) => !_options.disabled && (name && data && set(_formValues, name, data), !deepEqual(getValues(), _defaultValues));
+  const _getDirty = (name, data) => !_options.disabled && (name && data && set(_formValues, name, data), !deepEqual(_state.mount ? _formValues : _defaultValues, _defaultValues));
   const _getWatch = (names, defaultValue, isGlobal) => generateWatchOutput(names, _names, {
     ..._state.mount ? _formValues : isUndefined(defaultValue) ? _defaultValues : isString(names) ? { [names]: defaultValue } : defaultValue
   }, isGlobal, defaultValue);
   const _getFieldArray = (name) => compact(get(_state.mount ? _formValues : _defaultValues, name, _options.shouldUnregister ? get(_defaultValues, name, []) : []));
-  const setFieldValue = (name, value, options = {}) => {
+  const setFieldValue = (name, value, options = {}, skipClone = false, skipRender = false) => {
     const field = get(_fields, name);
     let fieldValue = value;
     if (field) {
@@ -1268,19 +1429,19 @@ function createFormControl(props = {}) {
           fieldReference.ref.value = "";
         } else {
           fieldReference.ref.value = fieldValue;
-          if (!fieldReference.ref.type) {
+          if (!fieldReference.ref.type && !skipRender) {
             _subjects.state.next({
               name,
-              values: cloneObject(_formValues)
+              values: skipClone ? _formValues : cloneObject(_formValues)
             });
           }
         }
       }
     }
-    (options.shouldDirty || options.shouldTouch) && updateTouchAndDirty(name, fieldValue, options.shouldTouch, options.shouldDirty, true);
+    (options.shouldDirty || options.shouldTouch) && updateTouchAndDirty(name, fieldValue, options.shouldTouch, options.shouldDirty, !skipRender);
     options.shouldValidate && trigger(name);
   };
-  const setValues = (name, value, options) => {
+  const setFieldValues = (name, value, options, skipClone = false, skipRender = false) => {
     for (const fieldKey in value) {
       if (!value.hasOwnProperty(fieldKey)) {
         return;
@@ -1288,40 +1449,74 @@ function createFormControl(props = {}) {
       const fieldValue = value[fieldKey];
       const fieldName = name + "." + fieldKey;
       const field = get(_fields, fieldName);
-      (_names.array.has(name) || isObject(fieldValue) || field && !field._f) && !isDateObject(fieldValue) ? setValues(fieldName, fieldValue, options) : setFieldValue(fieldName, fieldValue, options);
+      (_names.array.has(name) || isObject(fieldValue) || field && !field._f) && !isDateObject(fieldValue) ? setFieldValues(fieldName, fieldValue, options, skipClone, skipRender) : setFieldValue(fieldName, fieldValue, options, skipClone, skipRender);
     }
   };
-  const setValue = (name, value, options = {}) => {
+  const _setValue = (name, value, options, skipClone, skipStateEmit = false) => {
     const field = get(_fields, name);
     const isFieldArray = _names.array.has(name);
-    const cloneValue = cloneObject(value);
-    set(_formValues, name, cloneValue);
+    const cloneValue = skipClone ? value : cloneObject(value);
+    const previousValue = get(_formValues, name);
+    const isValueUnchanged = deepEqual(previousValue, cloneValue);
+    if (!isValueUnchanged) {
+      set(_formValues, name, cloneValue);
+    }
     if (isFieldArray) {
       _subjects.array.next({
         name,
-        values: cloneObject(_formValues)
+        values: skipClone ? _formValues : cloneObject(_formValues)
       });
       if ((_proxyFormState.isDirty || _proxyFormState.dirtyFields || _proxySubscribeFormState.isDirty || _proxySubscribeFormState.dirtyFields) && options.shouldDirty) {
-        _subjects.state.next({
-          name,
-          dirtyFields: getDirtyFields(_defaultValues, _formValues),
-          isDirty: _getDirty(name, cloneValue)
-        });
+        _updateDirtyFields();
+        if (!skipStateEmit) {
+          _subjects.state.next({
+            name,
+            dirtyFields: _formState.dirtyFields,
+            isDirty: _getDirty(name, cloneValue)
+          });
+        }
       }
     } else {
-      field && !field._f && !isNullOrUndefined(cloneValue) ? setValues(name, cloneValue, options) : setFieldValue(name, cloneValue, options);
+      const isEmpty = Array.isArray(cloneValue) && !cloneValue.length || isEmptyObject(cloneValue);
+      if (!field || field._f || isNullOrUndefined(cloneValue) || isEmpty) {
+        setFieldValue(name, cloneValue, options, skipClone, skipStateEmit);
+      } else {
+        setFieldValues(name, cloneValue, options, skipClone, skipStateEmit);
+      }
     }
-    if (isWatched(name, _names)) {
+    if (!isValueUnchanged && !skipStateEmit) {
+      const watched = isWatched(name, _names);
+      const values = skipClone ? _formValues : cloneObject(_formValues);
+      _subjects.state.next({
+        ...watched && _formState,
+        name: _state.mount || watched ? name : void 0,
+        values
+      });
+    }
+  };
+  const setValue = (name, value, options = {}) => _setValue(name, value, options, false);
+  const setValues = (formValues, options = {}) => {
+    const updatedFormValues = isFunction(formValues) ? formValues(_formValues) : formValues;
+    if (!deepEqual(_formValues, updatedFormValues)) {
+      _formValues = {
+        ..._formValues,
+        ...updatedFormValues
+      };
+      const flattenedUpdates = flatten(updatedFormValues);
+      for (const fieldName of _names.mount) {
+        if (fieldName in flattenedUpdates) {
+          _setValue(fieldName, flattenedUpdates[fieldName], options, true, true);
+        }
+      }
       _subjects.state.next({
         ..._formState,
-        name,
-        values: cloneObject(_formValues)
+        name: void 0,
+        type: void 0,
+        ..._valuesSubscriberCount ? { values: _formValues } : {}
       });
-    } else {
-      _subjects.state.next({
-        name: _state.mount ? name : void 0,
-        values: cloneObject(_formValues)
-      });
+      if (options.shouldValidate) {
+        _setValid();
+      }
     }
   };
   const onChange = async (event) => {
@@ -1333,14 +1528,13 @@ function createFormControl(props = {}) {
     const _updateIsFieldValueUpdated = (fieldValue) => {
       isFieldValueUpdated = Number.isNaN(fieldValue) || isDateObject(fieldValue) && isNaN(fieldValue.getTime()) || deepEqual(fieldValue, get(_formValues, name, fieldValue));
     };
-    const validationModeBeforeSubmit = getValidationModes(_options.mode);
-    const validationModeAfterSubmit = getValidationModes(_options.reValidateMode);
     if (field) {
       let error;
       let isValid;
       const fieldValue = target.type ? getFieldValue(field._f) : getEventValue(event);
       const isBlurEvent = event.type === EVENTS.BLUR || event.type === EVENTS.FOCUS_OUT;
-      const shouldSkipValidation = !hasValidation(field._f) && !props.validate && !_options.resolver && !get(_formState.errors, name) && !field._f.deps || skipValidation(isBlurEvent, get(_formState.touchedFields, name), _formState.isSubmitted, validationModeAfterSubmit, validationModeBeforeSubmit);
+      const hasNoValidationEffect = !hasValidation(field._f) && !props.validate && !_options.resolver && !get(_formState.errors, name) && !field._f.deps;
+      const shouldSkipValidation = hasNoValidationEffect || skipValidation(isBlurEvent, get(_formState.touchedFields, name), _formState.isSubmitted, _validationModeAfterSubmit, _validationModeBeforeSubmit);
       const watched = isWatched(name, _names, isBlurEvent);
       set(_formValues, name, fieldValue);
       if (isBlurEvent) {
@@ -1356,10 +1550,10 @@ function createFormControl(props = {}) {
       !isBlurEvent && _subjects.state.next({
         name,
         type: event.type,
-        values: cloneObject(_formValues)
+        ..._valuesSubscriberCount ? { values: cloneObject(_formValues) } : {}
       });
       if (shouldSkipValidation) {
-        if (_proxyFormState.isValid || _proxySubscribeFormState.isValid) {
+        if ((!hasNoValidationEffect || !_formState.isValid) && (_proxyFormState.isValid || _proxySubscribeFormState.isValid)) {
           if (_options.mode === "onBlur") {
             if (isBlurEvent) {
               _setValid();
@@ -1381,13 +1575,15 @@ function createFormControl(props = {}) {
         const { errors } = await _runSchema([name]);
         _updateIsValidating([name]);
         _updateIsFieldValueUpdated(fieldValue);
-        if (isFieldValueUpdated) {
-          const previousErrorLookupResult = schemaErrorLookup(_formState.errors, _fields, name);
-          const errorLookupResult = schemaErrorLookup(errors, _fields, previousErrorLookupResult.name || name);
-          error = errorLookupResult.error;
-          name = errorLookupResult.name;
-          isValid = isEmptyObject(errors);
+        if (!isFieldValueUpdated) {
+          !isEmptyObject(fieldState) && _subjects.state.next(fieldState);
+          return;
         }
+        const previousErrorLookupResult = schemaErrorLookup(_formState.errors, _fields, name);
+        const errorLookupResult = schemaErrorLookup(errors, _fields, previousErrorLookupResult.name || name);
+        error = errorLookupResult.error;
+        name = errorLookupResult.name;
+        isValid = isEmptyObject(errors);
       } else {
         _updateIsValidating([name], true);
         error = (await validateField(field, _names.disabled, _formValues, shouldDisplayAllAssociatedErrors, _options.shouldUseNativeValidation))[name];
@@ -1499,21 +1695,58 @@ function createFormControl(props = {}) {
     });
     options && options.shouldFocus && ref && ref.focus && ref.focus();
   };
-  const watch = (name, defaultValue) => isFunction(name) ? _subjects.state.subscribe({
-    next: (payload) => "values" in payload && name(_getWatch(void 0, defaultValue), payload)
-  }) : _getWatch(name, defaultValue, true);
-  const _subscribe = (props2) => _subjects.state.subscribe({
-    next: (formState) => {
-      if (shouldSubscribeByName(props2.name, formState.name, props2.exact) && shouldRenderFormState(formState, props2.formState || _proxyFormState, _setFormState, props2.reRenderRoot)) {
-        props2.callback({
-          values: { ..._formValues },
-          ..._formState,
-          ...formState,
-          defaultValues: _defaultValues
-        });
-      }
+  const watch = (name, defaultValue) => {
+    if (isFunction(name)) {
+      _valuesSubscriberCount++;
+      const { unsubscribe } = _subjects.state.subscribe({
+        next: (payload) => "values" in payload && name(payload.values || _getWatch(void 0, defaultValue), payload)
+      });
+      let called = false;
+      return {
+        unsubscribe: () => {
+          if (called) {
+            return;
+          }
+          called = true;
+          _valuesSubscriberCount--;
+          unsubscribe();
+        }
+      };
     }
-  }).unsubscribe;
+    return _getWatch(name, defaultValue, true);
+  };
+  const _subscribe = (props2) => {
+    var _a;
+    const needsValues = !!((_a = props2.formState) === null || _a === void 0 ? void 0 : _a.values);
+    if (needsValues) {
+      _valuesSubscriberCount++;
+    }
+    const { unsubscribe } = _subjects.state.subscribe({
+      next: (formState) => {
+        if (shouldSubscribeByName(props2.name, formState.name, props2.exact) && shouldRenderFormState(formState, props2.formState || _proxyFormState, _setFormState, props2.reRenderRoot)) {
+          const snapshot = { ..._formValues };
+          props2.callback({
+            values: snapshot,
+            ..._formState,
+            ...formState,
+            defaultValues: _defaultValues
+          });
+        }
+      }
+    });
+    if (!needsValues) {
+      return unsubscribe;
+    }
+    let called = false;
+    return () => {
+      if (called) {
+        return;
+      }
+      called = true;
+      _valuesSubscriberCount--;
+      unsubscribe();
+    };
+  };
   const subscribe = (props2) => {
     _state.mount = true;
     _proxySubscribeFormState = {
@@ -1563,6 +1796,7 @@ function createFormControl(props = {}) {
   const register = (name, options = {}) => {
     let field = get(_fields, name);
     const disabledIsDefined = isBoolean(options.disabled) || isBoolean(_options.disabled);
+    const shouldRevalidateRemount = !_names.registerName.has(name) && field && field._f && !field._f.mount;
     set(_fields, name, {
       ...field || {},
       _f: {
@@ -1573,7 +1807,7 @@ function createFormControl(props = {}) {
       }
     });
     _names.mount.add(name);
-    if (field) {
+    if (field && !shouldRevalidateRemount) {
       _setDisabledField({
         disabled: isBoolean(options.disabled) ? options.disabled : _options.disabled,
         name
@@ -1596,7 +1830,9 @@ function createFormControl(props = {}) {
       onBlur: onChange,
       ref: (ref) => {
         if (ref) {
+          _names.registerName.add(name);
           register(name, options);
+          _names.registerName.delete(name);
           field = get(_fields, name);
           const fieldRef = isUndefined(ref.value) ? ref.querySelectorAll ? ref.querySelectorAll("input,select,textarea")[0] || ref : ref : ref;
           const radioOrCheckbox = isRadioOrCheckbox(fieldRef);
@@ -1628,7 +1864,7 @@ function createFormControl(props = {}) {
       }
     };
   };
-  const _focusError = () => _options.shouldFocusError && iterateFieldsByAction(_fields, _focusInput, _names.mount);
+  const _focusError = () => _options.shouldFocusError && !_options.shouldUseNativeValidation && iterateFieldsByAction(_fields, _focusInput, _names.mount);
   const _disableForm = (disabled) => {
     if (isBoolean(disabled)) {
       _subjects.state.next({ disabled });
@@ -1725,7 +1961,7 @@ function createFormControl(props = {}) {
     const updatedValues = formValues ? cloneObject(formValues) : _defaultValues;
     const cloneUpdatedValues = cloneObject(updatedValues);
     const isEmptyResetValues = isEmptyObject(formValues);
-    const values = isEmptyResetValues ? _defaultValues : cloneUpdatedValues;
+    const values = cloneUpdatedValues;
     if (!keepStateOptions.keepDefaultValues) {
       _defaultValues = updatedValues;
     }
@@ -1769,11 +2005,22 @@ function createFormControl(props = {}) {
           _fields = {};
         }
       }
-      _formValues = _options.shouldUnregister ? keepStateOptions.keepDefaultValues ? cloneObject(_defaultValues) : {} : cloneObject(values);
+      if (_options.shouldUnregister) {
+        _formValues = keepStateOptions.keepDefaultValues ? cloneObject(_defaultValues) : {};
+        if (keepStateOptions.keepFieldsRef) {
+          for (const fieldName of _names.mount) {
+            set(_formValues, fieldName, get(values, fieldName));
+          }
+        }
+      } else {
+        _formValues = cloneObject(values);
+      }
       _subjects.array.next({
         values: { ...values }
       });
       _subjects.state.next({
+        name: void 0,
+        type: void 0,
         values: { ...values }
       });
     }
@@ -1781,6 +2028,7 @@ function createFormControl(props = {}) {
       mount: keepStateOptions.keepDirtyValues ? _names.mount : /* @__PURE__ */ new Set(),
       unMount: /* @__PURE__ */ new Set(),
       array: /* @__PURE__ */ new Set(),
+      registerName: /* @__PURE__ */ new Set(),
       disabled: /* @__PURE__ */ new Set(),
       watch: /* @__PURE__ */ new Set(),
       watchAll: false,
@@ -1795,7 +2043,7 @@ function createFormControl(props = {}) {
     }
     _subjects.state.next({
       submitCount: keepStateOptions.keepSubmitCount ? _formState.submitCount : 0,
-      isDirty: isEmptyResetValues ? false : keepStateOptions.keepDirty ? _formState.isDirty : !!(keepStateOptions.keepDefaultValues && !deepEqual(formValues, _defaultValues)),
+      isDirty: isEmptyResetValues ? false : keepStateOptions.keepDirty ? _formState.isDirty : keepStateOptions.keepValues ? _getDirty() : !!(keepStateOptions.keepDefaultValues && !deepEqual(formValues, _defaultValues)),
       isSubmitted: keepStateOptions.keepIsSubmitted ? _formState.isSubmitted : false,
       dirtyFields: isEmptyResetValues ? {} : keepStateOptions.keepDirtyValues ? keepStateOptions.keepDefaultValues && _formValues ? getDirtyFields(_defaultValues, _formValues) : _formState.dirtyFields : keepStateOptions.keepDefaultValues && formValues ? getDirtyFields(_defaultValues, formValues) : keepStateOptions.keepDirty ? _formState.dirtyFields : {},
       touchedFields: keepStateOptions.keepTouched ? _formState.touchedFields : {},
@@ -1820,9 +2068,10 @@ function createFormControl(props = {}) {
     }
   };
   const _setFormState = (updatedFormState) => {
+    const { name, type, values, ...formState } = updatedFormState;
     _formState = {
       ..._formState,
-      ...updatedFormState
+      ...formState
     };
   };
   const _resetDefaultValues = () => isFunction(_options.defaultValues) && _options.defaultValues().then((values) => {
@@ -1831,6 +2080,21 @@ function createFormControl(props = {}) {
       isLoading: false
     });
   });
+  const resetDefaultValues = (values, options = {}) => {
+    _defaultValues = cloneObject(values);
+    if (!options.keepDirty) {
+      const newDirtyFields = getDirtyFields(_defaultValues, _formValues);
+      _formState.dirtyFields = newDirtyFields;
+      _formState.isDirty = !isEmptyObject(newDirtyFields);
+    }
+    if (!options.keepIsValid) {
+      _setValid();
+    }
+    _subjects.state.next({
+      ..._formState,
+      defaultValues: _defaultValues
+    });
+  };
   const methods = {
     control: {
       register,
@@ -1887,6 +2151,8 @@ function createFormControl(props = {}) {
           ..._options,
           ...value
         };
+        _validationModeBeforeSubmit = getValidationModes(_options.mode);
+        _validationModeAfterSubmit = getValidationModes(_options.reValidateMode);
       }
     },
     subscribe,
@@ -1895,9 +2161,11 @@ function createFormControl(props = {}) {
     handleSubmit,
     watch,
     setValue,
+    setValues,
     getValues,
     reset,
     resetField,
+    resetDefaultValues,
     clearErrors,
     unregister,
     setError,
@@ -1912,24 +2180,16 @@ function createFormControl(props = {}) {
 function useForm(props = {}) {
   const _formControl = React.useRef(void 0);
   const _values = React.useRef(void 0);
-  const [formState, updateFormState] = React.useState({
-    isDirty: false,
-    isValidating: false,
+  const _formControlProp = React.useRef(props.formControl);
+  const [formState, updateFormState] = React.useState(() => ({
+    ...cloneObject(DEFAULT_FORM_STATE),
     isLoading: isFunction(props.defaultValues),
-    isSubmitted: false,
-    isSubmitting: false,
-    isSubmitSuccessful: false,
-    isValid: false,
-    submitCount: 0,
-    dirtyFields: {},
-    touchedFields: {},
-    validatingFields: {},
     errors: props.errors || {},
     disabled: props.disabled || false,
-    isReady: false,
     defaultValues: isFunction(props.defaultValues) ? void 0 : props.defaultValues
-  });
-  if (!_formControl.current) {
+  }));
+  if (!_formControl.current || props.formControl && _formControlProp.current !== props.formControl) {
+    _formControlProp.current = props.formControl;
     if (props.formControl) {
       _formControl.current = {
         ...props.formControl,
@@ -1951,7 +2211,10 @@ function useForm(props = {}) {
   useIsomorphicLayoutEffect(() => {
     const sub = control._subscribe({
       formState: control._proxyFormState,
-      callback: () => updateFormState({ ...control._formState }),
+      callback: () => updateFormState({
+        ...control._formState,
+        defaultValues: control._defaultValues
+      }),
       reRenderRoot: true
     });
     updateFormState((data) => ({

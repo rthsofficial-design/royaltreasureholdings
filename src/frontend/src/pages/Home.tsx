@@ -186,7 +186,7 @@ function StatBar({ stats }: { stats: Stat[] }) {
       data-ocid="stat-bar"
     >
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x divide-border/40">
+        <div className="grid grid-cols-3 gap-6 lg:gap-0 lg:divide-x divide-border/40">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -219,9 +219,8 @@ export function Home() {
 
   let stats: Stat[] = [
     { label: "Portfolio Brands", value: "10+" },
-    { label: "Years of Excellence", value: "5yrs+" },
     { label: "Markets", value: "15+" },
-    { label: "Team Members", value: "200+" },
+    { label: "Team Members", value: "50+" },
   ];
   if (firmInfo?.statsJson) {
     try {
@@ -232,10 +231,11 @@ export function Home() {
     }
   }
 
-  const heroHeadline = firmInfo?.heroHeadline ?? "Building Enduring Brands";
+  const heroHeadline =
+    firmInfo?.heroHeadline ?? "RTHS is the leading multi-sector conglomerate";
   const heroCopy =
     firmInfo?.heroCopy ??
-    "A Mumbai-based holding group that builds, grows, and stewards a portfolio of exceptional brands across luxury, lifestyle, and high-growth sectors.";
+    "Royal Treasure Holding's is a premier multi-sector conglomerate managing an elite portfolio of over 10 prestigious brands across fashion, finance, software, and retail";
 
   return (
     <Layout>

@@ -1,3 +1,12 @@
+type Value = 
+ variant {
+   "bool": bool;
+   float: float64;
+   "int": int;
+   "nat": nat;
+   "null";
+   "text": text;
+ };
 type UpdateJobArgs = 
  record {
    department: text;
@@ -50,6 +59,11 @@ type SubmitApplicationArgs =
    email: text;
    jobId: JobId;
    message: text;
+ };
+type Result = 
+ record {
+   hasMore: bool;
+   rows: vec vec Cell;
  };
 type JobType = 
  variant {
@@ -122,6 +136,11 @@ type ContactSubmission =
    subject: text;
    submittedAt: Timestamp;
  };
+type Cell = 
+ record {
+   name: text;
+   value: Value;
+ };
 type BrandId = nat;
 type Brand = 
  record {
@@ -152,6 +171,7 @@ service : {
   deleteBoardMember: (id: BoardMemberId) -> (bool);
   deleteBrand: (id: BrandId) -> (bool);
   deleteJob: (id: JobId) -> (bool);
+  execute: (qJson: text) -> (Result) query;
   getBoardMember: (id: BoardMemberId) -> (opt BoardMember) query;
   getBrand: (id: BrandId) -> (opt Brand) query;
   getFirmInfo: () -> (FirmInfo) query;
@@ -163,6 +183,7 @@ service : {
   listBrands: () -> (vec Brand) query;
   listContactSubmissions: () -> (vec ContactSubmission) query;
   listJobs: () -> (vec Job) query;
+  schema: () -> (text) query;
   submitApplication: (args: SubmitApplicationArgs) -> (JobApplication);
   submitContact: (args: SubmitContactArgs) -> (ContactSubmission);
   updateBoardMember: (args: UpdateBoardMemberArgs) -> (opt BoardMember);

@@ -1,8 +1,8 @@
-import { c as createLucideIcon, j as jsxRuntimeExports, L as Layout } from "./index-DFKZK4DM.js";
-import { S as Skeleton } from "./skeleton-DBCj5J6f.js";
-import { a as useFirmInfo, m as motion } from "./useBackend-Bav98165.js";
-import { T as Target, S as Shield } from "./target-Cypa044L.js";
-import { T as TrendingUp } from "./trending-up-DU4f2BVV.js";
+import { c as createLucideIcon, j as jsxRuntimeExports, L as Layout } from "./index-DRDYWm4B.js";
+import { S as Skeleton } from "./skeleton-BfAubNeL.js";
+import { a as useFirmInfo, m as motion } from "./useBackend-BYFZNTKf.js";
+import { T as Target, S as Shield } from "./target-DkNaUz_C.js";
+import { T as TrendingUp } from "./trending-up-BCEbQO5d.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -54,9 +54,8 @@ const __iconNode = [
 const Users = createLucideIcon("users", __iconNode);
 const FALLBACK_STATS = [
   { label: "Portfolio Brands", value: "10+" },
-  { label: "Years of Excellence", value: "4+" },
   { label: "Markets", value: "15+" },
-  { label: "Team Members", value: "200+" }
+  { label: "Team Members", value: "50+" }
 ];
 const INVESTMENT_PILLARS = [
   {
@@ -213,7 +212,7 @@ function About() {
       {
         className: "bg-card border-b border-border",
         "data-ocid": "about-stats-bar",
-        children: isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-0", children: [0, 1, 2, 3].map((i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        children: isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "max-w-5xl mx-auto grid grid-cols-3 gap-0", children: [0, 1, 2].map((i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "div",
           {
             className: "flex flex-col items-center py-8 px-6 border-r border-border last:border-r-0",
@@ -223,7 +222,7 @@ function About() {
             ]
           },
           i
-        )) }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-0", children: stats.map((stat, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(StatCard, { stat, index: i }, stat.label)) })
+        )) }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "max-w-5xl mx-auto grid grid-cols-3 gap-0", children: stats.map((stat, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(StatCard, { stat, index: i }, stat.label)) })
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "bg-background py-20 px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start", children: [

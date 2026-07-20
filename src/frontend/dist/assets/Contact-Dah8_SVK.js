@@ -1,9 +1,9 @@
-import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, L as Layout } from "./index-DFKZK4DM.js";
-import { B as Button } from "./index-CH509zmm.js";
-import { I as Input } from "./input-CgEtxYTz.js";
-import { u as useForm, M as MapPin, A as AnimatePresence, C as CircleCheck, L as Label, T as Textarea } from "./index.esm-CRzw20HT.js";
-import { e as useSubmitContact, m as motion } from "./useBackend-Bav98165.js";
-import "./index-43jMSmQZ.js";
+import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, L as Layout } from "./index-DRDYWm4B.js";
+import { B as Button } from "./index-C9Ppkm3t.js";
+import { I as Input } from "./input-f30WsVcI.js";
+import { u as useForm, M as MapPin, A as AnimatePresence, C as CircleCheck, L as Label, T as Textarea } from "./index.esm-C_fc3RD8.js";
+import { e as useSubmitContact, m as motion } from "./useBackend-BYFZNTKf.js";
+import "./index-BACm2QCa.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -36,7 +36,7 @@ const CONTACT_DETAILS = [
   {
     icon: Mail,
     label: "Email",
-    lines: ["info@royaltreasurehgs.com"]
+    lines: ["info@rths.in"]
   }
 ];
 function FieldError({ message }) {
@@ -289,7 +289,7 @@ function Contact() {
                       ] }),
                       isError && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 text-destructive text-sm bg-destructive/5 border border-destructive/20 rounded px-4 py-3", children: [
                         /* @__PURE__ */ jsxRuntimeExports.jsx(CircleAlert, { className: "w-4 h-4 shrink-0" }),
-                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Something went wrong. Please try again or contact us directly at info@royaltreasurehgs.com." })
+                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Something went wrong. Please try again or contact us directly at info@rths.in." })
                       ] }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx(
                         Button,

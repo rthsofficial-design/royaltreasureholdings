@@ -1,4 +1,4 @@
-import type { backendInterface, Brand, BoardMember, Job, JobApplication, ContactSubmission, FirmInfo } from "../backend";
+import type { backendInterface, Brand, BoardMember, Job, JobApplication, ContactSubmission, FirmInfo, Result } from "../backend";
 import { JobType } from "../backend";
 
 const sampleBrands: Brand[] = [
@@ -146,15 +146,15 @@ const sampleJobs: Job[] = [
 ];
 
 const sampleFirmInfo: FirmInfo = {
-  heroHeadline: "Building Enduring Value Through Strategic Investment",
-  heroCopy: "Royal Treasure Holding'S is a distinguished private equity firm committed to identifying exceptional businesses and partnering with management teams to unlock their full potential.",
+  heroHeadline: "RTHS is the leading multi-sector conglomerate",
+  heroCopy: "Royal Treasure Holding's is a premier multi-sector conglomerate managing an elite portfolio of over 10 prestigious brands across fashion, finance, software, and retail",
   missionStatement: "Our mission is to generate superior risk-adjusted returns for our investors by acquiring, growing, and transforming industry-leading businesses across key sectors of the global economy.",
   investmentStrategy: "We focus on control and co-control investments in established, cash-generative businesses with defensible market positions. Our approach combines deep sector expertise, operational excellence, and a long-term partnership mindset to create sustainable value.",
   statsJson: JSON.stringify([
     { label: "Portfolio Brands", value: "8+" },
     { label: "Founded", value: "2021" },
     { label: "Markets", value: "15+" },
-    { label: "Team Members", value: "200+" },
+    { label: "Team Members", value: "50+" },
   ]),
 };
 
@@ -165,6 +165,7 @@ export const mockBackend: backendInterface = {
   deleteBoardMember: async () => true,
   deleteBrand: async () => true,
   deleteJob: async () => true,
+  execute: async () => ({ hasMore: false, rows: [] }),
   getBoardMember: async (id) => sampleBoardMembers.find((m) => m.id === id) ?? null,
   getBrand: async (id) => sampleBrands.find((b) => b.id === id) ?? null,
   getFirmInfo: async () => sampleFirmInfo,
@@ -176,6 +177,7 @@ export const mockBackend: backendInterface = {
   listBrands: async () => sampleBrands,
   listContactSubmissions: async () => [],
   listJobs: async () => sampleJobs,
+  schema: async () => "",
   submitApplication: async (args) => ({
     id: BigInt(Date.now()),
     submittedAt: BigInt(Date.now()),

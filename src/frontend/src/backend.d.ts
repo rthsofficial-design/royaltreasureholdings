@@ -7,6 +7,7 @@ export interface None {
     __kind__: "None";
 }
 export type Option<T> = Some<T> | None;
+export type ApplicationId = bigint;
 export type Timestamp = bigint;
 export interface SubmitApplicationArgs {
     applicantName: string;
@@ -31,6 +32,13 @@ export interface BoardMember {
     order: bigint;
     name: string;
     photoUrl: string;
+}
+export interface FirmInfo {
+    missionStatement: string;
+    statsJson: string;
+    heroCopy: string;
+    investmentStrategy: string;
+    heroHeadline: string;
 }
 export interface UpdateBrandArgs {
     id: BrandId;
@@ -65,13 +73,6 @@ export interface JobApplication {
     email: string;
     message: string;
 }
-export interface FirmInfo {
-    missionStatement: string;
-    statsJson: string;
-    heroCopy: string;
-    investmentStrategy: string;
-    heroHeadline: string;
-}
 export interface CreateBrandArgs {
     order: bigint;
     name: string;
@@ -105,6 +106,10 @@ export interface Job {
     department: string;
     location: string;
 }
+export interface Result {
+    hasMore: boolean;
+    rows: Array<Array<Cell>>;
+}
 export interface CreateBoardMemberArgs {
     bio: string;
     linkedIn: string;
@@ -121,8 +126,30 @@ export interface CreateJobArgs {
     department: string;
     location: string;
 }
+export interface Cell {
+    value: Value;
+    name: string;
+}
 export type BrandId = bigint;
-export type ApplicationId = bigint;
+export type Value = {
+    __kind__: "int";
+    int: bigint;
+} | {
+    __kind__: "nat";
+    nat: bigint;
+} | {
+    __kind__: "float";
+    float: number;
+} | {
+    __kind__: "bool";
+    bool: boolean;
+} | {
+    __kind__: "null";
+    null: null;
+} | {
+    __kind__: "text";
+    text: string;
+};
 export interface UpdateJobArgs {
     id: JobId;
     title: string;
@@ -145,6 +172,7 @@ export interface backendInterface {
     deleteBoardMember(id: BoardMemberId): Promise<boolean>;
     deleteBrand(id: BrandId): Promise<boolean>;
     deleteJob(id: JobId): Promise<boolean>;
+    execute(qJson: string): Promise<Result>;
     getBoardMember(id: BoardMemberId): Promise<BoardMember | null>;
     getBrand(id: BrandId): Promise<Brand | null>;
     getFirmInfo(): Promise<FirmInfo>;
@@ -156,6 +184,7 @@ export interface backendInterface {
     listBrands(): Promise<Array<Brand>>;
     listContactSubmissions(): Promise<Array<ContactSubmission>>;
     listJobs(): Promise<Array<Job>>;
+    schema(): Promise<string>;
     submitApplication(args: SubmitApplicationArgs): Promise<JobApplication>;
     submitContact(args: SubmitContactArgs): Promise<ContactSubmission>;
     updateBoardMember(args: UpdateBoardMemberArgs): Promise<BoardMember | null>;
