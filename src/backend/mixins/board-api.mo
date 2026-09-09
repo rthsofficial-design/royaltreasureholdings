@@ -3,7 +3,7 @@ import BoardTypes "../types/board";
 import BoardLib "../lib/board";
 
 mixin (boardMembers : List.List<BoardTypes.BoardMember>) {
-  var nextBoardMemberId : Nat = 1;
+  var nextBoardMemberId : Nat;
 
   public query func listBoardMembers() : async [BoardTypes.BoardMember] {
     BoardLib.listBoardMembers(boardMembers);

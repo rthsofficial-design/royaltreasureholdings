@@ -4,7 +4,7 @@ import BrandTypes "../types/brands";
 import BrandLib "../lib/brands";
 
 mixin (brands : List.List<BrandTypes.Brand>) {
-  var nextBrandId : Nat = 1;
+  var nextBrandId : Nat;
 
   public query func listBrands() : async [BrandTypes.Brand] {
     BrandLib.listBrands(brands);

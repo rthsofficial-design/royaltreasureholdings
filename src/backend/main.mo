@@ -1,6 +1,20 @@
 import List "mo:core/List";
 import OQL "mo:caffeineai-oql";
 import Expose "mo:caffeineai-oql/Expose";
+// Top-level import required so the OQL resolver finds the `toEntity` receiver
+// extension for List.List<T> (the extension lives in its own module and is not
+// re-exported by the main OQL import).
+import ListEntity "mo:caffeineai-oql/ListEntity";
+// Top-level imports required by the OQL implicit resolver: RecordValue drives
+// the _toRow derivation for record types, Entity exposes the Builder methods
+// (sample/public_/controllerOnly/build), and the primitive value modules
+// back the implicit resolver for each field type.
+import RecordValue "mo:caffeineai-oql/RecordValue";
+import Entity "mo:caffeineai-oql/Entity";
+import NatValue "mo:caffeineai-oql/NatValue";
+import IntValue "mo:caffeineai-oql/IntValue";
+import TextValue "mo:caffeineai-oql/TextValue";
+import BoolValue "mo:caffeineai-oql/BoolValue";
 import BrandTypes "types/brands";
 import BoardTypes "types/board";
 import JobTypes "types/jobs";
@@ -14,17 +28,14 @@ import BoardApi "mixins/board-api";
 import JobsApi "mixins/jobs-api";
 import ContactApi "mixins/contact-api";
 import FirmApi "mixins/firm-api";
-import FirmLib "lib/firm";
-import Migration "migration";
 
-(with migration = Migration.run)
 actor {
-  let brands = List.empty<BrandTypes.Brand>();
-  let boardMembers = List.empty<BoardTypes.BoardMember>();
-  let jobs = List.empty<JobTypes.Job>();
-  let applications = List.empty<JobTypes.JobApplication>();
-  let contactSubmissions = List.empty<ContactTypes.ContactSubmission>();
-  let firmInfo = { var value = FirmLib.defaultFirmInfo() };
+  let brands : List.List<BrandTypes.Brand>;
+  let boardMembers : List.List<BoardTypes.BoardMember>;
+  let jobs : List.List<JobTypes.Job>;
+  let applications : List.List<JobTypes.JobApplication>;
+  let contactSubmissions : List.List<ContactTypes.ContactSubmission>;
+  let firmInfo : { var value : FirmTypes.FirmInfo };
 
   include BrandsApi(brands);
   include BoardApi(boardMembers);

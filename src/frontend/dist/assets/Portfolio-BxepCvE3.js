@@ -1,12 +1,12 @@
-import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, L as Layout, a as Link } from "./index-DRDYWm4B.js";
-import { B as Badge } from "./badge-BJELzILJ.js";
-import { I as Input } from "./input-f30WsVcI.js";
-import { S as Skeleton } from "./skeleton-BfAubNeL.js";
-import { u as useBrands, m as motion } from "./useBackend-BYFZNTKf.js";
-import { T as TrendingUp } from "./trending-up-BCEbQO5d.js";
-import { B as Building2 } from "./building-2-BIleRazB.js";
-import { A as ArrowRight } from "./arrow-right-DzJfcswp.js";
-import "./index-BACm2QCa.js";
+import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, L as Layout, a as Link } from "./index-B0vJiZY8.js";
+import { B as Badge } from "./badge-B402TtlR.js";
+import { I as Input } from "./input-Dz4li2O5.js";
+import { S as Skeleton } from "./skeleton-DqXMLZ8M.js";
+import { u as useBrands, m as motion } from "./useBackend-DdVHtYU2.js";
+import { T as TrendingUp } from "./trending-up-Bppt_ux9.js";
+import { B as Building2 } from "./building-2-DfE4Shru.js";
+import { A as ArrowRight } from "./arrow-right-BKpbsqwZ.js";
+import "./index-BjDDg8iO.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -90,6 +90,24 @@ const SAMPLE_BRANDS = [
     sector: "Media & Streaming",
     website: "",
     logoUrl: "/assets/images/edge-studios-logo.jpeg"
+  },
+  {
+    id: 9n,
+    order: 9n,
+    name: "Menzo",
+    description: "A luxury perfume house dedicated to the art of fine fragrance, Menzo crafts signature scents from the world's rarest ingredients through meticulous olfactory artistry. Each composition is a study in craftsmanship, blending precious absolutes, exotic resins, and hand-selected botanicals into layered narratives that unfold on the skin. Positioned at the pinnacle of haute parfumerie, Menzo offers discerning connoisseurs an immersive sensory experience where heritage technique meets contemporary refinement, setting a new benchmark for prestige fragrance.",
+    sector: "Fragrance & Perfume",
+    website: "https://menzo.com",
+    logoUrl: "/assets/images/menzo-logo.jpeg"
+  },
+  {
+    id: 10n,
+    order: 10n,
+    name: "TradeGlo",
+    description: "A high-frequency trading firm engineered for the world's most competitive electronic markets, TradeGlo deploys low-latency infrastructure and quantitative strategies to capture microstructural inefficiencies across Indian and U.S. exchanges. The firm trades a diversified basket of instruments spanning the Nifty and Nasdaq indices, XAUUSD/Gold and US30/Dow Jones futures, Bitcoin, and USOil, executing thousands of positions per session with disciplined risk controls and institutional-grade execution. By combining proprietary market-making algorithms, statistical arbitrage, and real-time order-book analytics, TradeGlo delivers consistent, risk-adjusted returns while providing essential liquidity across global capital markets. Positioned at the intersection of technology and finance, TradeGlo represents the firm's commitment to quantitative excellence and the future of automated trading.",
+    sector: "Trading & Capital Markets",
+    website: "https://tradeglo.com",
+    logoUrl: "/assets/images/tradeglo-logo.jpeg"
   }
 ];
 function BrandCard({ brand, index }) {

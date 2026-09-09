@@ -6,8 +6,8 @@ mixin (
   jobs : List.List<JobTypes.Job>,
   applications : List.List<JobTypes.JobApplication>,
 ) {
-  var nextJobId : Nat = 1;
-  var nextApplicationId : Nat = 1;
+  var nextJobId : Nat;
+  var nextApplicationId : Nat;
 
   public query func listJobs() : async [JobTypes.Job] {
     JobLib.listJobs(jobs);

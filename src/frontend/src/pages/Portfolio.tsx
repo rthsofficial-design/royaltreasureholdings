@@ -92,6 +92,26 @@ const SAMPLE_BRANDS: Brand[] = [
     website: "",
     logoUrl: "/assets/images/edge-studios-logo.jpeg",
   },
+  {
+    id: 9n,
+    order: 9n,
+    name: "Menzo",
+    description:
+      "A luxury perfume house dedicated to the art of fine fragrance, Menzo crafts signature scents from the world's rarest ingredients through meticulous olfactory artistry. Each composition is a study in craftsmanship, blending precious absolutes, exotic resins, and hand-selected botanicals into layered narratives that unfold on the skin. Positioned at the pinnacle of haute parfumerie, Menzo offers discerning connoisseurs an immersive sensory experience where heritage technique meets contemporary refinement, setting a new benchmark for prestige fragrance.",
+    sector: "Fragrance & Perfume",
+    website: "https://menzo.com",
+    logoUrl: "/assets/images/menzo-logo.jpeg",
+  },
+  {
+    id: 10n,
+    order: 10n,
+    name: "TradeGlo",
+    description:
+      "A high-frequency trading firm engineered for the world's most competitive electronic markets, TradeGlo deploys low-latency infrastructure and quantitative strategies to capture microstructural inefficiencies across Indian and U.S. exchanges. The firm trades a diversified basket of instruments spanning the Nifty and Nasdaq indices, XAUUSD/Gold and US30/Dow Jones futures, Bitcoin, and USOil, executing thousands of positions per session with disciplined risk controls and institutional-grade execution. By combining proprietary market-making algorithms, statistical arbitrage, and real-time order-book analytics, TradeGlo delivers consistent, risk-adjusted returns while providing essential liquidity across global capital markets. Positioned at the intersection of technology and finance, TradeGlo represents the firm's commitment to quantitative excellence and the future of automated trading.",
+    sector: "Trading & Capital Markets",
+    website: "https://tradeglo.com",
+    logoUrl: "/assets/images/tradeglo-logo.jpeg",
+  },
 ];
 
 // ── Brand card ────────────────────────────────────────────────────────────────

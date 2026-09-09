@@ -3,7 +3,7 @@ import ContactTypes "../types/contact";
 import ContactLib "../lib/contact";
 
 mixin (contactSubmissions : List.List<ContactTypes.ContactSubmission>) {
-  var nextContactId : Nat = 1;
+  var nextContactId : Nat;
 
   public shared func submitContact(args : ContactTypes.SubmitContactArgs) : async ContactTypes.ContactSubmission {
     let submission = ContactLib.submitContact(contactSubmissions, nextContactId, args);

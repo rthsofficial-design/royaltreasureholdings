@@ -1,10 +1,20 @@
-// Version: 3.0.0
+// Version: 4.0.0
 type ApplicationId__970511113 = Id__389469852;
 type BoardMemberId__699385795 = Id__389469852;
 type BoardMember__109690899 =
   {
     bio : Text;
     id : BoardMemberId__699385795;
+    linkedIn : Text;
+    name : Text;
+    order : Nat;
+    photoUrl : Text;
+    title : Text
+  };
+type BoardMember__253812500 =
+  {
+    bio : Text;
+    id : Nat;
     linkedIn : Text;
     name : Text;
     order : Nat;
@@ -22,7 +32,26 @@ type Brand__159034844 =
     sector : Text;
     website : Text
   };
+type Brand__230047502 =
+  {
+    description : Text;
+    id : Nat;
+    logoUrl : Text;
+    name : Text;
+    order : Nat;
+    sector : Text;
+    website : Text
+  };
 type ContactSubmissionId__179327337 = Id__389469852;
+type ContactSubmission__380162588 =
+  {
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    subject : Text;
+    submittedAt : Int
+  };
 type ContactSubmission__93684224 =
   {
     email : Text;
@@ -40,7 +69,24 @@ type FirmInfo__79146856 =
     missionStatement : Text;
     statsJson : Text
   };
+type FirmInfo__836325191 =
+  {
+    heroCopy : Text;
+    heroHeadline : Text;
+    investmentStrategy : Text;
+    missionStatement : Text;
+    statsJson : Text
+  };
 type Id__389469852 = Nat;
+type JobApplication__308132120 =
+  {
+    applicantName : Text;
+    email : Text;
+    id : Nat;
+    jobId : Nat;
+    message : Text;
+    submittedAt : Int
+  };
 type JobApplication__941079936 =
   {
     applicantName : Text;
@@ -52,6 +98,17 @@ type JobApplication__941079936 =
   };
 type JobId__567733654 = Id__389469852;
 type JobType__229172236 = {#contract; #fullTime; #partTime};
+type JobType__559608021 = {#contract; #fullTime; #partTime};
+type Job__797499809 =
+  {
+    department : Text;
+    description : Text;
+    id : Nat;
+    isActive : Bool;
+    jobType : JobType__559608021;
+    location : Text;
+    title : Text
+  };
 type Job__848768964 =
   {
     department : Text;
@@ -62,89 +119,82 @@ type Job__848768964 =
     location : Text;
     title : Text
   };
-type Nat__920180692 = Nat;
-type Nat__93962160 = Nat__920180692;
-type OldFirmInfo__370941327 =
+type List__1004628775<T> =
   {
-    heroCopy : Text;
-    heroHeadline : Text;
-    investmentStrategy : Text;
-    missionStatement : Text;
-    statsJson : Text
+    var blockIndex : Nat__58649523;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__58649523
+  };
+type List__89170296<T> = List__1004628775<T>;
+type Nat__58649523 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__932014818 =
+  {
+    applications : List__89170296<JobApplication__308132120>;
+    boardMembers : List__89170296<BoardMember__253812500>;
+    brands : List__89170296<Brand__230047502>;
+    contactSubmissions : List__89170296<ContactSubmission__380162588>;
+    firmInfo : {var value : FirmInfo__836325191};
+    jobs : List__89170296<Job__797499809>;
+    nextApplicationId : Nat;
+    nextBoardMemberId : Nat;
+    nextBrandId : Nat;
+    nextContactId : Nat;
+    nextJobId : Nat
+  };
+type OldActor__308918129 =
+  {
+    applications : List__89170296<JobApplication__308132120>;
+    boardMembers : List__89170296<BoardMember__253812500>;
+    brands : List__89170296<Brand__230047502>;
+    contactSubmissions : List__89170296<ContactSubmission__380162588>;
+    firmInfo : {var value : FirmInfo__836325191};
+    jobs : List__89170296<Job__797499809>;
+    nextApplicationId : Nat;
+    nextBoardMemberId : Nat;
+    nextBrandId : Nat;
+    nextContactId : Nat;
+    nextJobId : Nat
   };
 type Timestamp__301639476 = Int;
-actor ({
+{
+  "20260809_161500" : (old : OldActor__308918129) -> NewActor__932014818
+}
+actor  {
   stable applications :
     {
-      var blockIndex : Nat__93962160;
+      var blockIndex : Nat__58649523;
       var blocks : [var [var ?JobApplication__941079936]];
-      var elementIndex : Nat__93962160
+      var elementIndex : Nat__58649523
     };
   stable boardMembers :
     {
-      var blockIndex : Nat__93962160;
+      var blockIndex : Nat__58649523;
       var blocks : [var [var ?BoardMember__109690899]];
-      var elementIndex : Nat__93962160
+      var elementIndex : Nat__58649523
     };
   stable brands :
     {
-      var blockIndex : Nat__93962160;
+      var blockIndex : Nat__58649523;
       var blocks : [var [var ?Brand__159034844]];
-      var elementIndex : Nat__93962160
+      var elementIndex : Nat__58649523
     };
   stable contactSubmissions :
     {
-      var blockIndex : Nat__93962160;
+      var blockIndex : Nat__58649523;
       var blocks : [var [var ?ContactSubmission__93684224]];
-      var elementIndex : Nat__93962160
-    };
-  in firmInfo : {var value : OldFirmInfo__370941327};
-  stable jobs :
-    {
-      var blockIndex : Nat__93962160;
-      var blocks : [var [var ?Job__848768964]];
-      var elementIndex : Nat__93962160
-    };
-  stable var nextApplicationId : Nat;
-  stable var nextBoardMemberId : Nat;
-  stable var nextBrandId : Nat;
-  stable var nextContactId : Nat;
-  stable var nextJobId : Nat
-}, {
-  stable applications :
-    {
-      var blockIndex : Nat__93962160;
-      var blocks : [var [var ?JobApplication__941079936]];
-      var elementIndex : Nat__93962160
-    };
-  stable boardMembers :
-    {
-      var blockIndex : Nat__93962160;
-      var blocks : [var [var ?BoardMember__109690899]];
-      var elementIndex : Nat__93962160
-    };
-  stable brands :
-    {
-      var blockIndex : Nat__93962160;
-      var blocks : [var [var ?Brand__159034844]];
-      var elementIndex : Nat__93962160
-    };
-  stable contactSubmissions :
-    {
-      var blockIndex : Nat__93962160;
-      var blocks : [var [var ?ContactSubmission__93684224]];
-      var elementIndex : Nat__93962160
+      var elementIndex : Nat__58649523
     };
   stable firmInfo : {var value : FirmInfo__79146856};
   stable jobs :
     {
-      var blockIndex : Nat__93962160;
+      var blockIndex : Nat__58649523;
       var blocks : [var [var ?Job__848768964]];
-      var elementIndex : Nat__93962160
+      var elementIndex : Nat__58649523
     };
   stable var nextApplicationId : Nat;
   stable var nextBoardMemberId : Nat;
   stable var nextBrandId : Nat;
   stable var nextContactId : Nat;
   stable var nextJobId : Nat
-});
+};

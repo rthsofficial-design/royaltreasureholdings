@@ -1,8 +1,8 @@
-import { c as createLucideIcon, j as jsxRuntimeExports, L as Layout, b as Linkedin } from "./index-DRDYWm4B.js";
-import { B as Badge } from "./badge-BJELzILJ.js";
-import { S as Skeleton } from "./skeleton-BfAubNeL.js";
-import { d as useBoardMembers, m as motion } from "./useBackend-BYFZNTKf.js";
-import "./index-BACm2QCa.js";
+import { c as createLucideIcon, j as jsxRuntimeExports, L as Layout, b as Linkedin } from "./index-B0vJiZY8.js";
+import { B as Badge } from "./badge-B402TtlR.js";
+import { S as Skeleton } from "./skeleton-DqXMLZ8M.js";
+import { d as useBoardMembers, m as motion } from "./useBackend-DdVHtYU2.js";
+import "./index-BjDDg8iO.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
